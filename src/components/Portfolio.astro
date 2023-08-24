@@ -1,0 +1,13 @@
+--- 
+import PortfolioCard from '../components/PortfolioCard.astro';
+const myPortfolioNumber: string[] = ["1", "2", "3", "4", "5"]
+--- 
+
+<div>
+    <h1>My Portfolio</h1>
+    <ul>
+        {myPortfolioNumber.map((number) => (
+            <PortfolioCard/>
+        ))}
+    </ul>
+</div>
