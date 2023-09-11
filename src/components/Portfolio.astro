@@ -1,13 +1,37 @@
 --- 
+type project = {
+    title: string,
+    description: string,
+    image?: string,
+    link?: string,
+    tags?: string[]
+}
 import PortfolioCard from '../components/PortfolioCard.astro';
-const myPortfolioNumber: string[] = ["1", "2", "3", "4", "5"]
+const portfolio: project [] = [
+    {
+        title: "Drone Simulation", 
+        description:  "A drone simulation using C++, HTML, JavaScript",
+        image: "public/images/drone.jpg",
+    }, 
+    {
+        title: "Crowdfunding platform for Events",
+        description: "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon"
+    }
+]
 --- 
-
-<div>
-    <h1>My Portfolio</h1>
+<div id="projects">
+    <h1 class="title">Portfolio</h1>
     <ul>
-        {myPortfolioNumber.map((number) => (
-            <PortfolioCard/>
+        {portfolio.map((project) => (
+            <PortfolioCard project={project}/>
         ))}
     </ul>
 </div>
+
+<style>
+    .title {
+        text-align: center;
+        font-size: 2rem; 
+        font-weight: bold;
+    }
+</style>

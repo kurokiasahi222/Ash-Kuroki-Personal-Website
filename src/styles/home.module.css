@@ -1,0 +1,59 @@
+.abouMe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto; 
+}
+.asahi {
+    border-radius: 30% 70% 70% 30% / 35% 54% 46% 65%;
+}
+.content {
+    text-align: center;
+}
+.intro {
+    font-size: 2rem;
+}
+.imageContainer {
+    margin: 0 auto; 
+    width: 20rem; 
+    height: 15rem;
+    background: url("public/images/asahi2.jpg");
+    background-size: cover;
+    border-radius: 30% 70% 70% 30% / 35% 54% 46% 65%;
+}
+.title {
+    font-size: 2.125rem;
+    font-weight: bold;
+}
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; 
+}
+.icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+}
+@media (min-width: 768px) {
+    .aboutMe {
+        display: flex;
+        margin-top: 2rem; 
+    }
+    .imageContainer {
+        width: 30rem;
+        height: 30rem; 
+    }
+    .description {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    .content {
+        flex-basis: 50%; 
+        text-align: left;
+    }
+    .iconContainer {
+        justify-content: flex-start;
+    }
+    
+}

@@ -1,12 +1,91 @@
 <header>
-  <nav class="flex">
-    <img src="public/images/js.png" alt="Site logo" />
-    <ul class="flex">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Experience</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Resume</a></li>
-    </ul>
-  </nav>
+    <h3 class="logo">Asahi.dev</h3>
+    <nav>
+        <div class="mobile">
+            <img src="./public/images/menu.png" alt="hamberger-menu">
+        </div>
+        <ul class="menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contacts">Contact</a></li>
+            <li class="resume"><a href="#">Resume</a></li>
+        </ul>
+    </nav>
+
 </header>
+
+<!-- <script>
+    const mobile = document.querySelector('.mobile');
+    const menu = document.querySelector('.menu');
+    mobile.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    })
+</script> -->
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+    }
+    .logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .mobile {
+        width: 2rem; 
+        height: 2rem; 
+    }
+    .menu {
+        display: none; 
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: black;
+        font-family: Poppins;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    
+    nav ul li a:hover {
+        font-weight: bold;
+    }
+
+    .resume {
+        display: flex;
+        width: 10.0625rem;
+        height: 3.6875rem;
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        border-radius: 0.625rem;
+        border: 2px solid black;
+    }
+
+    @media (min-width: 768px) {
+        header {
+            display: flex; 
+            justify-content: space-between;
+        }
+        .mobile {
+            display: none;
+        }
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul li {
+            list-style: none;
+            margin-left: 1rem;
+        }
+        .menu {
+            display: flex;
+        }
+    }
+</style>

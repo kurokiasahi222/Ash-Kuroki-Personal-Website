@@ -1,3 +1,40 @@
-<img/>
-<h1>Name</h1>
-<p>Project description</p>
+--- 
+type project = {
+    title: string,
+    description: string,
+    image?: string,
+    link?: string,
+    tags?: string[]
+}
+const {project: project} = Astro.props; 
+--- 
+
+<div class="card">
+    <div class="container">
+        <img src={project.image}/>
+        <h1 class="title">{project.title}</h1>
+        <p class="description">{project.description}</p>
+    </div>
+</div>
+
+<style>
+    .card {
+        background-color: lightgray;
+        height: auto; 
+        width: 80%;
+        margin: 0 auto;
+        border-radius: 2rem;
+        margin-top: 2rem;
+    }
+    .container {
+        padding: 2rem;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+</style>
