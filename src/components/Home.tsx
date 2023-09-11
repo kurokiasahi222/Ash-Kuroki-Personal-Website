@@ -25,7 +25,7 @@ export default function Home() {
         <>
             <div className={styles.aboutMe}>
                 <div className={styles.imageContainer}>
-                    {/* <img className={styles.asahi} src="public/images/asahi2.jpg" /> */}
+                    {/* <img className={styles.asahi} src="images/asahi2.jpg" /> */}
                 </div>
                 <div className={styles.content}>
                     <h1 className={styles.intro}>Hi! MY NAME IS ASAHI</h1>

@@ -18,7 +18,7 @@ export default function TechStack () {
                     </li>
 
                     <li>
-                        <img src="python.png" alt="python" />
+                        <img src="images/python.png" alt="python" />
                     </li>
                     <li>
                         <img src="images/C.png" alt="c" />

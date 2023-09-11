@@ -4,9 +4,6 @@
     justify-content: center;
     margin: 0 auto; 
 }
-.asahi {
-    border-radius: 30% 70% 70% 30% / 35% 54% 46% 65%;
-}
 .content {
     text-align: center;
 }
@@ -17,7 +14,7 @@
     margin: 0 auto; 
     width: 20rem; 
     height: 15rem;
-    background: url("images/asahi2.jpg");
+    background: url("../../images/asahi2.jpg");
     background-size: cover;
     border-radius: 30% 70% 70% 30% / 35% 54% 46% 65%;
 }
