@@ -10,27 +10,27 @@ export default function TechStack () {
                 <ul className={styles.items}>
                     <li>
                         <div className="imageContainer">
-                            <img src="./public/images/react.png" alt="react" />
+                            <img src="images/react.png" alt="react" />
                         </div>
                     </li>
                     <li>
-                        <img src="./public/images/typescript.png" alt="typescript" />
+                        <img src="images/typescript.png" alt="typescript" />
                     </li>
 
                     <li>
-                        <img src="./public/images/python.png" alt="python" />
+                        <img src="python.png" alt="python" />
                     </li>
                     <li>
-                        <img src="./public/images/C.png" alt="c" />
+                        <img src="images/C.png" alt="c" />
                     </li>
                     <li>
-                        <img src="./public/images/java.png" alt="Java" />
+                        <img src="images/java.png" alt="Java" />
                     </li>
                     <li>
-                        <img src="./public/images/sql.png" alt="SQL" />
+                        <img src="images/sql.png" alt="SQL" />
                     </li>
                     <li>
-                        <img src="./public/images/flask.png" alt="flask" />
+                        <img src="images/flask.png" alt="flask" />
                     </li>
                 </ul>
             </div>

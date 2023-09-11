@@ -35,12 +35,12 @@ export default function Home() {
                     <div className={styles.iconContainer}>
                         <div className={styles.icon}>
                             <a href="https://www.linkedin.com/in/asahi-kuroki/" target="_blank">
-                                <img className={styles.icon} src="public/images/linkedin.png" />
+                                <img className={styles.icon} src="images/linkedin.png" />
                             </a>
                         </div>
                         <div className={styles.icon}>
                             <a href="https://github.com/kurokiasahi222" target="_blank">
-                                <img className={styles.icon} src="public/images/github.png" />
+                                <img className={styles.icon} src="images/github.png" />
                             </a>
                         </div>
                     </div>
