@@ -14,8 +14,8 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js" integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css" integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -24,7 +24,7 @@ const { title } = Astro.props;
 			<Header />
 		</div>
 		<div id="fullpage">
-			<div class="section fp-auto-height">
+			<div id="section1" class="section">
 				<Home client:load/>
 			</div>
 			<div class="section">
@@ -38,19 +38,18 @@ const { title } = Astro.props;
 		<script>
 			new fullpage('#fullpage', {
 			//options here
-				sectionsColor: ['#f9f9f9', 'white', '#f9f9f9'],
-				autoScrolling: true,
-				licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM', 
-				fixedElements: '#header', 
-				paddingTop: '4rem',
-		}); 
+			licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM', 
+			autoScrolling:true,
+			sectionsColor: ['#f9f9f9', 'white', '#f9f9f9'],
+			fitToSection: false,
+			fixedElements: '#header', 
+			paddingTop: '4rem',
+		});
 		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js" integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</body>
 </html>
 <style>
-	.section {
-		height: 100vh; 
-	}
 	#header {
 		position: fixed;
 		top: 0;
@@ -58,4 +57,4 @@ const { title } = Astro.props;
 		width: 100%;
 		z-index: 100;
 	}
-</style>../components/TechStack.tsx
+</style>
