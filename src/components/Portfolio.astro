@@ -9,9 +9,13 @@ type project = {
 import PortfolioCard from '../components/PortfolioCard.astro';
 const portfolio: project [] = [
     {
-        title: "Drone Simulation", 
-        description:  "A drone simulation using C++, HTML, JavaScript",
+        title: "Drone Simulation System", 
+        description:  "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
         image: "images/drone.jpg",
+    }, 
+    {
+        title: "Crowdfunding platform for Events",
+        description: "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. "
     }, 
     {
         title: "Crowdfunding platform for Events",
@@ -20,18 +24,35 @@ const portfolio: project [] = [
 ]
 --- 
 <div id="projects">
-    <h1 class="title">Portfolio</h1>
-    <ul>
-        {portfolio.map((project) => (
-            <PortfolioCard project={project}/>
-        ))}
-    </ul>
+    <div class="container">
+        <h1 class="title">Portfolio</h1>
+        <div>
+            <ul class="portfolioContainer">
+            {portfolio.map((project) => (
+                <PortfolioCard project={project}/>
+            ))}
+            </ul>
+        </div>
+    </div>
 </div>
 
 <style>
+    .container {
+        margin: 0 auto; 
+    }
     .title {
         text-align: center;
         font-size: 2rem; 
         font-weight: bold;
+    }
+    @media (min-width: 768px) {
+        .title {
+            text-align: left;
+        }
+        .portfolioContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
     }
 </style>
