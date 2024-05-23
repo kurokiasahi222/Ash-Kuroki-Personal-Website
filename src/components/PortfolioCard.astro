@@ -8,30 +8,19 @@ type project = {
 }
 const {project: project} = Astro.props; 
 --- 
-
-<div class="card">
-    <div class="container">
-        <img src={project.image}/>
-        <h1 class="title">{project.title}</h1>
-        <p class="description">{project.description}</p>
-        <div class="links">
-            <a href="">Code</a>
-            <a href="">Live DEMO</a>
-        </div>
-        
+<div class="card-container">
+    <Checkitout/>
+    <img src={project.image}/>
+    <h1 class="title">{project.title}</h1>
+    <p class="description">{project.description}</p>
+    <div class="links">
+        <a href="">Code</a>
+        <a href="">Live DEMO</a>
     </div>
 </div>
 
 <style>
-    .card {
-        background-color: lightgray;
-        height: auto; 
-        width: 80%;
-        margin: 0 auto;
-        border-radius: 2rem;
-        margin-top: 2rem;
-    }
-    .container {
+    .card-container {
         padding: 2rem;
         display: flex; 
         flex-direction: column;
@@ -43,8 +32,5 @@ const {project: project} = Astro.props;
         font-weight: bold;
     }
     @media (min-width: 768px) {
-        .card {
-            width: 18.75rem; 
-        }
     }
 </style>

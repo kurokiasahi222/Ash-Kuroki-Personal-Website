@@ -1,49 +1,105 @@
-<div id="about" class="container">
-    <div class="content">
-        <h1 class="title">ABOUT ME</h1>
-        <h1 class="subtitle">Computer Science Student studying in University of Minnesota</h1>
-        <p>I am a computer science and Entreprenurship student studying at University of Minnesota
-        </p>
-        <br/>
-        <p>I am a bilingual and highly motivated student with a strong foundation in programming, software engineering, and data science. Currently pursuing a Bachelor of Arts in Computer Science at the University of Minnesota, Twin Cities, and a Bachelor of Science in Business with a major in Entrepreneurship at Curtis L. Carlson School of Management. 
-    I am passionate about leveraging both technical expertise and business acumen to drive data-driven insights and create innovative solutions.</p>
+---
+import { Image } from "astro:assets";
+import umnImage from "../../public/images/umn.png";
+---
+
+<div class="aboutme-container">
+    <div class="left-side">
+        <div class="about-title">
+            <h1 class="about">ABOUT</h1>
+            <h1 class="title">ME</h1>
+        </div>
+        <Image src={umnImage} alt="image of umn" height="288" />
     </div>
-    <div class="imageSection">
-        <img class="image" src="images/umn.jpg" alt="">
+    <div class="content">
+        <h1 class="subtitle">Computer Science & Entrepreneurship Graduate</h1>
+        <p>
+            I am a bilingual and highly motivated student with a strong
+            foundation in programming, software engineering, and data science.
+            Recent graduate from University of Minnesota with double major in Computer
+            Science and Entrepreneurship. I am passionate about leveraging both
+            technical expertise and business acumen to drive data-driven
+            insights and create innovative solutions.
+        </p>
     </div>
 </div>
 
 <style>
-    .container {
+    .aboutme-container {
         display: flex;
         flex-direction: column;
         text-align: center;
-        margin: 0 auto; 
+        height: 100%;
     }
     .title {
         font-size: 2rem;
         font-weight: bold;
     }
     .subtitle {
-        font-size: 1.5rem;
+        color: #0a929b;
+        text-align: center;
+        /* H2 */
+        font-family: Lato;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
     }
     p {
-        font-size: 1.25rem;
+        color: #5b6166;
+        text-align: center;
+        /* P 1 */
+        font-family: Lato;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 32px; /* 177.778% */
     }
     @media (min-width: 768px) {
-        .container {
+        .aboutme-container {
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
-            text-align: left;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 106px;
+        }
+        .about-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 70px;
+            gap: 10px;
+        }
+        .left-side {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 70px;
+        }
+        .about {
+            color: var(--Charcoal, #5b6166);
+            /* H1 */
+            font-family: Lato;
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+        }
+        .title {
+            color: #0a929b;
+            /* H1 */
+            font-family: Lato;
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
         }
         .content {
-            width: 80%;
+            height: 100%;
+            flex-basis: 70%;
         }
-        .image {
-            width: 1000px;
-            height: 300px;
+        .subtitle {
+            padding-bottom: 34px;
         }
-        
     }
 </style>

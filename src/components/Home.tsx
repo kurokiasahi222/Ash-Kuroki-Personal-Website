@@ -8,8 +8,8 @@ export default function Home() {
     const el = React.useRef(null);
     React.useEffect(() => {
         const typed = new Typed(el.current, {
-            // strings: ['Computer Science Student', 'Full Stack Developer', 'Aspiring Entreprenur'],
-            strings: ['Computer Science Student'], 
+            strings: ['Software Developer', 'AI Enginner', 'Aspiring Entreprenur'],
+            // strings: ['Software Developer'], 
             typeSpeed: 80,
             backSpeed: 10,
             startDelay: 1000,
@@ -22,31 +22,26 @@ export default function Home() {
     }, []);
 
     return (
-        <>
+        <div>
             <div className={styles.aboutMe}>
-                <div className={styles.imageContainer}>
-                    {/* <img className={styles.asahi} src="images/asahi2.jpg" /> */}
-                </div>
                 <div className={styles.content}>
-                    <h1 className={styles.intro}>Hi! MY NAME IS ASAHI</h1>
-                    <h1 className={styles.intro}>I am a ... </h1>
-                    <span className={styles.title} ref={el} />
-                    <p className={styles.description}>Hi! My name is Asahi (Ash) Kuroki and I am a student at University of Minnesota, Twins cities</p>
-                    <div className={styles.iconContainer}>
-                        <div className={styles.icon}>
-                            <a href="https://www.linkedin.com/in/asahi-kuroki/" target="_blank">
-                                <img className={styles.icon} src="images/linkedin.png" />
-                            </a>
-                        </div>
-                        <div className={styles.icon}>
-                            <a href="https://github.com/kurokiasahi222" target="_blank">
-                                <img className={styles.icon} src="images/github.png" />
-                            </a>
-                        </div>
+                    <div className={styles.intro}>
+                        <h1>Hi! I'm </h1>
+                        <h1 className={styles.name}>ASH (Asahi)</h1>
                     </div>
-                    <TechStack />
+                    <h1>I am a ... </h1>
+                    <span className={styles.title} ref={el} />
+                    <p className={styles.description}>
+                        Ex. “I'm a full stack developer specializing in building (and occasionally designing) exceptional digital experiences. 
+                        Currently I'm focused on building back-end applications.”
+                    </p>
+                    <div className={styles.projectContainer}>
+                        <h2 className={styles.project}><a href="">PROJECTS</a></h2>
+                    </div>
+                </div>
+                <div className={styles.imageContainer}>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

@@ -1,21 +1,37 @@
---- 
-import Header from '../components/Header.astro';
-import Home from '../components/Home';
-import Portfolio from '../components/Portfolio.astro';
-import AboutMe from '../components/AboutMe.astro';
+---
+import Header from "../components/Header.astro";
+import Home from "../components/Home";
+import Portfolio from "../components/Portfolio.astro";
+import AboutMe from "../components/AboutMe.astro";
 interface Props {
 	title: string;
 }
 const { title } = Astro.props;
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="description" content="Astro description" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css" integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
+			integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -24,29 +40,35 @@ const { title } = Astro.props;
 			<Header />
 		</div>
 		<div id="fullpage">
-			<div id="section1" class="section">
-				<Home client:load/>
-			</div>
-			<div class="section">
-				<AboutMe/>	
-			</div>
-			<div class="section">
+			<!-- <div id="home" class="section">
+				<Home client:load />
+			</div> -->
+			<!-- <div id="about" class="section">
+				<AboutMe />
+			</div> -->
+			<div id="projects" class="section">
 				<Portfolio />
 			</div>
 		</div>
-		
+
 		<script>
-			new fullpage('#fullpage', {
-			//options here
-			licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM', 
-			autoScrolling:true,
-			sectionsColor: ['#f9f9f9', 'white', '#f9f9f9'],
-			fitToSection: false,
-			fixedElements: '#header', 
-			paddingTop: '4rem',
-		});
+			new fullpage("#fullpage", {
+				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
+				// anchors: ["#section1", "#section2", "#section3"],
+				autoScrolling: true,
+				sectionsColor: ["#f9f9f9"],
+				// sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9"],
+				fitToSection: false,
+				fixedElements: "#header",
+				paddingTop: "4.375rem",
+				scrollOverflow: true,
+			});
 		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js" integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
+			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"></script>
 	</body>
 </html>
 <style>

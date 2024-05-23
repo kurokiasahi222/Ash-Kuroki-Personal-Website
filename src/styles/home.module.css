@@ -2,55 +2,79 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto; 
 }
 .content {
     text-align: center;
 }
-.intro {
-    font-size: 2rem;
-}
 .imageContainer {
-    margin: 0 auto; 
-    width: 20rem; 
-    height: 15rem;
-    background: url("../../images/asahi2.jpg");
-    background-size: cover;
-    border-radius: 30% 70% 70% 30% / 35% 54% 46% 65%;
+    background: url("../../images/asahi-headshot.png");
 }
 .title {
-    font-size: 2.125rem;
-    font-weight: bold;
-}
-.iconContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem; 
-}
-.icon {
-    width: 2rem;
-    height: 2rem;
-    margin-right: 1rem;
+    color: #0A929B;
+    /* H1 */
+    font-family: Lato;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
 }
 @media (min-width: 768px) {
     .aboutMe {
         display: flex;
-        margin-top: 2rem; 
+        height: 100%;
     }
-    .imageContainer {
-        width: 30rem;
-        height: 30rem; 
+    h1 {
+        font-size: 40px;  
+    }
+    .intro {
+        display: flex;
+        align-items: center;
+    }
+    .name {
+        padding-left: 10px; 
+        color: #0A929B;
+        /* H2 */
+        font-family: Lato;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .content {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 40px 40px;
     }
     .description {
         font-size: 1rem;
         margin-top: 1rem;
     }
-    .content {
-        flex-basis: 50%; 
-        text-align: left;
+    .projectContainer {
+        margin-top: 20px; 
+        display: flex;
+        padding: 26px 103px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        align-self: stretch;
+        border-radius: 20px;
+        background: var(--Main, #0A929B);
+        box-shadow: 0px 4px 4px 0px #B6CED0;
     }
-    .iconContainer {
-        justify-content: flex-start;
+    .project {
+        color: var(--Lightest, #FCFFFF);
+        text-align: center;
+        /* H2 */
+        font-family: Lato;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
     }
-    
+    .imageContainer {
+        height: auto;
+        width: 640px;
+    }
 }

@@ -1,58 +1,72 @@
---- 
+---
 type project = {
-    title: string,
-    description: string,
-    image?: string,
-    link?: string,
-    tags?: string[]
-}
-import PortfolioCard from '../components/PortfolioCard.astro';
-const portfolio: project [] = [
+    title: string;
+    description: string;
+    image?: string;
+    link?: string;
+    tags?: string[];
+};
+import PortfolioCard from "../components/PortfolioCard.astro";
+const portfolio: project[] = [
     {
-        title: "Drone Simulation System", 
-        description:  "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
+        title: "Drone Simulation System",
+        description:
+            "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
         image: "images/drone.jpg",
-    }, 
+    },
     {
         title: "Crowdfunding platform for Events",
-        description: "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. "
-    }, 
+        description:
+            "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. ",
+    },
     {
         title: "Crowdfunding platform for Events",
-        description: "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon"
-    }
-]
---- 
+        description:
+            "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon",
+    },
+];
+---
+
 <div id="projects">
-    <div class="container">
-        <h1 class="title">Portfolio</h1>
+    <div class="projects-container">
+        <h1 class="title">Projects</h1>
         <div>
-            <ul class="portfolioContainer">
-            {portfolio.map((project) => (
-                <PortfolioCard project={project}/>
-            ))}
+            <ul class="portfolio-container">
+                {
+                    portfolio.map((project) => (
+                        <PortfolioCard project={project} />
+                    ))
+                }
             </ul>
         </div>
     </div>
 </div>
 
 <style>
-    .container {
-        margin: 0 auto; 
-    }
     .title {
-        text-align: center;
-        font-size: 2rem; 
-        font-weight: bold;
+        color: var(--Main, #0a929b);
+        /* H1 */
+        font-family: Lato;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
     }
     @media (min-width: 768px) {
+        .projects-container {
+            margin: 0 70px;
+            display: flex;
+            width: auto;
+            padding: 0px 70px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 65px;
+        }
         .title {
             text-align: left;
         }
-        .portfolioContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .portfolio-container {
+            width: 100%;
         }
     }
 </style>

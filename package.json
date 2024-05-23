@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^2.3.2",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/react": "^3.3.4",
+    "@astrojs/tailwind": "^5.1.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "astro": "^2.10.12",
+    "astro": "^4.8.7",
     "fullpage.js": "^4.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
