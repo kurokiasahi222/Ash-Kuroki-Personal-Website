@@ -1,8 +1,43 @@
-<div>
-    <p>Check it out</p>
-    <hr>
+---
+import { Image } from "astro:assets";
+import playButton from "../../public/images/play-button.png";
+---
+
+<div class="play-button-container">
+    <div class="play-button">
+        <h3>Check it out</h3>
+        <Image
+            src={playButton}
+            alt="play button"
+            width="35"
+            height="40.625"
+            ;
+        />
+    </div>
+    <hr class="h-line" />
 </div>
 
 <style>
-
+    .play-button-container {
+        width: 100%;
+        margin-bottom: 4.0625rem;
+    }
+    .play-button {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 7px;
+    }
+    .play-button h3 {
+        color: var(--Main, #0a929b);
+        font-family: Lato;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .h-line {
+        border: none;
+        height: 0.0625rem;
+        background-color: var(--Main, #0a929b);
+    }
 </style>

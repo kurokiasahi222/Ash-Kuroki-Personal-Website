@@ -1,15 +1,14 @@
 import React from 'react';
 import Typed from 'typed.js';
 import styles from '../styles/home.module.css';
-import TechStack from './TechStack';
 
 export default function Home() {
     // Create reference to store the DOM element containing the animation
     const el = React.useRef(null);
     React.useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ['Software Developer', 'AI Enginner', 'Aspiring Entreprenur'],
-            // strings: ['Software Developer'], 
+            // strings: ['Software Developer', 'AI Enginner', 'Aspiring Entreprenur'],
+            strings: ['Software Developer'], 
             typeSpeed: 80,
             backSpeed: 10,
             startDelay: 1000,
@@ -29,17 +28,18 @@ export default function Home() {
                         <h1>Hi! I'm </h1>
                         <h1 className={styles.name}>ASH (Asahi)</h1>
                     </div>
-                    <h1>I am a ... </h1>
                     <span className={styles.title} ref={el} />
                     <p className={styles.description}>
-                        Ex. “I'm a full stack developer specializing in building (and occasionally designing) exceptional digital experiences. 
-                        Currently I'm focused on building back-end applications.”
+                        I'm a <b>Full Stack Developer </b>specializing in building (and occasionally designing) exceptional digital experiences.
+                        <br />
+                        This website is created using <i><a href="https://astro.build/">Astro.js</a></i> & <i><a href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
                     </p>
                     <div className={styles.projectContainer}>
-                        <h2 className={styles.project}><a href="">PROJECTS</a></h2>
+                        <h2 className={styles.project}><a href="#projects">PROJECTS</a></h2>
                     </div>
                 </div>
                 <div className={styles.imageContainer}>
+                    <img className={styles.ashImg}src="../../images/asahi-headshot.png" alt="asahi-headshot" />
                 </div>
             </div>
         </div>

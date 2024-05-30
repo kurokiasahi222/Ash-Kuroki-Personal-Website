@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Home from "../components/Home";
 import Portfolio from "../components/Portfolio.astro";
 import AboutMe from "../components/AboutMe.astro";
+import Footer from "../components/Footer.astro";
 interface Props {
 	title: string;
 }
@@ -40,14 +41,15 @@ const { title } = Astro.props;
 			<Header />
 		</div>
 		<div id="fullpage">
-			<!-- <div id="home" class="section">
+			<div id="home" class="section">
 				<Home client:load />
-			</div> -->
-			<!-- <div id="about" class="section">
+			</div>
+			<div id="about" class="section">
 				<AboutMe />
-			</div> -->
+			</div>
 			<div id="projects" class="section">
 				<Portfolio />
+				<Footer />
 			</div>
 		</div>
 

@@ -1,44 +1,79 @@
-.abouMe {
+.aboutMe {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column-reverse;
 }
 .content {
+    font-family: Lato;
     text-align: center;
-}
-.imageContainer {
-    background: url("../../images/asahi-headshot.png");
 }
 .title {
     color: #0A929B;
     /* H1 */
     font-family: Lato;
-    font-size: 64px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
 }
+h1 {
+    font-size: 20px;
+}
+.name {
+    padding-left: 10px;
+    color: #0A929B;
+    /* H2 */
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.projectContainer {
+    margin-top: 20px;
+    display: flex;
+    padding: 26px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 20px;
+    background: var(--Main, #0A929B);
+    box-shadow: 0px 4px 4px 0px #B6CED0;
+}
+.project {
+    color: var(--Lightest, #FCFFFF);
+    text-align: center;
+    /* H2 */
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.description {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.ashImg {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+@media (max-width: 768px) {
+    .aboutMe {
+        align-items: center;
+        padding: 10px 30px;
+    }
+}
 @media (min-width: 768px) {
     .aboutMe {
-        display: flex;
+        flex-direction: row;
         height: 100%;
-    }
-    h1 {
-        font-size: 40px;  
     }
     .intro {
         display: flex;
         align-items: center;
-    }
-    .name {
-        padding-left: 10px; 
-        color: #0A929B;
-        /* H2 */
-        font-family: Lato;
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
     }
     .content {
         width: 50%;
@@ -46,6 +81,22 @@
         flex-direction: column;
         text-align: left;
         padding: 40px 40px;
+    }
+    .title {
+        font-size: 64px;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    .name {
+        padding-left: 10px;
+        font-size: 40px;
+    }
+    .project {
+        color: var(--Lightest, #FCFFFF);
+        text-align: center;
+        /* H2 */
+        font-family: Lato;
     }
     .description {
         font-size: 1rem;
@@ -63,18 +114,13 @@
         background: var(--Main, #0A929B);
         box-shadow: 0px 4px 4px 0px #B6CED0;
     }
-    .project {
-        color: var(--Lightest, #FCFFFF);
-        text-align: center;
-        /* H2 */
-        font-family: Lato;
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-    }
     .imageContainer {
-        height: auto;
-        width: 640px;
+        width: 50%; 
     }
+    .ashImg {
+        width: 600px; 
+        height: 550px; 
+        object-fit: contain;
+    }
+    
 }

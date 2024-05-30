@@ -1,79 +1,93 @@
+---
+import { Image } from "astro:assets";
+import hamberger from "../../public/images/menu.png";
+---
+
 <header>
     <nav>
         <div class="mobile">
-            <h3 class="logo">Ash.dev</h3>
-            <img src="images/menu.png" alt="hamberger-menu" />
+            <h3 class="main-logo-phone">Ash.dev</h3>
+            <div id="hamberger">
+                <Image src={hamberger} alt="hamberger-menu" />
+            </div>
         </div>
-        <ul class="menu">
-            <h3 class="logo">Ash.dev</h3>
-            <li>
-                <a class="navigation" href="#about">ABOUT</a>
-            </li>
-            <li>
+        <div id="menu" class="menu">
+            <h3 class="main-logo-desk"><a href="/">Ash.dev</a></h3>
+            <div class="nav-container">
+                <a class="navigation" href=" #about">ABOUT</a>
                 <a class="navigation" href="#projects">PROJECTS</a>
-            </li>
-            <li>
                 <a class="navigation" href="#contacts">CONTACT</a>
-            </li>
-            <li><a class="resume" href="#">RESUME</a></li>
-            <li class="icon-container">
-                <a href="https://www.linkedin.com/in/asahi-kuroki/"
-                    ><img
-                        class="icon"
-                        src="images/linkedin-3.png"
-                        alt="linkedin-icon"
-                    /></a
-                >
-                <a href="https://github.com/kurokiasahi222">
-                    <img
-                        class="icon"
-                        src="images/github.png"
-                        alt="github-icon"
-                    />
-                </a>
-            </li>
-        </ul>
+                <a class="resume" href="#">RESUME</a>
+                <div class="icon-container">
+                    <a href="https://www.linkedin.com/in/asahi-kuroki/"
+                        ><img
+                            class="icon"
+                            src="images/linkedin-3.png"
+                            alt="linkedin-icon"
+                        /></a
+                    >
+                    <a href="https://github.com/kurokiasahi222">
+                        <img
+                            class="icon"
+                            src="images/github.png"
+                            alt="github-icon"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
+    <script>
+        const hamberger: HTMLElement = document.getElementById("hamberger")!;
+        const menu: HTMLElement = document.getElementById("menu")!;
+        hamberger.addEventListener("click", () => {
+            console.log("hellp");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+            menu.classList.toggle("active");
+        });
+    </script>
 </header>
-
-<!-- <script>
-    const mobile = document.querySelector('.mobile');
-    const menu = document.querySelector('.menu');
-    mobile.addEventListener('click', () => {
-        menu.classList.toggle('active');
-    })
-</script> -->
 
 <style>
     header {
         background: var(--Lightest, #fcffff);
         /* DROP SHADOW */
         box-shadow: 0px 4px 4px 0px #b6ced0;
+        height: 70px;
     }
-    .logo {
-        color: #0a929b;
-        text-align: center;
-        font-family: Lato;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 900;
-        line-height: normal;
+    nav {
+        height: 100%;
+        padding: 0 40px;
+    }
+    .mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
     }
     .navigation {
         color: var(--Charcoal, #5b6166);
         text-align: center;
         /* NAV */
         font-family: Lato;
-        font-size: 15px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+    }
+    .navigation:hover {
+        font-size: 18px;
+        font-weight: bold;
     }
     .resume {
         color: #0a929b;
         text-align: center;
         font-family: Lato;
-        font-size: 15px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -81,28 +95,38 @@
     .resume:hover {
         font-size: 18px;
     }
-    .mobile {
-        width: 2rem;
-        height: 2rem;
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+        }
+        .main-logo-phone {
+            color: #0a929b;
+            text-align: center;
+            font-family: Lato;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+        }
+        .nav-container {
+            position: fixed;
+            inset: 0 0 0 70%;
+            background: hsl(230, 30%, 85% );
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20rem 2rem; 
+        }
+        .main-logo-desk {
+            display: none;
+        }
+        .icon-container {
+            display: flex;
+            flex-direction: row;
+        }
     }
-    .nav {
-        width: 100%;
-    }
-    nav ul li a {
-        text-decoration: none;
-        color: black;
-        font-family: Poppins;
-        font-size: 1.3rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
-
-    nav ul li a:hover {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
     @media (min-width: 768px) {
         header {
             height: 4.375rem;
@@ -114,18 +138,52 @@
             height: 100%;
             padding: 0 70px;
         }
+
         .menu {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 100%;
+            gap: 103px;
+        }
+        .main-logo-desk {
+            color: #0a929b;
+            text-align: center;
+            font-family: Lato;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .main-logo {
+            font-size: 32px;
+        }
+        .navigation {
+            font-size: 16px;
+        }
+        .navigation:hover {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .resume {
+            font-size: 16px;
+        }
+        .resume:hover {
+            font-size: 18px;
+            font-weight: bold;
         }
         .icon {
             width: 40px;
             height: 37px;
         }
         .icon-container {
-            display: flex; 
+            display: flex;
         }
     }
 </style>
