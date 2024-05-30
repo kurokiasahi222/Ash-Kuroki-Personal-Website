@@ -32,7 +32,7 @@ export default function Home() {
                     <p className={styles.description}>
                         I'm a <b>Full Stack Developer </b>specializing in building (and occasionally designing) exceptional digital experiences.
                         <br />
-                        This website is created using <i><a href="https://astro.build/">Astro.js</a></i> & <i><a href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
+                        This website is created using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
                     </p>
                     <div className={styles.projectContainer}>
                         <h2 className={styles.project}><a href="#projects">PROJECTS</a></h2>

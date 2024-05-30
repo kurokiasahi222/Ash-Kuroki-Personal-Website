@@ -6,6 +6,11 @@
     font-family: Lato;
     text-align: center;
 }
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .title {
     color: #0A929B;
     /* H1 */
@@ -54,7 +59,6 @@ h1 {
     font-size: 1rem;
     margin-top: 1rem;
 }
-
 .ashImg {
     width: 200px;
     height: 200px;
