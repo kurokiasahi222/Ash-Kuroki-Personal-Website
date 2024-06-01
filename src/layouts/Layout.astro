@@ -8,9 +8,10 @@ interface Props {
 	title: string;
 }
 const { title } = Astro.props;
+const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -20,6 +21,7 @@ const { title } = Astro.props;
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- import full page.js -->
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
@@ -27,6 +29,12 @@ const { title } = Astro.props;
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+		<!-- import animate.css -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<!-- import fonts from google font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -56,6 +64,7 @@ const { title } = Astro.props;
 		<script>
 			new fullpage("#fullpage", {
 				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
+				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`, 
 				// anchors: ["#section1", "#section2", "#section3"],
 				autoScrolling: true,
 				sectionsColor: ["#f9f9f9"],
@@ -70,7 +79,8 @@ const { title } = Astro.props;
 			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
 			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
 			crossorigin="anonymous"
-			referrerpolicy="no-referrer"></script>
+			referrerpolicy="no-referrer">
+	</script>
 	</body>
 </html>
 <style>

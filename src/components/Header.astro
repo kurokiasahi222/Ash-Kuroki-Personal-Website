@@ -1,19 +1,36 @@
 ---
 import { Image } from "astro:assets";
 import hamberger from "../../public/images/menu.png";
+import hambergerClosed from "../../public/images/hamberger-closed2.png";
 ---
-
 <header>
     <nav>
         <div class="mobile">
             <h3 class="main-logo-phone">Ash.dev</h3>
-            <div id="hamberger">
-                <Image src={hamberger} alt="hamberger-menu" />
+            <div
+                id="hamberger"
+                aria-controls="primary-navigation"
+                aria-expanded="false"
+            >
+                <Image
+                    id="hambergerOpen"
+                    src={hamberger}
+                    alt="open menu"
+                    width="50"
+                    height="50"
+                />
+                <Image
+                    id="hambergerClosed"
+                    src={hambergerClosed}
+                    alt="close menu"
+                    width="50"
+                    height="50"
+                />
             </div>
         </div>
         <div id="menu" class="menu">
             <h3 class="main-logo-desk"><a href="/">Ash.dev</a></h3>
-            <div class="nav-container">
+            <div class="nav-container" id="primary-navigation">
                 <a class="navigation" href=" #about">ABOUT</a>
                 <a class="navigation" href="#projects">PROJECTS</a>
                 <a class="navigation" href="#contacts">CONTACT</a>
@@ -36,22 +53,31 @@ import hamberger from "../../public/images/menu.png";
                 </div>
             </div>
         </div>
+        <script>
+            const hamberger: HTMLElement =
+                document.getElementById("hamberger")!;
+            const menu: HTMLElement = document.getElementById("menu")!;
+            const hambergerOpen: HTMLElement =
+                document.getElementById("hambergerOpen")!;
+            const hambergerClosed: HTMLElement =
+                document.getElementById("hambergerClosed")!;
+            hamberger.addEventListener("click", () => {
+                console.log("helo0");
+                // if open, close the menu
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                    hambergerOpen.style.display = "block";
+                    hambergerClosed.style.display = "none";
+                } else {
+                    menu.style.display = "block";
+                    hambergerOpen.style.display = "none";
+                    hambergerClosed.style.display = "block";
+                }
+                menu.classList.toggle("active");
+            });
+        </script>
     </nav>
-    <script>
-        const hamberger: HTMLElement = document.getElementById("hamberger")!;
-        const menu: HTMLElement = document.getElementById("menu")!;
-        hamberger.addEventListener("click", () => {
-            console.log("hellp");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
-            menu.classList.toggle("active");
-        });
-    </script>
 </header>
-
 <style>
     header {
         background: var(--Lightest, #fcffff);
@@ -95,6 +121,11 @@ import hamberger from "../../public/images/menu.png";
     .resume:hover {
         font-size: 18px;
     }
+
+    #hambergerClosed {
+        display: none;
+    }
+
     @media (max-width: 768px) {
         .menu {
             display: none;
@@ -108,16 +139,33 @@ import hamberger from "../../public/images/menu.png";
             font-weight: 900;
             line-height: normal;
         }
+        #hamberger {
+            position: fixed;
+            top: 0.5rem;
+            right: 2rem;
+            z-index: 1000;
+        }
         .nav-container {
             position: fixed;
             inset: 0 0 0 70%;
-            background: hsl(230, 30%, 85% );
+            background: hsl(
+                230,
+                30%,
+                85%
+            ); /* backup background when blur is not supported */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
             gap: 20px;
-            padding: 20rem 2rem; 
+            padding: 20rem 2rem;
+        }
+        /* Default background for nav: if the browser support backdrop filter */
+        @supports (backdrop-filter: blur(2rem)) {
+            .nav-container {
+                background: hsl(0 0% 100% / 0.1);
+                backdrop-filter: blur(2rem);
+            }
         }
         .main-logo-desk {
             display: none;
@@ -138,7 +186,6 @@ import hamberger from "../../public/images/menu.png";
             height: 100%;
             padding: 0 70px;
         }
-
         .menu {
             display: flex;
             justify-content: space-between;
@@ -159,7 +206,7 @@ import hamberger from "../../public/images/menu.png";
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
+            gap: 10px;
         }
         .main-logo {
             font-size: 32px;
