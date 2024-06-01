@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import hamberger from "../../public/images/menu.png";
 import hambergerClosed from "../../public/images/hamberger-closed2.png";
 ---
+
 <header>
     <nav>
         <div class="mobile">
@@ -147,30 +148,20 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
         }
         .nav-container {
             position: fixed;
-            inset: 0 0 0 70%;
-            background: hsl(
-                230,
-                30%,
-                85%
-            ); /* backup background when blur is not supported */
+            inset: 0 0 0 60%;
+            background: #fbfbfb;
+            box-shadow: 0px 4px 4px 0px #b6ced0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: space-between;
             gap: 20px;
-            padding: 20rem 2rem;
-        }
-        /* Default background for nav: if the browser support backdrop filter */
-        @supports (backdrop-filter: blur(2rem)) {
-            .nav-container {
-                background: hsl(0 0% 100% / 0.1);
-                backdrop-filter: blur(2rem);
-            }
+            padding: 8rem 2rem;
         }
         .main-logo-desk {
             display: none;
         }
         .icon-container {
+            padding-top: 16rem;
             display: flex;
             flex-direction: row;
         }
