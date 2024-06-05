@@ -1,7 +1,9 @@
 .aboutMe {
     margin: 0;
     display: flex;
+    justify-content: start;
     height: calc(100vh - 4.375rem);
+    /* height: 100vh; */
 }
 .content {
     font-family: Lato;
@@ -64,15 +66,14 @@ h1 {
     font-size: 1rem;
     margin-top: 1rem;
 }
-.ashImg {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-}
+
 .imageContainer {
     perspective: 1000px;
-    height: 100%;
+    height: 40%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .imageContainer:hover .flipper {
     transform: rotateY(180deg);
@@ -80,13 +81,14 @@ h1 {
 .flipper {
     position: relative;
     width: 100%;
-    height: 100%; 
+    height: 80%; 
     transition: 0.6s;
     transform-style: preserve-3d;
 }
 .front,
 .back {
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -99,6 +101,7 @@ h1 {
 /* back, initially hidden pane */
 .back {
     display: flex;
+    text-align: center;
     align-items: center;
     transform: rotateY(180deg);
 }
@@ -111,6 +114,11 @@ h1 {
     font-weight: 900;
     line-height: normal;
 }
+.ashImg {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+}
 
 @media (max-width: 768px) {
     .aboutMe {
@@ -119,12 +127,13 @@ h1 {
         padding: 0 30px;
     }
 }
+
 @media (min-width: 768px) {
     .aboutMe { 
         flex-direction: row;
         align-items: center;
-        height: calc(100% - 4.375rem);
-        
+        height: calc(100vh - 4.375rem);
+        padding: 112px 15.214px 113px 88px;
     }
     .intro {
         display: flex;
@@ -132,17 +141,17 @@ h1 {
         justify-content: flex-start;
     }
     .content {
-        flex-grow: 1; 
         display: flex;
         flex-direction: column;
         text-align: left;
-        padding: 40px 40px;
+        height: 100%;
     }
     .title {
+        height: 150px;
         font-size: 64px;
     }
     h1 {
-        font-size: 40px; 
+        font-size: 40px;
     }
     .name {
         padding-left: 10px;
@@ -155,8 +164,8 @@ h1 {
         font-family: Lato;
     }
     .description {
-        font-size: 1rem;
-        margin-top: 1rem;
+        font-size: 1.125rem;
+        margin-top: 60px;
     }
     .projectContainer {
         width: 70%;
@@ -173,8 +182,8 @@ h1 {
     }
     .imageContainer {
         perspective: 1000px;
-        width: 50%;
-        height: 95%;
+        width: 100%;
+        height: 100%;
     }
     .imageContainer:hover .flipper {
         transform: rotateY(180deg);
@@ -208,8 +217,8 @@ h1 {
         font-size: 32px;
     }
     .ashImg {
-        width: 600px; 
-        height: 500px; 
+        width: 100%; 
+        height: 100%; 
         object-fit: contain;
     }
     

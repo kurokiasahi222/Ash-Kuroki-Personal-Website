@@ -1,57 +1,93 @@
 ---
 import { Image } from "astro:assets";
 import umnImage from "../../public/images/umn.png";
+import TechStack from "./TechStack.astro";
 ---
 
-<div class="aboutme-container">
-    <div class="left-side">
-        <div class="about-title">
-            <h1 class="about">ABOUT</h1>
-            <h1 class="title">ME</h1>
+<div class="page-container">
+    <div class="aboutme-container">
+        <div class="left-side">
+            <div class="about-title">
+                <h1 class="about">ABOUT</h1>
+                <h1 class="title">ME</h1>
+            </div>
+            <div class="image-container">
+                <Image src={umnImage} alt="image of umn" />
+            </div>
         </div>
-        <Image src={umnImage} alt="image of umn" height="288" />
+        <div class="content">
+            <h1 class="subtitle">
+                Computer Science & Entrepreneurship Graduate
+            </h1>
+            <p>
+                I am a bilingual and highly motivated student with a strong
+                foundation in programming, software engineering, and data
+                science. Recent graduate from University of Minnesota with
+                double major in Computer Science and Entrepreneurship. I am
+                passionate about leveraging both technical expertise and
+                business acumen to drive data-driven insights and create
+                innovative solutions.
+            </p>
+        </div>
     </div>
-    <div class="content">
-        <h1 class="subtitle">Computer Science & Entrepreneurship Graduate</h1>
-        <p>
-            I am a bilingual and highly motivated student with a strong
-            foundation in programming, software engineering, and data science.
-            Recent graduate from University of Minnesota with double major in
-            Computer Science and Entrepreneurship. I am passionate about
-            leveraging both technical expertise and business acumen to drive
-            data-driven insights and create innovative solutions.
-        </p>
-    </div>
+    <TechStack />
 </div>
 
 <style>
+    .page-container {
+        height: calc(100vh - 4.375rem);
+    }
     .aboutme-container {
         display: flex;
         flex-direction: column;
         text-align: center;
-        height: 100%;
+        padding: 10px 26px;
+    }
+    .left-side {
+        display: flex;
+        flex-direction: column;
     }
     .about-title {
         display: flex;
         align-items: center;
-        margin-bottom: 70px;
+        margin-bottom: 15px;
         gap: 10px;
     }
+    .about {
+        color: var(--Charcoal, #5b6166);
+        /* H1 */
+        font-family: Lato;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
     .title {
-        font-size: 2rem;
-        font-weight: bold;
+        color: #0a929b;
+        /* H1 */
+        font-family: Lato;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
     .subtitle {
         color: #0a929b;
         text-align: center;
         /* H2 */
         font-family: Lato;
-        font-size: 40px;
+        font-size: 32px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
     }
-    p {
+    .content p {
         color: #5b6166;
         text-align: center;
         /* P 1 */
@@ -63,49 +99,51 @@ import umnImage from "../../public/images/umn.png";
     }
     @media (min-width: 768px) {
         .aboutme-container {
-            display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            padding: 50px 106px;
+            gap: 70px;
+            /* overwrite padding */
+            padding: 4rem 5rem 0px 5rem;
+            height: 65%;
+        }
+        .left-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            width: 50%;
+            height: 100%;
         }
         .about-title {
             display: flex;
-            align-items: center;
-            margin-bottom: 70px;
             gap: 10px;
-        }
-        .left-side {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-right: 70px;
+            margin-bottom: 0;
         }
         .about {
-            color: var(--Charcoal, #5b6166);
-            /* H1 */
-            font-family: Lato;
-            font-size: 64px;
-            font-style: normal;
-            font-weight: 900;
-            line-height: normal;
+            font-size: 48px;
         }
-        .title {
-            color: #0a929b;
-            /* H1 */
-            font-family: Lato;
-            font-size: 64px;
-            font-style: normal;
-            font-weight: 900;
-            line-height: normal;
+        .image-container {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            max-height: fit-content;
+            max-width: fit-content;
         }
         .content {
+            /* overwrite to flex-start */
+            justify-content: flex-start;
+            gap: 2.1875em;
             height: 100%;
-            flex-basis: 70%;
+            width: 60%;
+        }
+        .title {
+            font-size: 48px;
         }
         .subtitle {
-            padding-bottom: 34px;
+            font-size: 40px;
         }
     }
 </style>
