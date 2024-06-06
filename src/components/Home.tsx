@@ -24,6 +24,7 @@ export default function Home() {
     return (
         <>
             <div className={styles.aboutMe}>
+                <div className={styles.vertical}></div>
                 <div className={styles.content}>
                     <div className={styles.intro}>
                         <h1>Hi! I'm </h1>

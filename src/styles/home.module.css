@@ -5,6 +5,13 @@
     height: calc(100vh - 4.375rem);
     /* height: 100vh; */
 }
+.vertical {
+    position: fixed; 
+    height: 100%;
+    left: 50%; 
+    right: 50%;
+    border-left: solid #ff0000;
+}
 .content {
     font-family: Lato;
     text-align: center;
@@ -74,6 +81,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 2.625rem;
 }
 .imageContainer:hover .flipper {
     transform: rotateY(180deg);
@@ -184,6 +192,7 @@ h1 {
         perspective: 1000px;
         width: 100%;
         height: 100%;
+        padding: 0;
     }
     .imageContainer:hover .flipper {
         transform: rotateY(180deg);
