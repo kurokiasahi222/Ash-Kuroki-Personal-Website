@@ -10,7 +10,7 @@
     height: 100%;
     left: 50%; 
     right: 50%;
-    border-left: solid #ff0000;
+    /* border-left: solid #ff0000; */
 }
 .content {
     font-family: Lato;
