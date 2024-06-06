@@ -52,9 +52,9 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			<!-- <div id="home" class="section">
 				<Home client:load />
 			</div> -->
-			<div id="about" class="section">
+			<!-- <div id="about" class="section">
 				<AboutMe />
-			</div>
+			</div> -->
 			<div id="projects" class="section">
 				<Portfolio />
 				<Footer />
@@ -62,6 +62,8 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 		</div>
 
 		<script>
+import { fade } from "astro:transitions";
+
 			new fullpage("#fullpage", {
 				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
 				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`, 
@@ -73,6 +75,9 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 				fixedElements: "#header",
 				paddingTop: "4.375rem",
 				scrollOverflow: true,
+				credits: {
+					enabled: false,
+				}
 			});
 		</script>
 		<script

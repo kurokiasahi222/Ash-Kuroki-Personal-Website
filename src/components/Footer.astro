@@ -1,11 +1,34 @@
+---
+import { Image } from "astro:assets";
+import linkedin from "../../public/images/linkedin-3.png";
+import github from "../../public/images/github.png";
+---
+
 <div id="contact" class="footer-container">
-    <div class="name-container">
-        <p class="by">Created by:</p>
-        <p class="name">Asahi (Ash) Kuroki</p>
+    <div class="row-container">
+        <div class="name-container">
+            <p class="by">Created by:</p>
+            <p class="name">Asahi (Ash) Kuroki</p>
+        </div>
+        <div class="icon-container">
+            <a href="https://www.linkedin.com/in/asahi-kuroki/"
+                ><Image src={linkedin} alt="linkedin icon" width="27" /></a
+            >
+            <a href="https://github.com/kurokiasahi222"
+                ><Image src={github} alt="github icon" width="27" /></a
+            >
+        </div>
     </div>
-    <div class="name-container">
-        <p class="by">Design by:</p>
-        <p class="name">Kayla</p>
+    <div class="row-container">
+        <div class="name-container">
+            <p class="by">Design by:</p>
+            <p class="name">Kayla Purney</p>
+        </div>
+        <div class="icon-container">
+            <a href=""
+                ><Image src={linkedin} alt="linkedin icon" width="27" /></a
+            >
+        </div>
     </div>
 </div>
 
@@ -13,17 +36,29 @@
     .footer-container {
         background: var(--Mid-tone, #e6f3f4);
         width: 100%;
-        height: 300px;
-        padding: 100px 70px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .row-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .name-container {
         display: flex;
-        gap: 5px;
+        gap: 3px;
+    }
+    .icon-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
     .by {
         color: var(--Main, #0a929b);
         font-family: Lato;
-        font-size: 24px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -31,9 +66,26 @@
     .name {
         color: var(--Main, #0a929b);
         font-family: Lato;
-        font-size: 24px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+    }
+    @media (min-width: 768px) {
+        .footer-container {
+            height: calc((100vh - 4.375rem) * 0.2);
+            padding: 53px 70px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .name-container {
+            height: fit-content;
+        }
+        .name {
+            font-size: 20px;
+        }
+        .by {
+            font-size: 20px;
+        }
     }
 </style>
