@@ -57,35 +57,35 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			</div>
 			<div id="projects" class="section">
 				<Portfolio />
-				<Footer />
+				<Footer  />
 			</div>
 		</div>
 
 		<script>
-import { fade } from "astro:transitions";
+			import { fade } from "astro:transitions";
 
 			new fullpage("#fullpage", {
 				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
-				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`, 
+				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
 				anchors: ["section1", "section2", "section3"],
 				autoScrolling: true,
-				sectionsColor: ["#f9f9f9"],
-				// sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9"],
+				// sectionsColor: ["#f9f9f9"],
+				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9"],
 				fitToSection: false,
 				fixedElements: "#header",
 				paddingTop: "4.375rem",
 				scrollOverflow: true,
 				credits: {
 					enabled: false,
-				}
+				},
 			});
 		</script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
 			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
 			crossorigin="anonymous"
-			referrerpolicy="no-referrer">
-	</script>
+			referrerpolicy="no-referrer"
+		></script>
 	</body>
 </html>
 <style>
