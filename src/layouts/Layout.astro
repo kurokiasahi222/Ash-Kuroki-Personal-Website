@@ -58,8 +58,8 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			<div id="projects" class="section">
 				<Portfolio />
 			</div>
-			<div class="section fp-auto-height" >
-				<Footer/>
+			<div id="footer" class="section fp-auto-height">
+				<Footer />
 			</div>
 		</div>
 
@@ -69,7 +69,7 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
 				anchors: ["section1", "section2", "section3", "section4"],
 				// sectionsColor: ["#f9f9f9"],
-				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#e6f3f4"],
+				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#f9f9f9"],
 				fixedElements: "#header",
 				paddingTop: "4.375rem",
 				scrollOverflow: true,
@@ -82,8 +82,7 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
 			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
 			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		></script>
+			referrerpolicy="no-referrer"></script>
 	</body>
 </html>
 <style>
@@ -93,5 +92,8 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 		left: 0;
 		width: 100%;
 		z-index: 100;
+	}
+	#footer {
+		padding-top: 0 !important;
 	}
 </style>
