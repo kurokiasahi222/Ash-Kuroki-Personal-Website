@@ -63,15 +63,15 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
             const hambergerClosed: HTMLElement =
                 document.getElementById("hambergerClosed")!;
             const navContainer: HTMLElement =
-                document.querySelector(".nav-container")!; 
+                document.querySelector(".nav-container")!;
             hamberger.addEventListener("click", () => {
                 // if open, close the menu
-                if (menu.style.display === "block") {
-                    menu.style.display = "none";
+                if (menu.classList.contains("show")) {
+                    menu.classList.remove("show");
                     hambergerOpen.style.display = "block";
                     hambergerClosed.style.display = "none";
                 } else {
-                    menu.style.display = "block";
+                    menu.classList.add("show");
                     hambergerOpen.style.display = "none";
                     hambergerClosed.style.display = "block";
                 }
@@ -133,8 +133,18 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
     }
     /* phone only */
     @media (max-width: 768px) {
+        /* reference for slide-in navigation */
+        /* https://www.youtube.com/watch?v=OFKBep95lb4&t=469s&ab_channel=TylerPotts & ChatGPT*/
         .menu {
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transition:
+                opacity 200ms ease-in,
+                visibility 200ms ease-in;
+        }
+        .menu.show {
+            opacity: 1;
+            visibility: visible;
         }
         .main-logo-desk {
             display: none;
