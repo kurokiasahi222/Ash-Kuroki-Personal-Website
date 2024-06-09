@@ -8,24 +8,26 @@ import github from "../../public/images/github.png";
     <div class="row-container">
         <div class="name-container">
             <p class="by">Created by:</p>
-            <p class="name">Asahi (Ash) Kuroki</p>
+            <p class="name"><a href="#section1">Asahi (Ash) Kuroki</a></p>
         </div>
         <div class="icon-container">
-            <a href="https://www.linkedin.com/in/asahi-kuroki/"
-                ><Image src={linkedin} alt="linkedin icon" width="35" /></a
-            >
             <a href="https://github.com/kurokiasahi222"
                 ><Image src={github} alt="github icon" width="35" /></a
+            >
+            <a href="https://www.linkedin.com/in/asahi-kuroki/"
+                ><Image src={linkedin} alt="linkedin icon" width="35" /></a
             >
         </div>
     </div>
     <div class="row-container">
         <div class="name-container">
             <p class="by">Design by:</p>
-            <p class="name">Kayla Purney</p>
+            <p class="name">
+                <a href="https://www.kaylafpurney.com">Kayla Purney</a>
+            </p>
         </div>
         <div class="icon-container">
-            <a href=""
+            <a href="https://www.linkedin.com/in/kayla-purney-00027921b/"
                 ><Image src={linkedin} alt="linkedin icon" width="35" /></a
             >
         </div>
@@ -71,6 +73,10 @@ import github from "../../public/images/github.png";
         font-weight: 700;
         line-height: normal;
     }
+    .name:hover {
+        font-size: 20px;
+        cursor: pointer;
+    }
     @media (min-width: 768px) {
         .footer-container {
             height: calc((100vh - 4.375rem) * 0.2);
@@ -83,6 +89,9 @@ import github from "../../public/images/github.png";
         }
         .name {
             font-size: 20px;
+        }
+        .name:hover {
+            font-size: 22px;
         }
         .by {
             font-size: 20px;

@@ -34,7 +34,7 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
             <div class="nav-container" id="primary-navigation">
                 <a class="navigation" href="#section2">ABOUT</a>
                 <a class="navigation" href="#section3">PROJECTS</a>
-                <a class="navigation" href="#contact">CONTACT</a>
+                <a class="navigation" href="#section4">CONTACT</a>
                 <!-- <a class="resume" href="#">RESUME</a> -->
                 <div class="icon-container">
                     <a href="https://www.linkedin.com/in/asahi-kuroki/"
@@ -62,8 +62,9 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
                 document.getElementById("hambergerOpen")!;
             const hambergerClosed: HTMLElement =
                 document.getElementById("hambergerClosed")!;
+            const navContainer: HTMLElement =
+                document.querySelector(".nav-container")!; 
             hamberger.addEventListener("click", () => {
-                console.log("helo0");
                 // if open, close the menu
                 if (menu.style.display === "block") {
                     menu.style.display = "none";
@@ -74,7 +75,7 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
                     hambergerOpen.style.display = "none";
                     hambergerClosed.style.display = "block";
                 }
-                menu.classList.toggle("active");
+                navContainer.classList.toggle("active");
             });
         </script>
     </nav>
@@ -105,6 +106,7 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+        cursor: pointer;
     }
     .navigation:hover {
         font-size: 18px;
@@ -126,9 +128,15 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
     #hambergerClosed {
         display: none;
     }
-
+    .icon {
+        cursor: pointer;
+    }
+    /* phone only */
     @media (max-width: 768px) {
         .menu {
+            display: none;
+        }
+        .main-logo-desk {
             display: none;
         }
         .main-logo-phone {
@@ -156,9 +164,6 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
             align-items: flex-start;
             gap: 20px;
             padding: 8rem 2rem;
-        }
-        .main-logo-desk {
-            display: none;
         }
         .icon-container {
             padding-top: 16rem;
@@ -189,6 +194,7 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
             font-style: normal;
             font-weight: 900;
             line-height: normal;
+            cursor: pointer;
         }
         .nav-container {
             display: flex;

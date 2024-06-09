@@ -22,9 +22,9 @@ export default function Home() {
     }, []);
 
     return (
-        <>
+        <div>
             <div className={styles.aboutMe}>
-                <div className={styles.vertical}></div>
+                <div className={styles.centerLine}></div>
                 <div className={styles.content}>
                     <div className={styles.intro}>
                         <h1>Hi! I'm </h1>
@@ -37,9 +37,6 @@ export default function Home() {
                         <br />
                         This website is created using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
                     </p>
-                    {/* <div className={styles.projectContainer}>
-                        <h2 className={styles.project}><a href="#projects">PROJECTS</a></h2>
-                    </div> */}
                 </div>
                 <div className={styles.imageContainer} >
                     <div className={styles.flipper}>
@@ -47,7 +44,7 @@ export default function Home() {
                             <img className={styles.ashImg} src="../../images/asahi-headshot.png" alt="asahi-headshot" />
                         </div>
                         <div className={styles.back}>
-                            <h1>I am from Japan and I have been studying abroad in the US since
+                            <h1>I was born and raised in Japan, and I have been studying abroad in the US since
                                 2016!
                             </h1>
                         </div>
@@ -55,6 +52,6 @@ export default function Home() {
                     
                 </div>
             </div>
-        </>
+        </div>
     );
 }

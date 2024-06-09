@@ -57,21 +57,19 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			</div>
 			<div id="projects" class="section">
 				<Portfolio />
-				<Footer  />
+			</div>
+			<div class="section fp-auto-height" >
+				<Footer/>
 			</div>
 		</div>
 
 		<script>
-			import { fade } from "astro:transitions";
-
 			new fullpage("#fullpage", {
 				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
 				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
-				anchors: ["section1", "section2", "section3"],
-				autoScrolling: true,
+				anchors: ["section1", "section2", "section3", "section4"],
 				// sectionsColor: ["#f9f9f9"],
-				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9"],
-				fitToSection: false,
+				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#e6f3f4"],
 				fixedElements: "#header",
 				paddingTop: "4.375rem",
 				scrollOverflow: true,
