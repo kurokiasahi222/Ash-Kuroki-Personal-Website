@@ -2,7 +2,7 @@
     margin: 0;
     display: flex;
     justify-content: start;
-    height: calc(100vh - 4.375rem);
+    height: calc(100dvh - 4.375rem);
 }
 .centerLine {
     position: fixed; 
@@ -44,6 +44,7 @@ h1 {
 }
 .link:hover {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .projectContainer {

@@ -64,6 +64,8 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 		</div>
 
 		<script>
+			import { navigate } from "astro:transitions/client";
+
 			new fullpage("#fullpage", {
 				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
 				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
@@ -73,6 +75,9 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 				fixedElements: "#header",
 				paddingTop: "4.375rem",
 				scrollOverflow: true,
+				scrollingSpeed: 1000,
+				navigation: true,
+				showActiveTooltip: true,
 				credits: {
 					enabled: false,
 				},
@@ -86,6 +91,9 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 	</body>
 </html>
 <style>
+	html, body {
+		height: 100%;
+	}
 	#header {
 		position: fixed;
 		top: 0;
