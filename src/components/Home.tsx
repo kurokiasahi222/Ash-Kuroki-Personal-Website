@@ -7,7 +7,7 @@ export default function Home() {
     const el = React.useRef(null);
     React.useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ['Software Developer', 'AI Enginner', 'Aspiring Entreprenur'],
+            strings: ['AI Enginner', 'Aspiring Entrepreneur', 'Software Developer'],
             // strings: ['Software Developer'], 
             typeSpeed: 80,
             backSpeed: 10,
