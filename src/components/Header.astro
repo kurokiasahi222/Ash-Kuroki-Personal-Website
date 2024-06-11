@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import hamberger from "../../public/images/menu.png";
-import hambergerClosed from "../../public/images/hamberger-closed2.png";
+import hambergerClosed from "../../public/images/x.svg";
 ---
 
 <header>
@@ -64,16 +64,20 @@ import hambergerClosed from "../../public/images/hamberger-closed2.png";
                 document.getElementById("hambergerClosed")!;
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
+            const fpNav: HTMLElement =
+                document.getElementById("fp-nav")!;
             hamberger.addEventListener("click", () => {
                 // if open, close the menu
                 if (menu.classList.contains("show")) {
                     menu.classList.remove("show");
                     hambergerOpen.style.display = "block";
                     hambergerClosed.style.display = "none";
-                } else {
+                    fpNav.style.display = "block";
+                } else {  // if close, open
                     menu.classList.add("show");
                     hambergerOpen.style.display = "none";
                     hambergerClosed.style.display = "block";
+                    fpNav.style.display = "none"
                 }
                 navContainer.classList.toggle("active");
             });
