@@ -29,13 +29,7 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-		<!-- import velocity.js -->
-		<script
-			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"
-			is:inline></script>
-		<script
-			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"
-		></script>
+
 		<!-- import animate.css -->
 		<link
 			rel="stylesheet"
@@ -48,7 +42,7 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
 			rel="stylesheet"
 		/>
-		<script src="../script.js"></script>
+		<script src="./script.js"></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -72,29 +66,35 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 		</div>
 
 		<script>
-			const key = getKey();
-			new fullpage("#fullpage", {
-				licenseKey: key,
-				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
-				anchors: ["section1", "section2", "section3", "section4"],
-				// sectionsColor: ["#f9f9f9"],
-				sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#f9f9f9"],
-				fixedElements: "#header",
-				paddingTop: "4.375rem",
-				scrollOverflow: true,
-				scrollingSpeed: 1000,
-				navigation: true,
-				showActiveTooltip: true,
-				credits: {
-					enabled: false,
-				},
-			});
+			// new fullpage("#fullpage", {
+			// 	licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM',
+			// 	anchors: ["section1", "section2", "section3", "section4"],
+			// 	// sectionsColor: ["#f9f9f9"],
+			// 	sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#f9f9f9"],
+			// 	fixedElements: "#header",
+			// 	paddingTop: "4.375rem",
+			// 	scrollOverflow: true,
+			// 	scrollingSpeed: 1000,
+			// 	navigation: true,
+			// 	showActiveTooltip: true,
+			// 	credits: {
+			// 		enabled: false,
+			// 	},
+			// });
 		</script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
 			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
 			crossorigin="anonymous"
-			referrerpolicy="no-referrer"></script>
+			referrerpolicy="no-referrer">
+		</script>
+		<!-- import velocity.js -->
+		<script
+			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"
+			is:inline></script>
+		<script
+			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"
+			is:inline></script>
 	</body>
 </html>
 <style>
