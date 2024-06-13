@@ -7,8 +7,8 @@ export default function Home() {
     const el = React.useRef(null);
     React.useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ['AI Enginner', 'Aspiring Entrepreneur', 'Software Developer'],
-            // strings: ['Software Developer'], 
+            // strings: ['AI Enginner', 'Aspiring Entrepreneur', 'Software Developer'],
+            strings: ['Software Developer'], 
             typeSpeed: 80,
             backSpeed: 10,
             startDelay: 1000,
@@ -35,7 +35,7 @@ export default function Home() {
                         I'm a <b>Full Stack Developer </b>based in Minneapolis. I love working in all aspect of tech stack from frontend to backend to AI. 
                         <br />
                         <br />
-                        This website is created using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
+                        This website is designed by <i><a href="https://www.kaylafpurney.com">Kayla Purney</a></i> & developed by <i>Ash Kuroki</i> using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
                     </p>
                 </div>
                 <div className={styles.imageContainer} >

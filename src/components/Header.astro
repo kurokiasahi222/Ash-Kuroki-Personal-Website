@@ -32,6 +32,7 @@ import hambergerClosed from "../../public/images/x.svg";
         <div id="menu" class="menu">
             <h3 class="main-logo-desk"><a href="#section1">ASH.dev</a></h3>
             <div class="nav-container" id="primary-navigation">
+                <a class="navigation" href="#section1">HOME</a>
                 <a class="navigation" href="#section2">ABOUT</a>
                 <a class="navigation" href="#section3">PROJECTS</a>
                 <a class="navigation" href="#section4">CONTACT</a>
@@ -64,8 +65,7 @@ import hambergerClosed from "../../public/images/x.svg";
                 document.getElementById("hambergerClosed")!;
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
-            const fpNav: HTMLElement =
-                document.getElementById("fp-nav")!;
+            const fpNav: HTMLElement = document.getElementById("fp-nav")!;
             hamberger.addEventListener("click", () => {
                 // if open, close the menu
                 if (menu.classList.contains("show")) {
@@ -73,11 +73,12 @@ import hambergerClosed from "../../public/images/x.svg";
                     hambergerOpen.style.display = "block";
                     hambergerClosed.style.display = "none";
                     fpNav.style.display = "block";
-                } else {  // if close, open
+                } else {
+                    // if close, open
                     menu.classList.add("show");
                     hambergerOpen.style.display = "none";
                     hambergerClosed.style.display = "block";
-                    fpNav.style.display = "none"
+                    fpNav.style.display = "none";
                 }
                 navContainer.classList.toggle("active");
             });
