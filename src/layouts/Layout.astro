@@ -29,6 +29,13 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+		<!-- import velocity.js -->
+		<script
+			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"
+			is:inline></script>
+		<script
+			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"
+		></script>
 		<!-- import animate.css -->
 		<link
 			rel="stylesheet"
@@ -41,6 +48,7 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
 			rel="stylesheet"
 		/>
+		<script src="../script.js"></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -64,10 +72,9 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 		</div>
 
 		<script>
-			import { navigate } from "astro:transitions/client";
-
+			const key = getKey();
 			new fullpage("#fullpage", {
-				licenseKey: "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM",
+				licenseKey: key,
 				// licenseKey: `${PUBLIC_FULLPAGELICENSEKEY}`,
 				anchors: ["section1", "section2", "section3", "section4"],
 				// sectionsColor: ["#f9f9f9"],
@@ -91,7 +98,8 @@ const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 	</body>
 </html>
 <style>
-	html, body {
+	html,
+	body {
 		height: 100%;
 	}
 	#header {

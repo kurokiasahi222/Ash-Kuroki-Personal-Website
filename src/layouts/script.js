@@ -1,3 +1,6 @@
+const getKey = () => {
+    return 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM';
+}
 // new fullpage('#fullpage', {
 //     //options here
 //     licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM',

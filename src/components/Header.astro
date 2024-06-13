@@ -13,7 +13,10 @@ import hambergerClosed from "../../public/images/x.svg";
                 aria-controls="primary-navigation"
                 aria-expanded="false"
             >
-                <Image
+                <b class="bar-1"></b>
+                <b class="bar-2"></b>
+                <b class="bar-3"></b>
+                <!-- <Image
                     id="hambergerOpen"
                     src={hamberger}
                     alt="open menu"
@@ -26,7 +29,7 @@ import hambergerClosed from "../../public/images/x.svg";
                     alt="close menu"
                     width="50"
                     height="50"
-                />
+                /> -->
             </div>
         </div>
         <div id="menu" class="menu">
@@ -58,11 +61,10 @@ import hambergerClosed from "../../public/images/x.svg";
         <script>
             const hamberger: HTMLElement =
                 document.getElementById("hamberger")!;
+            const bar1: HTMLElement = document.querySelector("bar-1")!;
+            const bar2: HTMLElement = document.querySelector("bar-2")!;
+            const bar3: HTMLElement = document.querySelector("bar-3")!;
             const menu: HTMLElement = document.getElementById("menu")!;
-            const hambergerOpen: HTMLElement =
-                document.getElementById("hambergerOpen")!;
-            const hambergerClosed: HTMLElement =
-                document.getElementById("hambergerClosed")!;
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
             const fpNav: HTMLElement = document.getElementById("fp-nav")!;
@@ -70,14 +72,26 @@ import hambergerClosed from "../../public/images/x.svg";
                 // if open, close the menu
                 if (menu.classList.contains("show")) {
                     menu.classList.remove("show");
-                    hambergerOpen.style.display = "block";
-                    hambergerClosed.style.display = "none";
+
                     fpNav.style.display = "block";
                 } else {
                     // if close, open
                     menu.classList.add("show");
-                    hambergerOpen.style.display = "none";
-                    hambergerClosed.style.display = "block";
+                    bar1.velocity(
+                        { top: "50%" },
+                        { duration: 200, easing: "swing" },
+                    );
+                    bar2.velocity(
+                        { top: "50%" },
+                        { duration: 200, easing: "swing" },
+                    ).velocity(
+                        { rotateZ: "90deg" },
+                        { duration: 800, delay: 200, easing: [500, 20] },
+                    );
+                    hamberger.velocity(
+                        { rotateZ: "135deg" },
+                        { duration: 800, delay: 200, easing: [500, 20] },
+                    );
                     fpNav.style.display = "none";
                 }
                 navContainer.classList.toggle("active");
@@ -165,9 +179,28 @@ import hambergerClosed from "../../public/images/x.svg";
         }
         #hamberger {
             position: fixed;
-            top: 0.5rem;
+            top: auto;
             right: 2rem;
             z-index: 1000;
+            width: 37px;
+            height: 26px;
+            cursor: pointer;
+        }
+        #hamberger b {
+            position: absolute;
+            width: 37px;
+            height: 3px;
+            background-color: #000000;
+            border-radius: 2px;
+        }
+        #hamberger b:nth-child(1) {
+            top: 0;
+        }
+        #hamberger b:nth-child(2) {
+            top: 50%;
+        }
+        #hamberger b:nth-child(3) {
+            top: 100%;
         }
         .nav-container {
             position: fixed;
