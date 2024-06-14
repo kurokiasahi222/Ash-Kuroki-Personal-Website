@@ -20,7 +20,6 @@
                 <a class="navigation" href="#section2">ABOUT</a>
                 <a class="navigation" href="#section3">PROJECTS</a>
                 <a class="navigation" href="#section4">CONTACT</a>
-                <!-- <a class="resume" href="#">RESUME</a> -->
                 <div class="icon-container">
                     <a href="https://www.linkedin.com/in/asahi-kuroki/"
                         ><img
@@ -42,14 +41,12 @@
         <script>
             const hamberger: HTMLElement =
                 document.getElementById("hamberger")!;
-            const bar1: HTMLElement = document.querySelector(".bar-1")!;
-            const bar2: HTMLElement = document.querySelector(".bar-2")!;
-            const bar3: HTMLElement = document.querySelector(".bar-3")!;
-            const bar4: HTMLElement = document.querySelector(".bar-4")!;
             const menu: HTMLElement = document.getElementById("menu")!;
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
             const fpNav: HTMLElement = document.getElementById("fp-nav")!;
+            const navigations = document.querySelectorAll("navigation")!;
+
             hamberger.addEventListener("click", () => {
                 hamberger.classList.toggle("open");
                 if (!menu.classList.contains("show")) {
@@ -63,6 +60,15 @@
                 }
                 navContainer.classList.toggle("active");
             });
+            // when menu is open for mobile, if someone clicks at the link (home, about...)
+            // close the menu
+            if (menu.classList.contains("show")) {
+                navigations.forEach((element) => {
+                    element.addEventListener("click", () => {
+                        menu.classList.remove("show");
+                    });
+                });
+            }
         </script>
     </nav>
 </header>

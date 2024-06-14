@@ -35,7 +35,7 @@ export default function Home() {
                         I'm a <b>Full Stack Developer </b>based in Minneapolis. I love working in all aspect of tech stack from frontend to backend to AI. 
                         <br />
                         <br />
-                        This website is designed by <i><a href="https://www.kaylafpurney.com">Kayla Purney</a></i> & developed by <i>Ash Kuroki</i> using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
+                        This website is designed by <b><a href="https://www.kaylafpurney.com">Kayla Purney</a></b> & developed by <b>Ash Kuroki</b> using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">full-page.js</a></i>
                     </p>
                 </div>
                 <div className={styles.imageContainer} >
