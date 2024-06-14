@@ -1,9 +1,3 @@
----
-import { Image } from "astro:assets";
-import hamberger from "../../public/images/hamberger.svg";
-import hambergerClosed from "../../public/images/x.svg";
----
-
 <header>
     <nav>
         <div class="mobile">
@@ -13,20 +7,10 @@ import hambergerClosed from "../../public/images/x.svg";
                 aria-controls="primary-navigation"
                 aria-expanded="false"
             >
-                <Image
-                    id="hambergerOpen"
-                    src={hamberger}
-                    alt="open menu"
-                    width="50"
-                    height="50"
-                />
-                <Image
-                    id="hambergerClosed"
-                    src={hambergerClosed}
-                    alt="close menu"
-                    width="50"
-                    height="50"
-                />
+                <b class="bar-1"></b>
+                <b class="bar-2"></b>
+                <b class="bar-3"></b>
+                <b class="bar-4"></b>
             </div>
         </div>
         <div id="menu" class="menu">
@@ -58,27 +42,24 @@ import hambergerClosed from "../../public/images/x.svg";
         <script>
             const hamberger: HTMLElement =
                 document.getElementById("hamberger")!;
+            const bar1: HTMLElement = document.querySelector(".bar-1")!;
+            const bar2: HTMLElement = document.querySelector(".bar-2")!;
+            const bar3: HTMLElement = document.querySelector(".bar-3")!;
+            const bar4: HTMLElement = document.querySelector(".bar-4")!;
             const menu: HTMLElement = document.getElementById("menu")!;
-            const hambergerOpen: HTMLElement =
-                document.getElementById("hambergerOpen")!;
-            const hambergerClosed: HTMLElement =
-                document.getElementById("hambergerClosed")!;
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
             const fpNav: HTMLElement = document.getElementById("fp-nav")!;
             hamberger.addEventListener("click", () => {
-                // if open, close the menu
-                if (menu.classList.contains("show")) {
-                    menu.classList.remove("show");
-                    hambergerOpen.style.display = "block";
-                    hambergerClosed.style.display = "none";
-                    fpNav.style.display = "block";
-                } else {
+                hamberger.classList.toggle("open");
+                if (!menu.classList.contains("show")) {
                     // if close, open
                     menu.classList.add("show");
-                    hambergerOpen.style.display = "none";
-                    hambergerClosed.style.display = "block";
                     fpNav.style.display = "none";
+                } else {
+                    // if open, close the menu
+                    menu.classList.remove("show");
+                    fpNav.style.display = "block";
                 }
                 navContainer.classList.toggle("active");
             });
@@ -164,11 +145,54 @@ import hambergerClosed from "../../public/images/x.svg";
             line-height: normal;
         }
         #hamberger {
-            position: fixed;
-            top: 0.5rem;
+            position: absolute;
+            top: auto;
             right: 2rem;
             z-index: 1000;
+            width: 37px;
+            height: 27px;
+            cursor: pointer;
+            transform: rotate(0deg);
+            transition: 0.5s ease-in-out;
         }
+        #hamberger b {
+            display: block;
+            position: absolute;
+            width: 37px;
+            height: 3px;
+            left: 0;
+            background-color: #000000;
+            border-radius: 2px;
+            transform: rotate(0deg);
+            transition: 0.3s ease-in-out;
+        }
+        .bar-1 {
+            top: 0;
+        }
+        .bar-2,
+        .bar-3 {
+            top: 50%;
+        }
+        .bar-4 {
+            top: 100%;
+        }
+        #hamberger.open .bar-1 {
+            top: 50%;
+            width: 0%;
+            left: 50%;
+        }
+        #hamberger.open .bar-2 {
+            transform: rotate(45deg);
+        }
+        #hamberger.open .bar-3 {
+            transform: rotate(-45deg);
+        }
+        #hamberger.open .bar-4 {
+            top: 50%;
+            width: 0%;
+            left: 50%;
+        }
+
         .nav-container {
             position: fixed;
             inset: 0 0 0 60%;
