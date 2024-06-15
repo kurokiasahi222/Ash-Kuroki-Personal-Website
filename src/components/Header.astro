@@ -15,6 +15,7 @@
         </div>
         <div id="menu" class="menu">
             <h3 class="main-logo-desk"><a href="#section1">ASH.dev</a></h3>
+            <!-- <div id="over-lay"></div> -->
             <div class="nav-container" id="primary-navigation">
                 <a class="navigation" href="#section1">HOME</a>
                 <a class="navigation" href="#section2">ABOUT</a>
@@ -45,7 +46,7 @@
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
             const fpNav: HTMLElement = document.getElementById("fp-nav")!;
-            const navigations = document.querySelectorAll("navigation")!;
+            const navigations = document.querySelectorAll(".navigation")!;
 
             hamberger.addEventListener("click", () => {
                 hamberger.classList.toggle("open");
@@ -62,13 +63,13 @@
             });
             // when menu is open for mobile, if someone clicks at the link (home, about...)
             // close the menu
-            if (menu.classList.contains("show")) {
-                navigations.forEach((element) => {
-                    element.addEventListener("click", () => {
-                        menu.classList.remove("show");
-                    });
+            navigations.forEach((element) => {
+                element.addEventListener("click", () => {
+                    console.log("hello");
+                    menu.classList.remove("show");
+                    hamberger.classList.toggle("open");
                 });
-            }
+            });
         </script>
     </nav>
 </header>
@@ -198,7 +199,11 @@
             width: 0%;
             left: 50%;
         }
-
+        #over-lay {
+            position: fixed;
+            inset: 0 40% 0 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
         .nav-container {
             position: fixed;
             inset: 0 0 0 60%;
