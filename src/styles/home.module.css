@@ -6,6 +6,7 @@
 .aboutMe {
     display: flex;
     justify-content: start;
+    height: 100%;
 }
 .centerLine {
     position: fixed; 
@@ -54,10 +55,11 @@ h1 {
 }
 .imageContainer {
     perspective: 1000px;
-    height: 40%;
     width: 100%;
+    min-width: 200px;
+    min-height: 200px;
 }
-.imageContainer:hover .flipper {
+.imageContainer:active .flipper {
     transform: rotateY(180deg);
 }
 .flipper {
