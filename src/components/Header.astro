@@ -1,3 +1,9 @@
+---
+import { styles } from "../components/style-constants";
+
+const { headerColor, marginTop, fontFamily } = styles;
+---
+
 <header>
     <nav>
         <div class="mobile">
@@ -15,6 +21,7 @@
         </div>
         <div id="menu" class="menu">
             <h3 class="main-logo-desk"><a href="#section1">ASH.dev</a></h3>
+            <div id="over-lay"></div>
             <div class="nav-container" id="primary-navigation">
                 <a class="navigation" href="#section1">HOME</a>
                 <a class="navigation" href="#section2">ABOUT</a>
@@ -45,7 +52,7 @@
             const navContainer: HTMLElement =
                 document.querySelector(".nav-container")!;
             const fpNav: HTMLElement = document.getElementById("fp-nav")!;
-            const navigations = document.querySelectorAll("navigation")!;
+            const navigations = document.querySelectorAll(".navigation")!;
 
             hamberger.addEventListener("click", () => {
                 hamberger.classList.toggle("open");
@@ -62,22 +69,22 @@
             });
             // when menu is open for mobile, if someone clicks at the link (home, about...)
             // close the menu
-            if (menu.classList.contains("show")) {
-                navigations.forEach((element) => {
-                    element.addEventListener("click", () => {
-                        menu.classList.remove("show");
-                    });
+            navigations.forEach((element) => {
+                element.addEventListener("click", () => {
+                    console.log("hello");
+                    menu.classList.remove("show");
+                    hamberger.classList.toggle("open");
                 });
-            }
+            });
         </script>
     </nav>
 </header>
-<style>
+<style define:vars={{ headerColor, marginTop, fontFamily }}>
     header {
-        background: var(--Lightest, #fcffff);
+        background: var(--headerColor);
         /* DROP SHADOW */
         box-shadow: 0px 4px 4px 0px #b6ced0;
-        height: 4.375rem;
+        height: var(--marginTop);
     }
     nav {
         height: 100%;
@@ -92,8 +99,7 @@
     .navigation {
         color: var(--Charcoal, #5b6166);
         text-align: center;
-        /* NAV */
-        font-family: Lato;
+        font-family: var(--fontFamily);
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -104,19 +110,6 @@
         font-size: 18px;
         font-weight: bold;
     }
-    .resume {
-        color: #0a929b;
-        text-align: center;
-        font-family: Lato;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-    }
-    .resume:hover {
-        font-size: 18px;
-    }
-
     #hambergerClosed {
         display: none;
     }
@@ -198,7 +191,11 @@
             width: 0%;
             left: 50%;
         }
-
+        #over-lay {
+            position: fixed;
+            inset: 0 40% 0 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
         .nav-container {
             position: fixed;
             inset: 0 0 0 60%;
