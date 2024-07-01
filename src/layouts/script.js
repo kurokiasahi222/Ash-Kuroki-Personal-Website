@@ -1,6 +1,3 @@
-const getKey = () => {
-    return 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM';
-}
 new fullpage("#fullpage", {
     licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM',
     anchors: ["section1", "section2", "section3", "section4"],

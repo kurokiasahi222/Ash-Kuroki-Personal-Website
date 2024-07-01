@@ -1,3 +1,9 @@
+---
+import { styles } from "../components/style-constants";
+
+const { headerColor, marginTop, fontFamily } = styles;
+---
+
 <header>
     <nav>
         <div class="mobile">
@@ -73,12 +79,12 @@
         </script>
     </nav>
 </header>
-<style>
+<style define:vars={{ headerColor, marginTop, fontFamily }}>
     header {
-        background: var(--Lightest, #fcffff);
+        background: var(--headerColor);
         /* DROP SHADOW */
         box-shadow: 0px 4px 4px 0px #b6ced0;
-        height: 4.375rem;
+        height: var(--marginTop);
     }
     nav {
         height: 100%;
@@ -93,8 +99,7 @@
     .navigation {
         color: var(--Charcoal, #5b6166);
         text-align: center;
-        /* NAV */
-        font-family: Lato;
+        font-family: var(--fontFamily);
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -105,19 +110,6 @@
         font-size: 18px;
         font-weight: bold;
     }
-    .resume {
-        color: #0a929b;
-        text-align: center;
-        font-family: Lato;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-    }
-    .resume:hover {
-        font-size: 18px;
-    }
-
     #hambergerClosed {
         display: none;
     }
