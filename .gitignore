@@ -19,6 +19,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-# hide license key for fullPage js
-src/layouts/script.js

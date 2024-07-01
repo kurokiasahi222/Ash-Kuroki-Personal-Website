@@ -59,7 +59,7 @@ h1 {
     min-width: 200px;
     min-height: 200px;
 }
-.imageContainer:active .flipper {
+.imageContainer:hover .flipper {
     transform: rotateY(180deg);
 }
 .flipper {
@@ -118,7 +118,7 @@ h1 {
         margin: 0 7rem;
         flex-direction: row;
         height: 40rem;
-        padding-top: 5rem; 
+        padding-top: 3rem; 
         /* padding: 112px 15.214px 113px 88px; */
     }
     .intro {
@@ -171,15 +171,15 @@ h1 {
     }
     .front {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-left: 0;
     }
     /* back, initially hidden pane */
     .back {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        padding: 0 20px;
         transform: rotateY(180deg);
     }
     .back h1 {
