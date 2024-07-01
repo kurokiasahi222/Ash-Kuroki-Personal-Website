@@ -104,7 +104,7 @@ h1 {
     object-fit: contain;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .aboutMe {
         flex-direction: column-reverse;
         align-items: center;
@@ -113,7 +113,7 @@ h1 {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .aboutMe { 
         margin: 0 7rem;
         flex-direction: row;
