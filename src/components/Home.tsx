@@ -25,15 +25,16 @@ export default function Home() {
         <div>
             <div className={styles.container}>
                 <div className={styles.aboutMe}>
-                    {/* <div className={styles.centerLine}></div> */}
+                    <div className={styles.centerLine}></div>
                     <div className={styles.content}>
                         <div className={styles.intro}>
-                            <h1>Hi! I'm </h1>
-                            <h1 className={styles.name}>ASH (Asahi)</h1>
+                            <h1>Hi! I'm</h1>
+                            <p className={styles.name}>ASH (Asahi)</p>
                         </div>
                         <span className={styles.title} ref={el} />
                         <p className={styles.description}>
-                            I'm a <b>Full Stack Developer </b>based in Minneapolis. I love working in all aspect of tech stack from frontend to backend to AI.
+                            I'm a <b>Full Stack Developer </b>based in Minneapolis. <br />
+                            I love working in all aspect of tech stack from frontend to backend to AI.
                             <br />
                             <br />
                             Website designed by <a className={styles.link} href="https://www.kaylafpurney.com">Kayla Purney</a>

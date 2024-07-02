@@ -1,7 +1,9 @@
+@use "./breakpoints.scss";
 @import "./global.css";
 
 .container {
-    margin: 0;
+    margin: 0 auto;
+    max-width: fit-content;
     height: calc(100dvh - var(--margin-top));
 }
 .centerLine {
@@ -11,62 +13,51 @@
     right: 50%;
 }
 .aboutMe {
-    display: flex;
+    display: grid;
     height: 100%;
-    @media (max-width: 992px) {
-        flex-direction: column-reverse;
-        justify-content: start;
+    grid-template-columns: auto;
+    @media (max-width: breakpoints.$tablets) {
+        justify-content: center;
         align-items: center;
-        gap: 50px;
         padding: 0 30px;
-        padding-top: 20px;
     }
     // desktop 
-    @media (min-width: 992px) {
-        flex-direction: row;
-        align-items: center;
-        height: 40rem;
-        margin: 0 7rem;
-        padding-left: 4rem;
-        padding-right: 4rem;
+    @media (min-width: breakpoints.$tablets) {
+        grid-template-columns: auto 1fr;
+        grid-gap: 2rem;
+        min-height: 40rem;
+        margin-top: 6rem;
     }
-    @media (max-width: 1200px) {
-        margin: 0 2rem;
+    @media (min-width: breakpoints.$desktop) {
+        margin-top: 7rem;
     }
     // large monitor
-    @media (min-width: 1600px) {
-        margin: 0 20rem;
-        margin-top: 5rem;
-        padding: 0 2rem;
+    @media (min-width: breakpoints.$largedevice) {
+        grid-template-columns: auto auto;
+        margin-top: 10rem;
     }
 }
 .content {
     text-align: center;
     width: auto;
-    @media (min-width: 768px) {
-        width: 50%;
-    }
-    @media (min-width: 992px) {
-        width: auto;
+    @media (min-width: breakpoints.$tablets) {
         display: flex;
         flex-direction: column;
         text-align: left;
         max-height: 100%;
         margin-left: 20px;
     }
-    @media (min-width: 1200px) {
-        width: 50%;
+    @media (min-width: breakpoints.$desktop) {
     }
-    @media (min-width: 1600px) {
-        margin-left: 6rem;
+    @media (min-width: breakpoints.$largedevice) {
     }
     
 }
 .intro {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    @media (min-width: 992px) {
+    @media (min-width: breakpoints.$tablets) {
         justify-content: flex-start;
     }
 }
@@ -74,24 +65,26 @@
     color: var(--primary-color);
     font-size: 32px;
     font-weight: 900;
-    @media (min-width: 992x) {
+    @media (min-width: breakpoints.$tablets) {
         height: 150px;
         font-size: 64px;
     }
 }
 h1 {
     font-size: 20px;
-    @media (min-width: 992px) {
+    padding-right: 5px;
+    @media (min-width: breakpoints.$tablets) {
+        padding-right: 10px;
         font-size: 40px;
     }
 }
 .name {
-    padding-left: 5px;
+    
     color: var(--primary-color);
     font-size: 20px;
     font-weight: 700;
-    @media (min-width: 992px) {
-        padding-left: 10px;
+    @media (min-width: breakpoints.$tablets) {
+        
         font-size: 40px;
     }
 }
@@ -107,36 +100,42 @@ h1 {
 .description {
     font-size: 1rem;
     margin-top: 1rem;
-    @media (min-width: 992px) {
+    @media (min-width: breakpoints.$tablets) {
         font-size: 1.125rem;
         margin-top: 60px;
     }
 }
 .imageContainer {
-    // width: 100%;
     min-width: 200px;
     min-height: 200px;
-    @media (max-width: 992px) {
-        padding-left: 52px;
-        display: flex;
-        justify-content: center;
+    @media (max-width: breakpoints.$tablets) {
+        grid-row-start: 1;
+        justify-self: center;
+        padding-left: 3rem;
     }
-    @media (min-width: 992px) {
-        min-width: 400px;
-        min-height: 400px;
-        padding-left: 60px;
+    @media (min-width: breakpoints.$tablets) {
+        width: 350px;
+        height: 350px;
+    }
+    @media (min-width: breakpoints.$desktop) {
+        max-width: 500px;
+        max-width: 500px;
     }
 }
 .ashImg {
     width: 250px;
     height: 250px;
     object-fit: contain;
-    @media (min-width: 768px) {
-        width: 300px;
-        height: 300px;
-        }
-    @media (min-width: 992px) {
+    @media (min-width: breakpoints.$tablets) {
+        width: 350px;
+        height: 350px;
+    }
+    @media (min-width: breakpoints.$desktop) {
         width: 400px;
         height: 400px;
+    }
+    @media (min-width: breakpoints.$largedevice) {
+        width: 500px;
+        height: 500px;
     }
 }
