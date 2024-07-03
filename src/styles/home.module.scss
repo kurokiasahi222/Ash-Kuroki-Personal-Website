@@ -1,10 +1,11 @@
 @use "./breakpoints.scss";
+@use "./variables.scss";
 @import "./global.css";
 
 .container {
-    margin: 0 auto;
+    margin: auto auto;
     max-width: fit-content;
-    height: calc(100dvh - var(--margin-top));
+    height: calc(100dvh - variables.$margin-top);
 }
 .centerLine {
     position: fixed;
@@ -14,27 +15,26 @@
 }
 .aboutMe {
     display: grid;
-    height: 100%;
     grid-template-columns: auto;
-    @media (max-width: breakpoints.$tablets) {
-        justify-content: center;
-        align-items: center;
-        padding: 0 30px;
-    }
-    // desktop 
+    grid-gap: 1rem;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-height: fit-content;
     @media (min-width: breakpoints.$tablets) {
         grid-template-columns: auto 1fr;
         grid-gap: 2rem;
-        min-height: 40rem;
-        margin-top: 6rem;
+        padding-top: 6rem;
+        // -- override styles -- 
+        align-items: start;
     }
     @media (min-width: breakpoints.$desktop) {
-        margin-top: 7rem;
+        padding-top: 7rem;
     }
     // large monitor
     @media (min-width: breakpoints.$largedevice) {
         grid-template-columns: auto auto;
-        margin-top: 10rem;
+        grid-gap: 3rem;
     }
 }
 .content {
@@ -46,12 +46,7 @@
         text-align: left;
         max-height: 100%;
         margin-left: 20px;
-    }
-    @media (min-width: breakpoints.$desktop) {
-    }
-    @media (min-width: breakpoints.$largedevice) {
-    }
-    
+    }   
 }
 .intro {
     display: flex;
@@ -62,12 +57,13 @@
     }
 }
 .title {
-    color: var(--primary-color);
+    color: variables.$primary-color;
     font-size: 32px;
     font-weight: 900;
     @media (min-width: breakpoints.$tablets) {
-        height: 150px;
         font-size: 64px;
+        min-height: 200px;
+        max-width: 500px;
     }
 }
 h1 {
@@ -79,12 +75,10 @@ h1 {
     }
 }
 .name {
-    
-    color: var(--primary-color);
+    color: variables.$primary-color;
     font-size: 20px;
     font-weight: 700;
     @media (min-width: breakpoints.$tablets) {
-        
         font-size: 40px;
     }
 }
@@ -108,24 +102,33 @@ h1 {
 .imageContainer {
     min-width: 200px;
     min-height: 200px;
-    @media (max-width: breakpoints.$tablets) {
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
+        margin-top: 2rem;
         grid-row-start: 1;
         justify-self: center;
-        padding-left: 3rem;
+        padding-left: 2.5rem;
     }
     @media (min-width: breakpoints.$tablets) {
         width: 350px;
         height: 350px;
     }
     @media (min-width: breakpoints.$desktop) {
-        max-width: 500px;
-        max-width: 500px;
+        width: 400px;
+        height: 400px;
+    }
+    @media (min-width: breakpoints.$largedevice) {
+        min-width: 500px;
+        min-height: 500px;
     }
 }
 .ashImg {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
+    // transition: all ease-in-out 0.3s;
+    // &:hover {
+    //     transform: translateY(-1rem);
+    // }
     @media (min-width: breakpoints.$tablets) {
         width: 350px;
         height: 350px;
