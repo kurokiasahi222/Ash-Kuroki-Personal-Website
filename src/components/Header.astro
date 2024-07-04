@@ -1,3 +1,7 @@
+---
+import "../styles/global.css";
+---
+
 <header>
     <nav>
         <div class="mobile">
@@ -104,7 +108,7 @@
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
-        @media (min-width: 768px) {
+        @media (min-width: breakpoints.$tablets) {
             font-size: 20px;
         }
     }
@@ -131,7 +135,7 @@
         }
     }
     /* phone only */
-    @media (max-width: breakpoints.$tablets) {
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
         /* reference for slide-in navigation */
         /* https://www.youtube.com/watch?v=OFKBep95lb4&t=469s&ab_channel=TylerPotts & ChatGPT*/
         .menu {

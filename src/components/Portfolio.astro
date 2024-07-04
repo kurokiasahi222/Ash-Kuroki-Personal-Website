@@ -6,25 +6,26 @@ type project = {
     link?: string;
     tags?: string[];
 };
+import "../styles/global.css";
 import PortfolioCard from "../components/PortfolioCard.astro";
-const portfolio: project[] = [
-    {
-        title: "Drone Simulation System",
-        description:
-            "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
-        image: "../../public/images/drone.jpg",
-    },
-    {
-        title: "Crowdfunding platform for Events",
-        description:
-            "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. ",
-    },
-    {
-        title: "Crowdfunding platform for Events",
-        description:
-            "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon",
-    },
-];
+// const portfolio: project[] = [
+//     {
+//         title: "Drone Simulation System",
+//         description:
+//             "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
+//         image: "../../public/images/drone.jpg",
+//     },
+//     {
+//         title: "Crowdfunding platform for Events",
+//         description:
+//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. ",
+//     },
+//     {
+//         title: "Crowdfunding platform for Events",
+//         description:
+//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon",
+//     },
+// ];
 ---
 
 <div id="projects">
@@ -44,7 +45,9 @@ const portfolio: project[] = [
     </div>
 </div>
 
-<style>
+<style lang="scss">
+    @use "../styles/variables.scss";
+    @use "../styles/breakpoints.scss";
     .center {
         position: fixed;
         height: 100%;
@@ -52,10 +55,10 @@ const portfolio: project[] = [
         right: 50%;
     }
     #projects {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: calc(100vh - 4.375rem);
+        height: calc(100dvh - 4.375rem);
+        margin: auto;
+        @media (min-width: breakpoints.$tablets) {
+        }
     }
     .projects-container {
         display: flex;
@@ -65,64 +68,51 @@ const portfolio: project[] = [
         height: 100%;
         margin: 28px 2px 0 2px;
         gap: 26px;
+        @media (min-width: breakpoints.$tablets) {
+            margin: 0;
+            display: flex;
+            padding: 0px 70px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
     .title {
-        color: var(--Main, #0a929b);
-        /* H1 */
-        font-family: Lato;
+        color: variables.$primary-color;
         font-size: 32px;
         font-style: normal;
         font-weight: 900;
         line-height: normal;
+        @media (min-width: breakpoints.$tablets) {
+            font-size: 48px;
+        }
     }
     .sub-title {
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media (min-width: breakpoints.$tablets) {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
     }
     .sub-title p {
-        color: var(--Main, #0a929b);
+        color: variables.$primary-color;
         /* H1 */
         font-family: Lato;
         font-size: 20px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-    }
-    @media (min-width: 768px) {
-        #projects {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            height: calc((100vh - 4.375rem) * 0.8);
-        }
-        .projects-container {
-            height: 100%;
-            margin-bottom: 100px;
-            display: flex;
-            width: auto;
-            padding: 0px 70px;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .title {
-            font-size: 48px;
-        }
-        .sub-title {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        .sub-title p {
-            color: var(--Main, #0a929b);
-            font-family: Lato;
+        @media (min-width: breakpoints.$tablets) {
+            color: variables.$primary-color;
             font-size: 40px;
-            font-style: normal;
             font-weight: 900;
-            line-height: normal;
         }
+    }
+    @media (min-width: breakpoints.$tablets) {
         .portfolio-container {
             width: 100%;
         }

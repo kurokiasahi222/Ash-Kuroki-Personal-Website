@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import "../styles/global.css";
 import java from "../../public/images/java.png";
 import sql from "../../public/images/sql.png";
 import flask from "../../public/images/flask.png";
@@ -122,9 +123,20 @@ import js from "../../public/images/js.png";
     </div>
 </div>
 
-<style>
+<style lang="scss">
+    @use "../styles/variables.scss";
+    @use "../styles/breakpoints.scss";
     .techStackContainer {
         margin-top: 2rem;
+        @media (min-width: breakpoints.$tablets) {
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 5px;
+            padding: 20px;
+        }
     }
     .marqueeContainer {
         --gap: 1rem;
@@ -134,15 +146,18 @@ import js from "../../public/images/js.png";
         user-select: none;
         gap: 2.5rem;
         margin-top: var(--gap);
+        @media (min-width: breakpoints.$tablets) {
+            gap: var(--gap);
+        }
     }
     .title {
-        color: var(--Main, #0a929b);
+        color: variables.$primary-color;
         text-align: center;
-        font-family: Lato;
         font-size: 26px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
+        @media (min-width: breakpoints.$tablets) {
+            font-size: 32px;
+        }
     }
     .icons {
         flex-shrink: 0;
@@ -151,7 +166,14 @@ import js from "../../public/images/js.png";
         align-items: center;
         gap: 2.5rem;
         min-width: 100%;
-        animation: scroll 10s linear infinite;
+        /* animation: scroll 10s linear infinite; */
+        @media (min-width: breakpoints.$tablets) {
+            gap: var(--gap);
+        }
+        /* Pause animation when reduced-motion is set */
+        @media (prefers-reduced-motion: reduce) {
+            animation-play-state: paused !important;
+        }
     }
     /* Marquee Animation citation */
     /* https://ryanmulligan.dev/blog/css-marquee/ */
@@ -161,32 +183,6 @@ import js from "../../public/images/js.png";
         }
         to {
             transform: translateX(calc(-100% - var(--gap)));
-        }
-    }
-    /* Pause animation when reduced-motion is set */
-    @media (prefers-reduced-motion: reduce) {
-        .icons {
-            animation-play-state: paused !important;
-        }
-    }
-    @media (min-width: 768px) {
-        .techStackContainer {
-            margin-top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 20px;
-            padding: 20px 20px 0px 20px;
-        }
-        .title {
-            font-size: 32px;
-        }
-        .marqueeContainer {
-            gap: var(--gap);
-        }
-        .icons {
-            gap: var(--gap);
         }
     }
 </style>

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import linkedin from "../../public/images/linkedin-3.png";
 import github from "../../public/images/github.png";
+import "../styles/global.css"
 ---
 
 <div id="contact" class="footer-container">
@@ -34,14 +35,21 @@ import github from "../../public/images/github.png";
     </div>
 </div>
 
-<style>
+<style lang="scss">
+    @use "../styles/variables.scss";
+    @use "../styles/breakpoints.scss";
     .footer-container {
-        background: var(--Mid-tone, #e6f3f4);
+        background: variables.$footer-color;
         width: 100%;
         padding: 15px;
         display: flex;
         flex-direction: column;
         gap: 6px;
+        @media (min-width: breakpoints.$tablets) {
+            padding: 53px 70px;
+            display: flex;
+            justify-content: space-around;
+        }
     }
     .row-container {
         display: flex;
@@ -51,49 +59,41 @@ import github from "../../public/images/github.png";
     .name-container {
         display: flex;
         gap: 3px;
+        @media (min-width: breakpoints.$tablets) {
+            height: fit-content;
+        }
     }
     .icon-container {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        transition: all ease-in-out 0.3s;
+        &:hover {
+            transform: translateY(-0.3rem);
+        }
     }
     .by {
-        color: var(--Main, #0a929b);
-        font-family: Lato;
+        color: variables.$primary-color;
         font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+        @media (min-width: breakpoints.$tablets) {
+            font-size: 20px;
+        }
     }
     .name {
-        color: var(--Main, #0a929b);
-        font-family: Lato;
+        color: variables.$primary-color;
         font-size: 18px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
-    }
-    .name:hover {
-        font-size: 20px;
-        cursor: pointer;
-    }
-    @media (min-width: 768px) {
-        .footer-container {
-            padding: 53px 70px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .name-container {
-            height: fit-content;
-        }
-        .name {
+        &:hover {
             font-size: 20px;
         }
-        .name:hover {
-            font-size: 22px;
-        }
-        .by {
+        @media (min-width: breakpoints.$tablets) {
             font-size: 20px;
+            &:hover {
+                font-size: 22px;
+            }
         }
     }
 </style>

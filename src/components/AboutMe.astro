@@ -1,42 +1,40 @@
 ---
 import { Image } from "astro:assets";
-import umnImage from "../../public/images/umn.png";
+import "../styles/global.css";
 import TechStack from "./TechStack.astro";
 ---
 
-<div class="page-container">
+<div class="container">
     <div class="center" aria-hidden="true"></div>
-    <div class="aboutme-container">
+    <div class="content">
         <div class="left-side">
             <div class="about-title">
                 <h1 class="about">ABOUT</h1>
                 <h1 class="title">ME</h1>
             </div>
-            <div class="image-container">
-                <Image src={umnImage} alt="image of umn" />
-            </div>
+            <div class="image-container"></div>
         </div>
-        <div class="content">
-            <h1 class="subtitle">
-                Computer Science & Entrepreneurship Graduate
-            </h1>
+        <div class="right-side">
+            <h1 class="subtitle">Software Developer from Japan</h1>
             <p>
-                I am a bilingual and highly motivated individual with a strong
-                foundation in programming, software engineering, and data
-                science. Recent graduate from University of Minnesota with
-                double major in Computer Science and Entrepreneurship. I am
-                passionate about leveraging both technical expertise and
-                business acumen to drive data-driven insights and create
-                innovative solutions.
+                I am a bilingual software developer from Japan!
+                <br />
+                Graduate from University of Minnesota with double major in Computer
+                Science and Entrepreneurship. I am passionate about leveraging both
+                technical expertise and business acumen to drive data-driven insights
+                and create innovative solutions.
             </p>
         </div>
     </div>
     <TechStack />
 </div>
 
-<style>
-    .page-container {
-        /* height: calc(100vh - 4.375rem); */
+<style lang="scss">
+    @use "../styles/variables.scss";
+    @use "../styles/breakpoints.scss";
+    .container {
+        height: calc(100dvh - variables.$margin-top);
+        margin: auto;
     }
     .center {
         position: fixed;
@@ -45,126 +43,117 @@ import TechStack from "./TechStack.astro";
         right: 50%;
         /* border-left: solid #ff0000; */
     }
-    .aboutme-container {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding: 10px 26px;
-        padding-top: 1.875rem;
-        gap: 10px;
+    .content {
+        display: grid;
+        @media (max-width: calc(breakpoints.$tablets - 1px)) {
+            grid-gap: 10px;
+            text-align: center;
+            padding: 10px 26px;
+            padding-top: 1.875rem;
+        }
+        @media (min-width: breakpoints.$tablets) {
+            grid-template-columns: 1fr 1.5fr;
+            grid-auto-rows: 1fr;
+            align-items: center;
+            gap: 4.375rem;
+            min-width: fit-content;
+            height: 65%;
+        }
+        @media (min-width: breakpoints.$desktop) {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        @media (min-width: breakpoints.$largedevice) {
+            grid-template-columns: 1fr 1fr;
+        }
     }
     .left-side {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        justify-content: center;
+        grid-gap: 10px;
+        @media (min-width: breakpoints.$tablets) {
+            min-height: 300px;
+        }
+        @media (min-width: breakpoints.$largedevice) {
+            min-height: 400px;
+        }
+    }
+    .right-side {
+        display: grid;
+        justify-content: center;
+        @media (min-width: breakpoints.$tablets) {
+            min-height: 300px;
+            grid-gap: 10px;
+        }
+        @media (min-width: breakpoints.$largedevice) {
+            height: 400px;
+        }
     }
     .about-title {
         display: flex;
         justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
+        height: fit-content;
         gap: 10px;
+        @media (min-width: breakpoints.$tablets) {
+            display: flex;
+            gap: 10px;
+        }
     }
     .about {
         color: var(--Charcoal, #5b6166);
-        /* H1 */
-        font-family: Lato;
         font-size: 32px;
-        font-style: normal;
         font-weight: 600;
-        line-height: normal;
+        @media (min-width: breakpoints.$tablets) {
+            font-size: 48px;
+        }
     }
     .title {
-        color: #0a929b;
-        /* H1 */
-        font-family: Lato;
+        color: variables.$primary-color;
         font-size: 32px;
-        font-style: normal;
         font-weight: 600;
-        line-height: normal;
+        @media (min-width: breakpoints.$tablets) {
+            font-size: 48px;
+        }
     }
     .image-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        max-height: fit-content;
-        max-width: fit-content;
+        border: 3px solid #2d2e32;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        background-image: url("../../public/images/profile_closeup.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
+        min-width: 200px;
+        min-height: 200px;
+        @media (min-width: breakpoints.$tablets) {
+            width: fit-content;
+        }
+        @media (min-width: breakpoints.$desktop) {
+            max-width: 400px;
+            max-height: 400px;
+        }
+        @media (min-width: breakpoints.$largedevice) {
+            max-width: 500px;
+            max-height: 500px;
+        }
     }
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
+
     .subtitle {
         color: #0a929b;
         text-align: center;
         /* H2 */
-        font-family: Lato;
         font-size: 26px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
         margin-bottom: 10px;
-    }
-    .content p {
-        color: #5b6166;
-        text-align: center;
-        /* P 1 */
-        font-family: Lato;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 32px; /* 177.778% */
-    }
-    @media (min-width: 768px) {
-        .aboutme-container {
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            gap: 4.375rem;
-            /* overwrite padding */
-            padding: 4rem 5rem 0px 5rem;
-            height: 65%;
-        }
-        .left-side {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 20px;
-            width: 50%;
-            height: 100%;
-        }
-        .about-title {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 0;
-        }
-        .about {
-            font-size: 48px;
-        }
-        .image-container {
-            display: flex;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            max-height: fit-content;
-            max-width: fit-content;
-        }
-        .content {
-            /* overwrite to flex-start */
-            justify-content: flex-start;
-            gap: 2.1875em;
-            height: 100%;
-            width: 60%;
-        }
-        .title {
-            font-size: 48px;
-        }
-        .subtitle {
+        @media (min-width: breakpoints.$tablets) {
             font-size: 40px;
             margin-bottom: 0;
         }
+    }
+    .right-side p {
+        color: #5b6166;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 32px; /* 177.778% */
     }
 </style>
