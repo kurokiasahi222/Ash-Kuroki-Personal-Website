@@ -1,4 +1,5 @@
-const licenseKey = import.meta.env.PUBLIC_FULLPAGELICENSEKEY
+const licenseKey = "L3B16-Q1HWH-KKFRH-9MJ38-RXWYM"; 
+// import.meta.env.PUBLIC_VERCEL_ENV_FULLPAGELICENSEKEY
 
 new fullpage("#fullpage", {
     licenseKey: licenseKey,
