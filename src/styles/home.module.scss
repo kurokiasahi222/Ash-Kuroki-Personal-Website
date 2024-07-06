@@ -6,7 +6,7 @@
     margin: auto auto;
     max-width: fit-content;
     @media (min-width: breakpoints.$tablets) {
-        min-height: calc(100dvh - variables.$margin-top);
+        min-height: calc(100dvh);
     }
 }
 .centerLine {
@@ -123,8 +123,8 @@ h1 {
         height: 300px;
     }
     @media (min-width: breakpoints.$desktop) {
-        width: 400px;
-        height: 400px;
+        min-width: 400px;
+        min-height: 400px;
     }
     @media (min-width: breakpoints.$largedevice) {
         min-width: 500px;

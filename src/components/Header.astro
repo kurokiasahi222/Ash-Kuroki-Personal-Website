@@ -92,7 +92,7 @@ import "../styles/global.css";
         height: 100%;
         padding: 0 40px;
         @media (min-width: breakpoints.$tablets) {
-            padding: 0 5cap;
+            padding: 0 5%;
         }
         @media (min-width: breakpoints.$desktop) {
             padding: 0 70px;
@@ -135,8 +135,8 @@ import "../styles/global.css";
             transform: translateY(-0.3rem);
         }
         @media (min-width: breakpoints.$tablets) {
-            width: 40px;
-            height: 37px;
+            min-width: 40px;
+            min-height: 40px;
         }
     }
     /* phone only */
@@ -281,6 +281,10 @@ import "../styles/global.css";
                     transform: translateY(0);
                 }
             }
+        }
+        .img {
+            min-width: 40px;
+            min-height: 40px;
         }
     }
 </style>

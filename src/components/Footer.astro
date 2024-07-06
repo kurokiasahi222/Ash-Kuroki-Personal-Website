@@ -2,35 +2,47 @@
 import { Image } from "astro:assets";
 import linkedin from "../../public/images/linkedin-3.png";
 import github from "../../public/images/github.png";
-import "../styles/global.css"
+import "../styles/global.css";
 ---
 
-<div id="contact" class="footer-container">
-    <div class="row-container">
-        <div class="name-container">
-            <p class="by">Created by:</p>
-            <p class="name"><a href="#section1">Asahi (Ash) Kuroki</a></p>
+<div class="container">
+    <div id="contact" class="footer-container">
+        <div class="row-container">
+            <div class="name-container">
+                <p class="by">Created by:</p>
+                <p class="name"><a href="#section1">Asahi (Ash) Kuroki</a></p>
+            </div>
+            <div class="icon-container">
+                <div class="icon">
+                    <a href="https://github.com/kurokiasahi222"
+                        ><Image src={github} alt="github icon" /></a
+                    >
+                </div>
+                <div class="icon">
+                    <a href="https://www.linkedin.com/in/asahi-kuroki/"
+                        ><Image src={linkedin} alt="linkedin icon" /></a
+                    >
+                </div>
+            </div>
         </div>
-        <div class="icon-container">
-            <a href="https://github.com/kurokiasahi222"
-                ><Image src={github} alt="github icon" width="35" /></a
-            >
-            <a href="https://www.linkedin.com/in/asahi-kuroki/"
-                ><Image src={linkedin} alt="linkedin icon" width="35" /></a
-            >
-        </div>
-    </div>
-    <div class="row-container">
-        <div class="name-container">
-            <p class="by">Design by:</p>
-            <p class="name">
-                <a href="https://www.kaylafpurney.com">Kayla Purney</a>
-            </p>
-        </div>
-        <div class="icon-container">
-            <a href="https://www.linkedin.com/in/kayla-purney-00027921b/"
-                ><Image src={linkedin} alt="linkedin icon" width="35" /></a
-            >
+        <div class="row-container">
+            <div class="name-container">
+                <p class="by">Design by:</p>
+                <p class="name">
+                    <a href="https://www.kaylafpurney.com">Kayla Purney</a>
+                </p>
+            </div>
+            <div class="icon-container">
+                <div class="icon-hidden">
+                   
+                </div>
+                <div class="icon">
+                    <a
+                        href="https://www.linkedin.com/in/kayla-purney-00027921b/"
+                        ><Image src={linkedin} alt="linkedin icon" />
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -38,40 +50,58 @@ import "../styles/global.css"
 <style lang="scss">
     @use "../styles/variables.scss";
     @use "../styles/breakpoints.scss";
-    .footer-container {
+    .container {
+        min-width: 100%;
         background: variables.$footer-color;
-        width: 100%;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
         @media (min-width: breakpoints.$tablets) {
-            padding: 53px 70px;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+        }
+    }
+    .footer-container {
+        padding: 15px;
+        display: grid;
+        grid-template-columns: 1fr;
+        @media (min-width: breakpoints.$tablets) {
+            justify-content: center;
+            max-width: fit-content;
+            padding: 20px;
         }
     }
     .row-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto;
         justify-content: space-between;
-        align-items: center;
+        @media (min-width: breakpoints.$tablets) {
+            max-width: fit-content;
+            justify-content: start;
+            gap: 5rem;
+        }
     }
     .name-container {
         display: flex;
         gap: 3px;
         @media (min-width: breakpoints.$tablets) {
+            width: 280px;
             height: fit-content;
         }
     }
     .icon-container {
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
+    }
+    .icon-hidden {
+        width: 40px;
+        height: 40px;
+    }
+    .icon {
+        max-width: 40px;
+        max-height: 40px;
         transition: all ease-in-out 0.3s;
         &:hover {
             transform: translateY(-0.3rem);
         }
     }
+
     .by {
         color: variables.$primary-color;
         font-size: 18px;

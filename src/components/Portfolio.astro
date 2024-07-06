@@ -56,25 +56,18 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     }
     #projects {
         margin: auto;
-        min-height: calc(100dvh - 4.375rem);
+        height: calc(100dvh - 4.375rem);
         @media (min-width: breakpoints.$tablets) {
             height: calc(100dvh - 4.375rem);
         }
     }
     .projects-container {
         display: grid;
-        grid-template-rows: 1fr auto;
+        grid-template-rows: auto auto;
         justify-items: center;
         height: 100%;
-        gap: 26px;
         padding-top: 20px;
         @media (min-width: breakpoints.$tablets) {
-            margin: 0;
-            display: flex;
-            padding: 0px 70px;
-            padding-top: 20px;
-            flex-direction: column;
-            align-items: flex-start;
         }
     }
     .title {
@@ -89,14 +82,9 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     }
     .sub-title {
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-self: center;
         @media (min-width: breakpoints.$tablets) {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+
         }
     }
     .sub-title p {

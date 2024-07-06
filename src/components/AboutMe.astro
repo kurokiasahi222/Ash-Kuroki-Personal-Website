@@ -3,40 +3,46 @@ import { Image } from "astro:assets";
 import "../styles/global.css";
 import TechStack from "./TechStack.astro";
 ---
-
-<div class="container">
-    <div class="center" aria-hidden="true"></div>
-    <div class="content">
-        <div class="about-title">
-            <h1 class="about">ABOUT</h1>
-            <h1 class="title">ME</h1>
-        </div>
-        <div class="main">
-            <div class="image-container"></div>
-            <div class="text">
-                <h1 class="subtitle">Software Developer from Japan</h1>
-                <p>
-                    I am a bilingual software developer from Japan!
-                    <br />
-                    Graduate from University of Minnesota with double major in Computer
-                    Science and Entrepreneurship. I am passionate about leveraging
-                    both technical expertise and business acumen to drive data-driven
-                    insights and create innovative solutions.
-                </p>
+<div class="page-container">
+    <div class="container">
+        <div class="center" aria-hidden="true"></div>
+        <div class="content">
+            <div class="about-title">
+                <h1 class="about">ABOUT</h1>
+                <h1 class="title">ME</h1>
+            </div>
+            <div class="main">
+                <div class="image-container"></div>
+                <div class="text">
+                    <h1 class="subtitle">Software Developer from Japan</h1>
+                    <p>
+                        I am a bilingual software developer from Japan!
+                        <br />
+                        Graduate from University of Minnesota with double major in Computer
+                        Science and Entrepreneurship. I am passionate about leveraging
+                        both technical expertise and business acumen to drive data-driven
+                        insights and create innovative solutions.
+                    </p>
+                </div>
             </div>
         </div>
+        <TechStack />
     </div>
-    <TechStack />
 </div>
+
+
 
 <style lang="scss">
     @use "../styles/variables.scss";
     @use "../styles/breakpoints.scss";
-    .container {
-        margin: auto;
+    .page-container {
         @media (min-width: breakpoints.$tablets) {
             min-height: calc(100dvh - variables.$margin-top);
         }
+    }
+    .container {
+        margin: auto;
+        padding-top: 13rem; 
     }
     .center {
         position: fixed;
@@ -66,6 +72,7 @@ import TechStack from "./TechStack.astro";
             grid-template-rows: 0.5fr auto;
         }
         @media (min-width: breakpoints.$largedevice) {
+            grid-gap: 10%;
         }
     }
     .about-title {
@@ -112,13 +119,12 @@ import TechStack from "./TechStack.astro";
         }
         @media (min-width: breakpoints.$desktop) {
             grid-template-columns: auto auto;
-            // align-items: center;
             grid-gap: 10%;
             padding-left: 20%;
             padding-right: 5%;
         }
         @media (min-width: breakpoints.$largedevice) {
-            height: 400px;
+            min-height: 400px;
         }
     }
     .image-container {
@@ -143,6 +149,9 @@ import TechStack from "./TechStack.astro";
             max-height: 400px;
         }
         @media (min-width: breakpoints.$largedevice) {
+            margin-top: 5%;
+            min-width: 400px;
+            min-height: 400px;
             max-width: 500px;
             max-height: 500px;
         }
