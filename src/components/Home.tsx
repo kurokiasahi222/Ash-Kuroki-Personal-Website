@@ -37,8 +37,10 @@ export default function Home() {
                             I love working in all aspect of tech stack from frontend to backend to AI.
                             <br />
                             <br />
-                            Website designed by <a className={styles.link} href="https://www.kaylafpurney.com">Kayla Purney</a>
-                            <br></br>Developed by <b>Ash Kuroki</b> using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i> & <i><a className={styles.link} href="https://alvarotrigo.com/fullPage/">fullPage.js</a></i>
+                            Website designed by 
+                            <a className={styles.link} href="https://www.kaylafpurney.com"> Kayla Purney </a>
+                            & <a className={styles.link} href=""> Sumin Choi </a>
+                            <br></br>Developed by <b>Ash Kuroki</b> using <i><a className={styles.link} href="https://astro.build/">Astro.js </a></i>
                         </p>
                     </div>
                     <div className={styles.imageContainer} >

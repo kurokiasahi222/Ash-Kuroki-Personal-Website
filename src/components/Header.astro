@@ -18,14 +18,16 @@ import "../styles/global.css";
             </div>
         </div>
         <div id="menu" class="menu">
-            <h3 class="main-logo-desk"><a href="#section1">ASH.dev</a></h3>
+            <h3 class="main-logo-desk fade-in-animation">
+                <a href="#section1">ASH.dev</a>
+            </h3>
             <div id="over-lay"></div>
             <div class="nav-container" id="primary-navigation">
-                <a class="navigation" href="#section1">HOME</a>
-                <a class="navigation" href="#section2">ABOUT</a>
-                <a class="navigation" href="#section3">PROJECTS</a>
-                <a class="navigation" href="#section4">CONTACT</a>
-                <div class="icon-container">
+                <a class="navigation" href="#home">HOME</a>
+                <a class="navigation" href="#about">ABOUT</a>
+                <a class="navigation" href="#projects">PROJECTS</a>
+                <a class="navigation" href="#footer">CONTACT</a>
+                <div class="icon-container fade-in-animation">
                     <a href="https://www.linkedin.com/in/asahi-kuroki/"
                         ><img
                             class="icon"
@@ -90,6 +92,9 @@ import "../styles/global.css";
         height: 100%;
         padding: 0 40px;
         @media (min-width: breakpoints.$tablets) {
+            padding: 0 5cap;
+        }
+        @media (min-width: breakpoints.$desktop) {
             padding: 0 70px;
         }
     }
@@ -103,7 +108,7 @@ import "../styles/global.css";
         }
     }
     .navigation {
-        color: var(--Charcoal, #5b6166);
+        color: variables.$secondary-color;
         text-align: center;
         font-size: 16px;
         font-weight: 500;
@@ -225,10 +230,15 @@ import "../styles/global.css";
             gap: 20px;
             padding: 8rem 2rem;
         }
+        .icon {
+            min-width: 30px;
+            min-height: 30px;
+        }
         .icon-container {
             padding-top: 16rem;
             display: flex;
             flex-direction: row;
+            gap: 0.5rem;
         }
     }
     @media (min-width: breakpoints.$tablets) {
@@ -253,10 +263,24 @@ import "../styles/global.css";
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 26px;
         }
         .icon-container {
             display: flex;
+            gap: 0.5rem;
+        }
+        .menu {
+            animation: fade-in-top 0.5s;
+            @keyframes fade-in-top {
+                0% {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
         }
     }
 </style>

@@ -7,23 +7,23 @@ import TechStack from "./TechStack.astro";
 <div class="container">
     <div class="center" aria-hidden="true"></div>
     <div class="content">
-        <div class="left-side">
-            <div class="about-title">
-                <h1 class="about">ABOUT</h1>
-                <h1 class="title">ME</h1>
-            </div>
-            <div class="image-container"></div>
+        <div class="about-title">
+            <h1 class="about">ABOUT</h1>
+            <h1 class="title">ME</h1>
         </div>
-        <div class="right-side">
-            <h1 class="subtitle">Software Developer from Japan</h1>
-            <p>
-                I am a bilingual software developer from Japan!
-                <br />
-                Graduate from University of Minnesota with double major in Computer
-                Science and Entrepreneurship. I am passionate about leveraging both
-                technical expertise and business acumen to drive data-driven insights
-                and create innovative solutions.
-            </p>
+        <div class="main">
+            <div class="image-container"></div>
+            <div class="text">
+                <h1 class="subtitle">Software Developer from Japan</h1>
+                <p>
+                    I am a bilingual software developer from Japan!
+                    <br />
+                    Graduate from University of Minnesota with double major in Computer
+                    Science and Entrepreneurship. I am passionate about leveraging
+                    both technical expertise and business acumen to drive data-driven
+                    insights and create innovative solutions.
+                </p>
+            </div>
         </div>
     </div>
     <TechStack />
@@ -33,8 +33,10 @@ import TechStack from "./TechStack.astro";
     @use "../styles/variables.scss";
     @use "../styles/breakpoints.scss";
     .container {
-        height: calc(100dvh - variables.$margin-top);
         margin: auto;
+        @media (min-width: breakpoints.$tablets) {
+            min-height: calc(100dvh - variables.$margin-top);
+        }
     }
     .center {
         position: fixed;
@@ -46,47 +48,24 @@ import TechStack from "./TechStack.astro";
     .content {
         display: grid;
         @media (max-width: calc(breakpoints.$tablets - 1px)) {
+            grid-template-columns: auto;
+            justify-items: center;
             grid-gap: 10px;
             text-align: center;
-            padding: 10px 26px;
-            padding-top: 1.875rem;
+            padding-left: 26px;
+            padding-right: 26px;
         }
         @media (min-width: breakpoints.$tablets) {
-            grid-template-columns: 1fr 1.5fr;
-            grid-auto-rows: 1fr;
-            align-items: center;
-            gap: 4.375rem;
+            grid-template-rows: auto auto;
+            grid-gap: 5%;
+            justify-items: center;
             min-width: fit-content;
-            height: 65%;
+            min-height: 65%;
         }
         @media (min-width: breakpoints.$desktop) {
-            padding-left: 80px;
-            padding-right: 80px;
+            grid-template-rows: 0.5fr auto;
         }
         @media (min-width: breakpoints.$largedevice) {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    .left-side {
-        display: grid;
-        justify-content: center;
-        grid-gap: 10px;
-        @media (min-width: breakpoints.$tablets) {
-            min-height: 300px;
-        }
-        @media (min-width: breakpoints.$largedevice) {
-            min-height: 400px;
-        }
-    }
-    .right-side {
-        display: grid;
-        justify-content: center;
-        @media (min-width: breakpoints.$tablets) {
-            min-height: 300px;
-            grid-gap: 10px;
-        }
-        @media (min-width: breakpoints.$largedevice) {
-            height: 400px;
         }
     }
     .about-title {
@@ -94,9 +73,11 @@ import TechStack from "./TechStack.astro";
         justify-content: center;
         height: fit-content;
         gap: 10px;
+        padding-top: 20px;
         @media (min-width: breakpoints.$tablets) {
             display: flex;
             gap: 10px;
+            padding-top: 30px;
         }
     }
     .about {
@@ -115,19 +96,49 @@ import TechStack from "./TechStack.astro";
             font-size: 48px;
         }
     }
+    .main {
+        display: grid;
+        @media (max-width: calc(breakpoints.$tablets - 1px)) {
+            grid-template-columns: auto;
+            justify-items: center;
+            grid-gap: 20px;
+        }
+        @media (min-width: breakpoints.$tablets) {
+            grid-template-columns: auto auto;
+            grid-gap: 8%;
+            padding-left: 8%;
+            padding-right: 5%;
+            margin-bottom: 5%;
+        }
+        @media (min-width: breakpoints.$desktop) {
+            grid-template-columns: auto auto;
+            // align-items: center;
+            grid-gap: 10%;
+            padding-left: 20%;
+            padding-right: 5%;
+        }
+        @media (min-width: breakpoints.$largedevice) {
+            height: 400px;
+        }
+    }
     .image-container {
-        border: 3px solid #2d2e32;
+        // border: 3px solid #5b6166;
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        background-image: url("../../public/images/profile_closeup.jpg");
+        background-image: url("/images/asahi-crop_2.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50%;
-        min-width: 200px;
-        min-height: 200px;
+        width: 200px;
+        height: 200px;
         @media (min-width: breakpoints.$tablets) {
-            width: fit-content;
+            min-width: 200px;
+            min-height: 200px;
+            max-width: 400px;
+            max-height: 400px;
         }
         @media (min-width: breakpoints.$desktop) {
+            min-width: 250px;
+            min-height: 250px;
             max-width: 400px;
             max-height: 400px;
         }
@@ -136,9 +147,16 @@ import TechStack from "./TechStack.astro";
             max-height: 500px;
         }
     }
-
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        @media (min-width: breakpoints.$tablets) {
+            gap: 2rem;
+        }
+    }
     .subtitle {
-        color: #0a929b;
+        color: variables.$primary-color;
         text-align: center;
         /* H2 */
         font-size: 26px;
@@ -147,13 +165,17 @@ import TechStack from "./TechStack.astro";
         @media (min-width: breakpoints.$tablets) {
             font-size: 40px;
             margin-bottom: 0;
+            text-align: left;
         }
     }
-    .right-side p {
-        color: #5b6166;
+    .text p {
+        color: variables.$secondary-color;
         text-align: center;
         font-size: 18px;
         font-weight: 500;
-        line-height: 32px; /* 177.778% */
+        line-height: 32px;
+        @media (min-width: breakpoints.$tablets) {
+            text-align: left;
+        }
     }
 </style>

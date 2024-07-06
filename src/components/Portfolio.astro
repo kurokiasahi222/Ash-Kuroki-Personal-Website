@@ -55,23 +55,24 @@ import PortfolioCard from "../components/PortfolioCard.astro";
         right: 50%;
     }
     #projects {
-        height: calc(100dvh - 4.375rem);
         margin: auto;
+        min-height: calc(100dvh - 4.375rem);
         @media (min-width: breakpoints.$tablets) {
+            height: calc(100dvh - 4.375rem);
         }
     }
     .projects-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        justify-items: center;
         height: 100%;
-        margin: 28px 2px 0 2px;
         gap: 26px;
+        padding-top: 20px;
         @media (min-width: breakpoints.$tablets) {
             margin: 0;
             display: flex;
             padding: 0px 70px;
+            padding-top: 20px;
             flex-direction: column;
             align-items: flex-start;
         }

@@ -20,7 +20,7 @@ const { title } = Astro.props;
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
 		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<!-- import fullPage.js. Link: https://alvarotrigo.com/fullPage/ -->
+		<!-- import fullPage.js. Link: https://alvarotrigo.com/fullPage/
 		<link
 			rel="stylesheet"
 			type="text/css"
@@ -29,8 +29,8 @@ const { title } = Astro.props;
 		<script
 			type="text/javascript"
 			src="../../node_modules/fullpage.js/dist/fullpage.js"></script>
-		<!-- script to initialize fullPage.js -->
-		<script src="./script.js"></script>
+		<--script to initialize fullPage.js -->
+		<!-- <script src="./script.js"></script> -->
 		<!-- import fonts from google font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,19 +45,17 @@ const { title } = Astro.props;
 		<div id="header">
 			<Header />
 		</div>
-		<div id="fullpage">
-			<div id="home" class="section">
-				<Home client:load />
-			</div>
-			<div id="about" class="section">
-				<AboutMe />
-			</div>
-			<div id="projects" class="section">
-				<Portfolio />
-			</div>
-			<div id="footer" class="section fp-auto-height">
-				<Footer />
-			</div>
+		<div id="home">
+			<Home client:load />
+		</div>
+		<div id="about">
+			<AboutMe />
+		</div>
+		<div id="projects">
+			<Portfolio />
+		</div>
+		<div id="footer">
+			<Footer />
 		</div>
 	</body>
 </html>
@@ -74,7 +72,18 @@ const { title } = Astro.props;
 		width: 100%;
 		z-index: 100;
 	}
+	/* ["#f9f9f9", "#E6F3F4", "#f9f9f9", */
+	#home {
+		background-color: #f9f9f9;
+	}
+	#about {
+		background-color: #e6f3f4;
+	}
+	#projects {
+		background-color: #f9f9f9;
+	}
 	#footer {
+		background-color: #e6f3f4;
 		padding-top: 0 !important;
 	}
 </style>
