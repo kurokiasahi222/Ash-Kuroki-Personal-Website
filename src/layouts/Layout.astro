@@ -5,111 +5,111 @@ import Portfolio from "../components/Portfolio.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Footer from "../components/Footer.astro";
 interface Props {
-	title: string;
+  title: string;
 }
 const { title } = Astro.props;
-const PUBLIC_FULLPAGELICENSEKEY = import.meta.env.PUBLIC_FULLPAGELICENSEKEY;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<!-- import full page.js -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
-			integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="../../favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content='gf"#ffffff"' />
 
-		<!-- import animate.css -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- import fullPage.js. Link: https://alvarotrigo.com/fullPage/
 		<link
 			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+			type="text/css"
+			href="../../node_modules/fullpage.js/dist/fullpage.css"
 		/>
-		<!-- import fonts from google font -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-			rel="stylesheet"
-		/>
-		<script src="./script.js"></script>
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<div id="header">
-			<Header />
-		</div>
-		<div id="fullpage">
-			<div id="home" class="section">
-				<Home client:load />
-			</div>
-			<div id="about" class="section">
-				<AboutMe />
-			</div>
-			<div id="projects" class="section">
-				<Portfolio />
-			</div>
-			<div id="footer" class="section fp-auto-height">
-				<Footer />
-			</div>
-		</div>
-
-		<script>
-			// new fullpage("#fullpage", {
-			// 	licenseKey: 'L3B16-Q1HWH-KKFRH-9MJ38-RXWYM',
-			// 	anchors: ["section1", "section2", "section3", "section4"],
-			// 	// sectionsColor: ["#f9f9f9"],
-			// 	sectionsColor: ["#f9f9f9", "#E6F3F4", "#f9f9f9", "#f9f9f9"],
-			// 	fixedElements: "#header",
-			// 	paddingTop: "4.375rem",
-			// 	scrollOverflow: true,
-			// 	scrollingSpeed: 1000,
-			// 	navigation: true,
-			// 	showActiveTooltip: true,
-			// 	credits: {
-			// 		enabled: false,
-			// 	},
-			// });
-		</script>
 		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.js"
-			integrity="sha512-ekWIiATJSaL5RWmBSap8JDgTMCIBCso5UFovYoMix+a4qFcVDryBcCt4P0kJA4kA0YtmnJuzfTcmb9+TIznIlg=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer">
-		</script>
-		<!-- import velocity.js -->
-		<script
-			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"
-			is:inline></script>
-		<script
-			src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"
-			is:inline></script>
-	</body>
+			type="text/javascript"
+			src="../../node_modules/fullpage.js/dist/fullpage.js"></script>
+		<--script to initialize fullPage.js -->
+    <!-- <script src="./script.js"></script> -->
+    <!-- import fonts from google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div id="header">
+      <Header />
+    </div>
+    <div id="home">
+      <Home client:load />
+    </div>
+    <div id="about">
+      <AboutMe />
+    </div>
+    <div id="projects">
+      <Portfolio />
+    </div>
+    <div id="footer">
+      <Footer />
+    </div>
+  </body>
 </html>
+
 <style>
-	html,
-	body {
-		height: 100%;
-	}
-	#header {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 100;
-	}
-	#footer {
-		padding-top: 0 !important;
-	}
+  html,
+  body {
+    height: 100%;
+  }
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  /* ["#f9f9f9", "#E6F3F4", "#f9f9f9", */
+  #home {
+    background-color: #f9f9f9;
+  }
+  #about {
+    background-color: #e6f3f4;
+  }
+  #projects {
+    background-color: #f9f9f9;
+  }
+  #footer {
+    background-color: #e6f3f4;
+    padding-top: 0 !important;
+  }
 </style>

@@ -10,17 +10,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.3.4",
+    "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "animate.css": "^4.1.1",
-    "astro": "^4.8.7",
-    "fullpage.js": "^4.0.20",
+    "astro": "^4.11.3",
+    "dotenv": "^16.4.5",
+    "fullpage.js": "^4.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.3",
     "typed.js": "^2.0.16",
     "velocity-animate": "^2.0.6"
+  },
+  "devDependencies": {
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.3.2",
+    "prettier-plugin-astro": "^0.14.0",
+    "sass": "^1.77.6",
+    "stylelint": "^16.6.1",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-standard": "^36.0.1"
   }
 }
