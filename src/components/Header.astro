@@ -3,284 +3,279 @@ import "../styles/global.css";
 ---
 
 <header>
-    <nav>
-        <div class="mobile">
-            <h3 class="main-logo-phone">Ash.dev</h3>
-            <div
-                id="hamberger"
-                aria-controls="primary-navigation"
-                aria-expanded="false"
-            >
-                <b class="bar-1"></b>
-                <b class="bar-2"></b>
-                <b class="bar-3"></b>
-                <b class="bar-4"></b>
-            </div>
+  <nav>
+    <div class="mobile">
+      <h3 class="main-logo-phone">Ash.dev</h3>
+      <div
+        id="hamberger"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <b class="bar-1"></b>
+        <b class="bar-2"></b>
+        <b class="bar-3"></b>
+        <b class="bar-4"></b>
+      </div>
+    </div>
+    <div id="menu" class="menu">
+      <h3 class="main-logo-desk fade-in-animation">
+        <a href="#section1">ASH.dev</a>
+      </h3>
+      <div id="over-lay"></div>
+      <div class="nav-container" id="primary-navigation">
+        <a class="navigation" href="#home">HOME</a>
+        <a class="navigation" href="#about">ABOUT</a>
+        <a class="navigation" href="#projects">PROJECTS</a>
+        <a class="navigation" href="#footer">CONTACT</a>
+        <div class="icon-container fade-in-animation">
+          <a href="https://www.linkedin.com/in/asahi-kuroki/"
+            ><img
+              class="icon"
+              src="images/linkedin-3.png"
+              alt="linkedin-icon"
+            /></a
+          >
+          <a href="https://github.com/kurokiasahi222">
+            <img class="icon" src="images/github.png" alt="github-icon" />
+          </a>
         </div>
-        <div id="menu" class="menu">
-            <h3 class="main-logo-desk fade-in-animation">
-                <a href="#section1">ASH.dev</a>
-            </h3>
-            <div id="over-lay"></div>
-            <div class="nav-container" id="primary-navigation">
-                <a class="navigation" href="#home">HOME</a>
-                <a class="navigation" href="#about">ABOUT</a>
-                <a class="navigation" href="#projects">PROJECTS</a>
-                <a class="navigation" href="#footer">CONTACT</a>
-                <div class="icon-container fade-in-animation">
-                    <a href="https://www.linkedin.com/in/asahi-kuroki/"
-                        ><img
-                            class="icon"
-                            src="images/linkedin-3.png"
-                            alt="linkedin-icon"
-                        /></a
-                    >
-                    <a href="https://github.com/kurokiasahi222">
-                        <img
-                            class="icon"
-                            src="images/github.png"
-                            alt="github-icon"
-                        />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <script>
-            const hamberger: HTMLElement =
-                document.getElementById("hamberger")!;
-            const menu: HTMLElement = document.getElementById("menu")!;
-            const navContainer: HTMLElement =
-                document.querySelector(".nav-container")!;
-            const fpNav: HTMLElement = document.getElementById("fp-nav")!;
-            const navigations = document.querySelectorAll(".navigation")!;
+      </div>
+    </div>
+    <script>
+      const hamberger: HTMLElement = document.getElementById("hamberger")!;
+      const menu: HTMLElement = document.getElementById("menu")!;
+      const navContainer: HTMLElement =
+        document.querySelector(".nav-container")!;
+      const fpNav: HTMLElement = document.getElementById("fp-nav")!;
+      const navigations = document.querySelectorAll(".navigation")!;
 
-            hamberger.addEventListener("click", () => {
-                hamberger.classList.toggle("open");
-                if (!menu.classList.contains("show")) {
-                    // if close, open
-                    menu.classList.add("show");
-                    fpNav.style.display = "none";
-                } else {
-                    // if open, close the menu
-                    menu.classList.remove("show");
-                    fpNav.style.display = "block";
-                }
-                navContainer.classList.toggle("active");
-            });
-            // when menu is open for mobile, if someone clicks at the link (home, about...)
-            // close the menu
-            navigations.forEach((element) => {
-                element.addEventListener("click", () => {
-                    console.log("hello");
-                    menu.classList.remove("show");
-                    hamberger.classList.toggle("open");
-                });
-            });
-        </script>
-    </nav>
+      hamberger.addEventListener("click", () => {
+        hamberger.classList.toggle("open");
+        if (!menu.classList.contains("show")) {
+          // if close, open
+          menu.classList.add("show");
+          fpNav.style.display = "none";
+        } else {
+          // if open, close the menu
+          menu.classList.remove("show");
+          fpNav.style.display = "block";
+        }
+        navContainer.classList.toggle("active");
+      });
+      // when menu is open for mobile, if someone clicks at the link (home, about...)
+      // close the menu
+      navigations.forEach((element) => {
+        element.addEventListener("click", () => {
+          console.log("hello");
+          menu.classList.remove("show");
+          hamberger.classList.toggle("open");
+        });
+      });
+    </script>
+  </nav>
 </header>
 <style lang="scss">
-    @use "../styles/variables.scss";
-    @use "../styles/breakpoints.scss";
-    header {
-        background: variables.$header-color;
-        /* DROP SHADOW */
-        box-shadow: 0px 4px 4px 0px #b6ced0;
-        height: variables.$margin-top;
+  @use "../styles/variables.scss";
+  @use "../styles/breakpoints.scss";
+  header {
+    background: variables.$header-color;
+    /* DROP SHADOW */
+    box-shadow: 0px 4px 4px 0px #b6ced0;
+    height: variables.$margin-top;
+  }
+  nav {
+    height: 100%;
+    padding: 0 40px;
+    @media (min-width: breakpoints.$tablets) {
+      padding: 0 5%;
     }
-    nav {
-        height: 100%;
-        padding: 0 40px;
-        @media (min-width: breakpoints.$tablets) {
-            padding: 0 5%;
-        }
-        @media (min-width: breakpoints.$desktop) {
-            padding: 0 70px;
-        }
+    @media (min-width: breakpoints.$desktop) {
+      padding: 0 70px;
     }
-    .mobile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100%;
-        @media (min-width: breakpoints.$tablets) {
-            display: none;
-        }
+  }
+  .mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    @media (min-width: breakpoints.$tablets) {
+      display: none;
     }
-    .navigation {
-        color: variables.$secondary-color;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all ease-in-out 0.3s;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 20px;
-        }
-        &:hover {
-            transform: translateY(-0.3rem);
-        }
+  }
+  .navigation {
+    color: variables.$secondary-color;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 20px;
     }
-    #hambergerClosed {
-        display: none;
+    &:hover {
+      transform: translateY(-0.3rem);
     }
-    .icon {
-        cursor: pointer;
-        transition: all ease-in-out 0.3s;
-        &:hover {
-            transform: translateY(-0.3rem);
-        }
-        @media (min-width: breakpoints.$tablets) {
-            min-width: 40px;
-            min-height: 40px;
-        }
-    }
-    /* phone only */
-    @media (max-width: calc(breakpoints.$tablets - 1px)) {
-        /* reference for slide-in navigation */
-        /* https://www.youtube.com/watch?v=OFKBep95lb4&t=469s&ab_channel=TylerPotts & ChatGPT*/
-        .menu {
-            opacity: 0;
-            visibility: hidden;
-            transition:
-                opacity 200ms ease-in,
-                visibility 200ms ease-in;
-        }
-        .menu.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .main-logo-desk {
-            display: none;
-        }
-        .main-logo-phone {
-            color: #0a929b;
-            text-align: center;
-            font-family: Lato;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 900;
-            line-height: normal;
-        }
-        #hamberger {
-            position: absolute;
-            top: auto;
-            right: 2rem;
-            z-index: 1000;
-            width: 37px;
-            height: 27px;
-            cursor: pointer;
-            transform: rotate(0deg);
-            transition: 0.5s ease-in-out;
-        }
-        #hamberger b {
-            display: block;
-            position: absolute;
-            width: 37px;
-            height: 3px;
-            left: 0;
-            background-color: #000000;
-            border-radius: 2px;
-            transform: rotate(0deg);
-            transition: 0.3s ease-in-out;
-        }
-        .bar-1 {
-            top: 0;
-        }
-        .bar-2,
-        .bar-3 {
-            top: 50%;
-        }
-        .bar-4 {
-            top: 100%;
-        }
-        #hamberger.open .bar-1 {
-            top: 50%;
-            width: 0%;
-            left: 50%;
-        }
-        #hamberger.open .bar-2 {
-            transform: rotate(45deg);
-        }
-        #hamberger.open .bar-3 {
-            transform: rotate(-45deg);
-        }
-        #hamberger.open .bar-4 {
-            top: 50%;
-            width: 0%;
-            left: 50%;
-        }
-        #over-lay {
-            position: fixed;
-            inset: 0 40% 0 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .nav-container {
-            position: fixed;
-            inset: 0 0 0 60%;
-            background: #fbfbfb;
-            box-shadow: 0px 4px 4px 0px #b6ced0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 8rem 2rem;
-        }
-        .icon {
-            min-width: 30px;
-            min-height: 30px;
-        }
-        .icon-container {
-            padding-top: 16rem;
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-        }
+  }
+  #hambergerClosed {
+    display: none;
+  }
+  .icon {
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    &:hover {
+      transform: translateY(-0.3rem);
     }
     @media (min-width: breakpoints.$tablets) {
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-        }
-        .main-logo-desk {
-            color: variables.$primary-color;
-            text-align: center;
-            font-size: 32px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: all ease-in-out 0.3s;
-            &:hover {
-                transform: translateY(-0.3rem);
-            }
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 26px;
-        }
-        .icon-container {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .menu {
-            animation: fade-in-top 0.5s;
-            @keyframes fade-in-top {
-                0% {
-                    opacity: 0;
-                    transform: translateY(-30px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        }
-        .img {
-            min-width: 40px;
-            min-height: 40px;
-        }
+      min-width: 40px;
+      min-height: 40px;
     }
+  }
+  /* phone only */
+  @media (max-width: calc(breakpoints.$tablets - 1px)) {
+    /* reference for slide-in navigation */
+    /* https://www.youtube.com/watch?v=OFKBep95lb4&t=469s&ab_channel=TylerPotts & ChatGPT*/
+    .menu {
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 200ms ease-in,
+        visibility 200ms ease-in;
+    }
+    .menu.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .main-logo-desk {
+      display: none;
+    }
+    .main-logo-phone {
+      color: #0a929b;
+      text-align: center;
+      font-family: Lato;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+    }
+    #hamberger {
+      position: absolute;
+      top: auto;
+      right: 2rem;
+      z-index: 1000;
+      width: 37px;
+      height: 27px;
+      cursor: pointer;
+      transform: rotate(0deg);
+      transition: 0.5s ease-in-out;
+    }
+    #hamberger b {
+      display: block;
+      position: absolute;
+      width: 37px;
+      height: 3px;
+      left: 0;
+      background-color: #000000;
+      border-radius: 2px;
+      transform: rotate(0deg);
+      transition: 0.3s ease-in-out;
+    }
+    .bar-1 {
+      top: 0;
+    }
+    .bar-2,
+    .bar-3 {
+      top: 50%;
+    }
+    .bar-4 {
+      top: 100%;
+    }
+    #hamberger.open .bar-1 {
+      top: 50%;
+      width: 0%;
+      left: 50%;
+    }
+    #hamberger.open .bar-2 {
+      transform: rotate(45deg);
+    }
+    #hamberger.open .bar-3 {
+      transform: rotate(-45deg);
+    }
+    #hamberger.open .bar-4 {
+      top: 50%;
+      width: 0%;
+      left: 50%;
+    }
+    #over-lay {
+      position: fixed;
+      inset: 0 40% 0 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .nav-container {
+      position: fixed;
+      inset: 0 0 0 60%;
+      background: #fbfbfb;
+      box-shadow: 0px 4px 4px 0px #b6ced0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 8rem 2rem;
+    }
+    .icon {
+      min-width: 30px;
+      min-height: 30px;
+    }
+    .icon-container {
+      padding-top: 16rem;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+  }
+  @media (min-width: breakpoints.$tablets) {
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    .main-logo-desk {
+      color: variables.$primary-color;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all ease-in-out 0.3s;
+      &:hover {
+        transform: translateY(-0.3rem);
+      }
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 26px;
+    }
+    .icon-container {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .menu {
+      animation: fade-in-top 0.5s;
+      @keyframes fade-in-top {
+        0% {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    .img {
+      min-width: 40px;
+      min-height: 40px;
+    }
+  }
 </style>

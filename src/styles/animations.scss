@@ -2,24 +2,25 @@
 @use "sass:string";
 
 @function fadeIn($n) {
-    // @keyframes fade-in {
-    //     0% {
-    //         opacity: 0;
-    //         transform: translateY(#{$n});
-    //     }
-    //     100% {
-    //         opacity: 1; 
-    //         transform: translateY(0);
-    //     }
-    // }
-    @return string.unquote(
-        "@keyframes fade-in {0% {opacity: 0;transform: translateY(#{$n});}100% {opacity: 1; transform: translateY(0);}}");
+  // @keyframes fade-in {
+  //     0% {
+  //         opacity: 0;
+  //         transform: translateY(#{$n});
+  //     }
+  //     100% {
+  //         opacity: 1;
+  //         transform: translateY(0);
+  //     }
+  // }
+  @return string.unquote(
+    "@keyframes fade-in {0% {opacity: 0;transform: translateY(#{$n});}100% {opacity: 1; transform: translateY(0);}}"
+  );
 }
 
 // Mixin to include the keyframes and animation properties
 @mixin apply-fade-in($n, $duration: 0.5s) {
-    // Inject the keyframes into the CSS
-    // #{fadeIn($n)};
-    // Apply the animation
-    animation: fadeIn($n) $duration ease-in-out;
+  // Inject the keyframes into the CSS
+  // #{fadeIn($n)};
+  // Apply the animation
+  animation: fadeIn($n) $duration ease-in-out;
 }

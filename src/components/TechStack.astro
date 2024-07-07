@@ -12,177 +12,129 @@ import js from "../../public/images/js.png";
 ---
 
 <div class="techStackContainer">
-    <div class="titleContainer">
-        <h1 class="title">TOOL BOX</h1>
+  <div class="titleContainer">
+    <h1 class="title">TOOL BOX</h1>
+  </div>
+  <div class="marqueeContainer">
+    <div class="icons">
+      <Image class="icon" src={sql} alt="sql-icon" width="80" height="80" />
+      <Image class="icon" src={flask} alt="flask-icon" width="80" height="80" />
+      <Image class="icon" src={java} alt="java-icon" width="60" height="80" />
+      <Image class="icon" src={c} alt="c-icon" width="70" height="80" />
+      <Image class="icon" src={react} alt="react-icon" width="70" height="80" />
+      <Image
+        class="icon"
+        src={ts}
+        alt="typescript-icon"
+        width="70"
+        height="80"
+      />
+      <Image
+        class="icon"
+        src={python}
+        alt="python-icon"
+        width="80"
+        height="100"
+      />
+      <Image
+        class="icon"
+        src={js}
+        alt="javascript-icon"
+        width="70"
+        height="80"
+      />
     </div>
-    <div class="marqueeContainer">
-        <div class="icons">
-            <Image
-                class="icon"
-                src={sql}
-                alt="sql-icon"
-                width="80"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={flask}
-                alt="flask-icon"
-                width="80"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={java}
-                alt="java-icon"
-                width="60"
-                height="80"
-            />
-            <Image class="icon" src={c} alt="c-icon" width="70" height="80" />
-            <Image
-                class="icon"
-                src={react}
-                alt="react-icon"
-                width="70"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={ts}
-                alt="typescript-icon"
-                width="70"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={python}
-                alt="python-icon"
-                width="80"
-                height="100"
-            />
-            <Image
-                class="icon"
-                src={js}
-                alt="javascript-icon"
-                width="70"
-                height="80"
-            />
-        </div>
-        <div aria-hidden="true" class="icons">
-            <Image
-                class="icon"
-                src={sql}
-                alt="sql-icon"
-                width="80"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={flask}
-                alt="flask-icon"
-                width="80"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={java}
-                alt="java-icon"
-                width="60"
-                height="80"
-            />
-            <Image class="icon" src={c} alt="c-icon" width="70" height="80" />
-            <Image
-                class="icon"
-                src={react}
-                alt="react-icon"
-                width="70"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={ts}
-                alt="typescript-icon"
-                width="70"
-                height="80"
-            />
-            <Image
-                class="icon"
-                src={python}
-                alt="python-icon"
-                width="80"
-                height="100"
-            />
-            <Image
-                class="icon"
-                src={js}
-                alt="javascript-icon"
-                width="70"
-                height="80"
-            />
-        </div>
+    <div aria-hidden="true" class="icons">
+      <Image class="icon" src={sql} alt="sql-icon" width="80" height="80" />
+      <Image class="icon" src={flask} alt="flask-icon" width="80" height="80" />
+      <Image class="icon" src={java} alt="java-icon" width="60" height="80" />
+      <Image class="icon" src={c} alt="c-icon" width="70" height="80" />
+      <Image class="icon" src={react} alt="react-icon" width="70" height="80" />
+      <Image
+        class="icon"
+        src={ts}
+        alt="typescript-icon"
+        width="70"
+        height="80"
+      />
+      <Image
+        class="icon"
+        src={python}
+        alt="python-icon"
+        width="80"
+        height="100"
+      />
+      <Image
+        class="icon"
+        src={js}
+        alt="javascript-icon"
+        width="70"
+        height="80"
+      />
     </div>
+  </div>
 </div>
 
 <style lang="scss">
-    @use "../styles/variables.scss";
-    @use "../styles/breakpoints.scss";
-    .techStackContainer {
-        margin-top: 2rem;
-        @media (min-width: breakpoints.$tablets) {
-            margin-top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 5px;
-            padding: 20px;
-        }
+  @use "../styles/variables.scss";
+  @use "../styles/breakpoints.scss";
+  .techStackContainer {
+    margin-top: 2rem;
+    @media (min-width: breakpoints.$tablets) {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 5px;
+      padding: 20px;
     }
-    .marqueeContainer {
-        --gap: 1rem;
-        position: relative;
-        display: flex;
-        overflow: hidden;
-        user-select: none;
-        gap: 2.5rem;
-        margin-top: var(--gap);
-        @media (min-width: breakpoints.$tablets) {
-            gap: var(--gap);
-        }
+  }
+  .marqueeContainer {
+    --gap: 1rem;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 2.5rem;
+    margin-top: var(--gap);
+    @media (min-width: breakpoints.$tablets) {
+      gap: var(--gap);
     }
-    .title {
-        color: variables.$primary-color;
-        text-align: center;
-        font-size: 26px;
-        font-weight: 700;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 32px;
-        }
+  }
+  .title {
+    color: variables.$primary-color;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 32px;
     }
-    .icons {
-        flex-shrink: 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        gap: 2.5rem;
-        min-width: 100%;
-        // animation: scroll 10s linear infinite;
-        @media (min-width: breakpoints.$tablets) {
-            gap: var(--gap);
-        }
-        /* Pause animation when reduced-motion is set */
-        @media (prefers-reduced-motion: reduce) {
-            animation-play-state: paused !important;
-        }
+  }
+  .icons {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2.5rem;
+    min-width: 100%;
+    // animation: scroll 10s linear infinite;
+    @media (min-width: breakpoints.$tablets) {
+      gap: var(--gap);
     }
-    /* Marquee Animation citation */
-    /* https://ryanmulligan.dev/blog/css-marquee/ */
-    @keyframes scroll {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(calc(-100% - var(--gap)));
-        }
+    /* Pause animation when reduced-motion is set */
+    @media (prefers-reduced-motion: reduce) {
+      animation-play-state: paused !important;
     }
+  }
+  /* Marquee Animation citation */
+  /* https://ryanmulligan.dev/blog/css-marquee/ */
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
 </style>

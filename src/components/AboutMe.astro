@@ -5,187 +5,187 @@ import TechStack from "./TechStack.astro";
 ---
 
 <div class="page-container">
-    <div class="container">
-        <div class="center" aria-hidden="true"></div>
-        <div class="content">
-            <div class="about-title">
-                <h1 class="about">ABOUT</h1>
-                <h1 class="title">ME</h1>
-            </div>
-            <div class="main">
-                <div class="image-container"></div>
-                <div class="text">
-                    <h1 class="subtitle">Software Developer from Japan</h1>
-                    <p>
-                        I am a bilingual software developer from Japan!
-                        <br />
-                        Graduate from University of Minnesota with double major in
-                        Computer Science and Entrepreneurship. I am passionate about
-                        leveraging both technical expertise and business acumen to
-                        drive data-driven insights and create innovative solutions.
-                    </p>
-                </div>
-            </div>
+  <div class="container">
+    <div class="center" aria-hidden="true"></div>
+    <div class="content">
+      <div class="about-title">
+        <h1 class="about">ABOUT</h1>
+        <h1 class="title">ME</h1>
+      </div>
+      <div class="main">
+        <div class="image-container"></div>
+        <div class="text">
+          <h1 class="subtitle">Software Developer from Japan</h1>
+          <p>
+            I am a bilingual software developer from Japan!
+            <br />
+            Graduate from University of Minnesota with double major in Computer Science
+            and Entrepreneurship. I am passionate about leveraging both technical
+            expertise and business acumen to drive data-driven insights and create
+            innovative solutions.
+          </p>
         </div>
-        <TechStack />
+      </div>
     </div>
+    <TechStack />
+  </div>
 </div>
 
 <style lang="scss">
-    @use "../styles/variables.scss";
-    @use "../styles/breakpoints.scss";
-    .page-container {
-        padding: variables.$container-padding 0;
-        @media (min-width: breakpoints.$tablets) {
-            min-height: calc(100dvh - variables.$margin-top);
-        }
+  @use "../styles/variables.scss";
+  @use "../styles/breakpoints.scss";
+  .page-container {
+    padding: variables.$container-padding 0;
+    @media (min-width: breakpoints.$tablets) {
+      min-height: calc(100dvh - variables.$margin-top);
     }
-    .container {
-        margin: auto;
-        @media (min-width: breakpoints.$largedevice) {
-            padding-top: 13rem;
-        }
+  }
+  .container {
+    margin: auto;
+    @media (min-width: breakpoints.$largedevice) {
+      padding-top: 13rem;
     }
-    .center {
-        position: fixed;
-        height: 100%;
-        left: 50%;
-        right: 50%;
-        /* border-left: solid #ff0000; */
+  }
+  .center {
+    position: fixed;
+    height: 100%;
+    left: 50%;
+    right: 50%;
+    /* border-left: solid #ff0000; */
+  }
+  .content {
+    display: grid;
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
+      grid-template-columns: auto;
+      justify-items: center;
+      grid-gap: 2rem;
+      text-align: center;
+      padding-left: 26px;
+      padding-right: 26px;
     }
-    .content {
-        display: grid;
-        @media (max-width: calc(breakpoints.$tablets - 1px)) {
-            grid-template-columns: auto;
-            justify-items: center;
-            grid-gap: 2rem;
-            text-align: center;
-            padding-left: 26px;
-            padding-right: 26px;
-        }
-        @media (min-width: breakpoints.$tablets) {
-            grid-template-rows: auto auto;
-            grid-gap: 2.5rem;
-            justify-items: center;
-            min-width: fit-content;
-            min-height: 65%;
-        }
-        @media (min-width: breakpoints.$desktop) {
-            grid-gap: 3rem;
-            grid-template-rows: 0.5fr auto;
-        }
-        @media (min-width: breakpoints.$largedevice) {
-            grid-gap: 4rem;
-        }
+    @media (min-width: breakpoints.$tablets) {
+      grid-template-rows: auto auto;
+      grid-gap: 2.5rem;
+      justify-items: center;
+      min-width: fit-content;
+      min-height: 65%;
     }
-    .about-title {
-        display: flex;
-        justify-content: center;
-        height: fit-content;
-        gap: 10px;
-        @media (min-width: breakpoints.$tablets) {
-            display: flex;
-            gap: 10px;
-        }
+    @media (min-width: breakpoints.$desktop) {
+      grid-gap: 3rem;
+      grid-template-rows: 0.5fr auto;
     }
-    .about {
-        color: var(--Charcoal, #5b6166);
-        font-size: 32px;
-        font-weight: 600;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 48px;
-        }
+    @media (min-width: breakpoints.$largedevice) {
+      grid-gap: 4rem;
     }
-    .title {
-        color: variables.$primary-color;
-        font-size: 32px;
-        font-weight: 600;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 48px;
-        }
+  }
+  .about-title {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    gap: 10px;
+    @media (min-width: breakpoints.$tablets) {
+      display: flex;
+      gap: 10px;
     }
-    .main {
-        display: grid;
-        @media (max-width: calc(breakpoints.$tablets - 1px)) {
-            grid-template-columns: auto;
-            justify-items: center;
-            grid-gap: 20px;
-        }
-        @media (min-width: breakpoints.$tablets) {
-            grid-template-columns: auto auto;
-            grid-gap: 8%;
-            padding-left: 8%;
-            padding-right: 5%;
-            margin-bottom: 5%;
-        }
-        @media (min-width: breakpoints.$desktop) {
-            grid-template-columns: auto auto;
-            grid-gap: 10%;
-            padding-left: 20%;
-            padding-right: 5%;
-        }
-        @media (min-width: breakpoints.$largedevice) {
-            min-height: 400px;
-        }
+  }
+  .about {
+    color: var(--Charcoal, #5b6166);
+    font-size: 32px;
+    font-weight: 600;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 48px;
     }
-    .image-container {
-        // border: 3px solid #5b6166;
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        background-image: url("/images/asahi-crop_2.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 50%;
-        width: 200px;
-        height: 200px;
-        @media (min-width: breakpoints.$tablets) {
-            min-width: 200px;
-            min-height: 200px;
-            max-width: 400px;
-            max-height: 400px;
-        }
-        @media (min-width: breakpoints.$desktop) {
-            min-width: 250px;
-            min-height: 250px;
-            max-width: 400px;
-            max-height: 400px;
-        }
-        @media (min-width: breakpoints.$largedevice) {
-            margin-top: 5%;
-            min-width: 400px;
-            min-height: 400px;
-            max-width: 500px;
-            max-height: 500px;
-        }
+  }
+  .title {
+    color: variables.$primary-color;
+    font-size: 32px;
+    font-weight: 600;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 48px;
     }
-    .text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        @media (min-width: breakpoints.$tablets) {
-            gap: 2rem;
-        }
+  }
+  .main {
+    display: grid;
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
+      grid-template-columns: auto;
+      justify-items: center;
+      grid-gap: 20px;
     }
-    .subtitle {
-        color: variables.$primary-color;
-        text-align: center;
-        /* H2 */
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 40px;
-            margin-bottom: 0;
-            text-align: left;
-        }
+    @media (min-width: breakpoints.$tablets) {
+      grid-template-columns: auto auto;
+      grid-gap: 8%;
+      padding-left: 8%;
+      padding-right: 5%;
+      margin-bottom: 5%;
     }
-    .text p {
-        color: variables.$secondary-color;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 32px;
-        @media (min-width: breakpoints.$tablets) {
-            text-align: left;
-        }
+    @media (min-width: breakpoints.$desktop) {
+      grid-template-columns: auto auto;
+      grid-gap: 10%;
+      padding-left: 20%;
+      padding-right: 5%;
     }
+    @media (min-width: breakpoints.$largedevice) {
+      min-height: 400px;
+    }
+  }
+  .image-container {
+    // border: 3px solid #5b6166;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background-image: url("/images/asahi-crop_2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    width: 200px;
+    height: 200px;
+    @media (min-width: breakpoints.$tablets) {
+      min-width: 200px;
+      min-height: 200px;
+      max-width: 400px;
+      max-height: 400px;
+    }
+    @media (min-width: breakpoints.$desktop) {
+      min-width: 250px;
+      min-height: 250px;
+      max-width: 400px;
+      max-height: 400px;
+    }
+    @media (min-width: breakpoints.$largedevice) {
+      margin-top: 5%;
+      min-width: 400px;
+      min-height: 400px;
+      max-width: 500px;
+      max-height: 500px;
+    }
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @media (min-width: breakpoints.$tablets) {
+      gap: 2rem;
+    }
+  }
+  .subtitle {
+    color: variables.$primary-color;
+    text-align: center;
+    /* H2 */
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 40px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+  .text p {
+    color: variables.$secondary-color;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+    @media (min-width: breakpoints.$tablets) {
+      text-align: left;
+    }
+  }
 </style>

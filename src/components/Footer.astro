@@ -6,140 +6,139 @@ import "../styles/global.css";
 ---
 
 <div class="container">
-    <div id="contact" class="footer-container">
-        <div class="row-container">
-            <div class="name-container">
-                <p class="by">Created by:</p>
-                <p class="name"><a href="#section1">Asahi (Ash) Kuroki</a></p>
-            </div>
-            <div class="icon-container">
-                <div class="icon">
-                    <a href="https://github.com/kurokiasahi222"
-                        ><Image src={github} alt="github icon" /></a
-                    >
-                </div>
-                <div class="icon">
-                    <a href="https://www.linkedin.com/in/asahi-kuroki/"
-                        ><Image src={linkedin} alt="linkedin icon" /></a
-                    >
-                </div>
-            </div>
+  <div id="contact" class="footer-container">
+    <div class="row-container">
+      <div class="name-container">
+        <p class="by">Created by:</p>
+        <p class="name"><a href="#section1">Asahi (Ash) Kuroki</a></p>
+      </div>
+      <div class="icon-container">
+        <div class="icon">
+          <a href="https://github.com/kurokiasahi222"
+            ><Image src={github} alt="github icon" /></a
+          >
         </div>
-        <div class="row-container">
-            <div class="name-container">
-                <p class="by design">Design by:</p>
-                <p class="name">
-                    <a href="https://www.kaylafpurney.com">Kayla Purney</a>
-                </p>
-            </div>
-            <div class="icon-container">
-                <div class="icon-hidden"></div>
-                <div class="icon">
-                    <a
-                        href="https://www.linkedin.com/in/kayla-purney-00027921b/"
-                        ><Image src={linkedin} alt="linkedin icon" />
-                    </a>
-                </div>
-            </div>
+        <div class="icon">
+          <a href="https://www.linkedin.com/in/asahi-kuroki/"
+            ><Image src={linkedin} alt="linkedin icon" /></a
+          >
         </div>
-        <div class="row-container">
-            <div class="name-container">
-                <p class="by design"></p>
-                <p class="name">
-                    <a href="">Sumin Choi</a>
-                </p>
-            </div>
-            <div class="icon-container">
-                <div class="icon-hidden"></div>
-                <div class="icon">
-                    <a href=""><Image src={linkedin} alt="linkedin icon" /> </a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row-container">
+      <div class="name-container">
+        <p class="by design">Design by:</p>
+        <p class="name">
+          <a href="https://www.kaylafpurney.com">Kayla Purney</a>
+        </p>
+      </div>
+      <div class="icon-container">
+        <div class="icon-hidden"></div>
+        <div class="icon">
+          <a href="https://www.linkedin.com/in/kayla-purney-00027921b/"
+            ><Image src={linkedin} alt="linkedin icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row-container">
+      <div class="name-container">
+        <p class="by design"></p>
+        <p class="name">
+          <a href="">Sumin Choi</a>
+        </p>
+      </div>
+      <div class="icon-container">
+        <div class="icon-hidden"></div>
+        <div class="icon">
+          <a href=""><Image src={linkedin} alt="linkedin icon" /> </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style lang="scss">
-    @use "../styles/variables.scss";
-    @use "../styles/breakpoints.scss";
-    .container {
-        min-width: 100%;
-        background: variables.$footer-color;
-        @media (min-width: breakpoints.$tablets) {
-            display: flex;
-            justify-content: center;
-        }
+  @use "../styles/variables.scss";
+  @use "../styles/breakpoints.scss";
+  .container {
+    min-width: 100%;
+    background: variables.$footer-color;
+    @media (min-width: breakpoints.$tablets) {
+      display: flex;
+      justify-content: center;
     }
-    .footer-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        @media (max-width: calc(breakpoints.$tablets - 1px)) {
-            padding: variables.$container-padding 15px;
-        }
-        @media (min-width: breakpoints.$tablets) {
-            justify-content: center;
-            max-width: fit-content;
-            padding: variables.$container-padding 20px;
-        }
+  }
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
+      padding: variables.$container-padding 15px;
     }
-    .row-container {
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: space-between;
-        @media (min-width: breakpoints.$tablets) {
-            max-width: fit-content;
-            justify-content: start;
-            gap: 5rem;
-        }
+    @media (min-width: breakpoints.$tablets) {
+      justify-content: center;
+      max-width: fit-content;
+      padding: variables.$container-padding 20px;
     }
-    .name-container {
-        display: flex;
-        gap: 3px;
-        @media (min-width: breakpoints.$tablets) {
-            width: 320px;
-            height: fit-content;
-        }
+  }
+  .row-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    @media (min-width: breakpoints.$tablets) {
+      max-width: fit-content;
+      justify-content: start;
+      gap: 5rem;
     }
-    .icon-container {
-        display: flex;
+  }
+  .name-container {
+    display: flex;
+    gap: 3px;
+    @media (min-width: breakpoints.$tablets) {
+      width: 320px;
+      height: fit-content;
     }
-    .icon-hidden {
-        width: 40px;
-        height: 40px;
+  }
+  .icon-container {
+    display: flex;
+  }
+  .icon-hidden {
+    width: 40px;
+    height: 40px;
+  }
+  .icon {
+    max-width: 40px;
+    max-height: 40px;
+    transition: all ease-in-out 0.3s;
+    &:hover {
+      transform: translateY(-0.3rem);
     }
-    .icon {
-        max-width: 40px;
-        max-height: 40px;
-        transition: all ease-in-out 0.3s;
-        &:hover {
-            transform: translateY(-0.3rem);
-        }
+  }
+  .by {
+    color: variables.$primary-color;
+    font-size: 18px;
+    font-weight: 500;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 20px;
     }
-    .by {
-        color: variables.$primary-color;
-        font-size: 18px;
-        font-weight: 500;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 20px;
-        }
+  }
+  .by.design {
+    min-width: 82px;
+    @media (min-width: breakpoints.$tablets) {
+      min-width: 91px;
     }
-    .by.design {
-        min-width: 82px;
-        @media (min-width: breakpoints.$tablets) {
-            min-width: 91px;
-        }
+  }
+  .name {
+    color: variables.$primary-color;
+    font-size: 18px;
+    font-weight: 700;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 20px;
+      cursor: pointer;
+      transition: all ease-in-out 0.3s;
+      &:hover {
+        transform: translateY(-0.3rem);
+      }
     }
-    .name {
-        color: variables.$primary-color;
-        font-size: 18px;
-        font-weight: 700;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 20px;
-            cursor: pointer;
-            transition: all ease-in-out 0.3s;
-            &:hover {
-                transform: translateY(-0.3rem);
-            }
-        }
-    }
+  }
 </style>

@@ -1,10 +1,10 @@
 ---
 type project = {
-    title: string;
-    description: string;
-    image?: string;
-    link?: string;
-    tags?: string[];
+  title: string;
+  description: string;
+  image?: string;
+  link?: string;
+  tags?: string[];
 };
 import "../styles/global.css";
 import PortfolioCard from "../components/PortfolioCard.astro";
@@ -29,80 +29,80 @@ import PortfolioCard from "../components/PortfolioCard.astro";
 ---
 
 <div id="projects">
-    <div class="center" aria-hidden="true"></div>
-    <div class="projects-container">
-        <h1 class="title">Projects</h1>
-        <div class="sub-title">
-            <p>Coming Soon ...</p>
-            <!-- <ul class="portfolio-container">
+  <div class="center" aria-hidden="true"></div>
+  <div class="projects-container">
+    <h1 class="title">Projects</h1>
+    <div class="sub-title">
+      <p>Coming Soon ...</p>
+      <!-- <ul class="portfolio-container">
                 {
                     portfolio.map((project, index) => (
                         <PortfolioCard project={project} index={index}/>
                     ))
                 }
             </ul> -->
-        </div>
     </div>
+  </div>
 </div>
 
 <style lang="scss">
-    @use "../styles/variables.scss";
-    @use "../styles/breakpoints.scss";
-    .center {
-        position: fixed;
-        height: 100%;
-        left: 50%;
-        right: 50%;
-    }
-    #projects {
-        margin: auto;
-        height: calc(100dvh - 4.375rem);
-        padding: variables.$container-padding 0;
-        @media (min-width: breakpoints.$tablets) {
-            height: calc(100dvh - 4.375rem);
-        }
-    }
-    .projects-container {
-        display: grid;
-        grid-template-rows: auto auto;
-        justify-items: center;
-        height: 100%;
-        @media (min-width: breakpoints.$tablets) {
-        }
-    }
-    .title {
-        color: variables.$primary-color;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 900;
-        line-height: normal;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 48px;
-        }
-    }
-    .sub-title {
-        height: 100%;
-        align-self: center;
-        @media (min-width: breakpoints.$tablets) {
-        }
-    }
-    .sub-title p {
-        color: variables.$primary-color;
-        /* H1 */
-        font-family: Lato;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        @media (min-width: breakpoints.$tablets) {
-            color: variables.$primary-color;
-            font-size: 40px;
-            font-weight: 900;
-        }
-    }
+  @use "../styles/variables.scss";
+  @use "../styles/breakpoints.scss";
+  .center {
+    position: fixed;
+    height: 100%;
+    left: 50%;
+    right: 50%;
+  }
+  #projects {
+    margin: auto;
+    height: calc(100dvh - 4.375rem);
+    padding: variables.$container-padding 0;
     @media (min-width: breakpoints.$tablets) {
-        .portfolio-container {
-            width: 100%;
-        }
+      height: calc(100dvh - 4.375rem);
     }
+  }
+  .projects-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    height: 100%;
+    @media (min-width: breakpoints.$tablets) {
+    }
+  }
+  .title {
+    color: variables.$primary-color;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    @media (min-width: breakpoints.$tablets) {
+      font-size: 48px;
+    }
+  }
+  .sub-title {
+    height: 100%;
+    align-self: center;
+    @media (min-width: breakpoints.$tablets) {
+    }
+  }
+  .sub-title p {
+    color: variables.$primary-color;
+    /* H1 */
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    @media (min-width: breakpoints.$tablets) {
+      color: variables.$primary-color;
+      font-size: 40px;
+      font-weight: 900;
+    }
+  }
+  @media (min-width: breakpoints.$tablets) {
+    .portfolio-container {
+      width: 100%;
+    }
+  }
 </style>

@@ -3,66 +3,66 @@ import Checkitout from "../components/Checkitout.astro";
 import { Image } from "astro:assets";
 import drone from "../../public/images/drone.jpg";
 type project = {
-    title: string;
-    description: string;
-    image?: string;
-    link?: string;
-    tags?: string[];
+  title: string;
+  description: string;
+  image?: string;
+  link?: string;
+  tags?: string[];
 };
 const { project: project } = Astro.props;
 const { index: index } = Astro.props;
 ---
 
 <div class="card-container">
-    <Checkitout />    
-    <!-- if the index is even -->
-    {
-        index % 2 == 0 && (
-            <div class="card">
-                <div class="card-information">
-                    <h1 class="title">{project.title}</h1>
-                    <p class="description">{project.description}</p>
-                </div>
-                <div class="image-container">
-                    <Image src={drone} alt="project image" height="285" />
-                </div>
-            </div>
-        )
-    }
-    <!-- if the index is odd -->
-    {
-        index % 2 == 1 && (
-            <div class="card">
-                <div class="image-container">
-                    <Image src={drone} alt="project image" height="285" />
-                </div>
-                <div class="card-information">
-                    <h1 class="title">{project.title}</h1>
-                    <p class="description">{project.description}</p>
-                </div>
-            </div>
-        )
-    }
+  <Checkitout />
+  <!-- if the index is even -->
+  {
+    index % 2 == 0 && (
+      <div class="card">
+        <div class="card-information">
+          <h1 class="title">{project.title}</h1>
+          <p class="description">{project.description}</p>
+        </div>
+        <div class="image-container">
+          <Image src={drone} alt="project image" height="285" />
+        </div>
+      </div>
+    )
+  }
+  <!-- if the index is odd -->
+  {
+    index % 2 == 1 && (
+      <div class="card">
+        <div class="image-container">
+          <Image src={drone} alt="project image" height="285" />
+        </div>
+        <div class="card-information">
+          <h1 class="title">{project.title}</h1>
+          <p class="description">{project.description}</p>
+        </div>
+      </div>
+    )
+  }
 </div>
 
 <style>
-    .card-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 65px;
-    }
-    .card {
-        display: flex;
-    }
-    .card-information {
-        width: 50%;
-    }
-    .title {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-    @media (min-width: breakpoints.$tablets) {
-    }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 65px;
+  }
+  .card {
+    display: flex;
+  }
+  .card-information {
+    width: 50%;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  @media (min-width: breakpoints.$tablets) {
+  }
 </style>
