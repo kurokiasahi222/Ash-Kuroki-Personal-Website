@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import "../styles/global.css";
 import TechStack from "./TechStack.astro";
 ---
+
 <div class="page-container">
     <div class="container">
         <div class="center" aria-hidden="true"></div>
@@ -18,10 +19,10 @@ import TechStack from "./TechStack.astro";
                     <p>
                         I am a bilingual software developer from Japan!
                         <br />
-                        Graduate from University of Minnesota with double major in Computer
-                        Science and Entrepreneurship. I am passionate about leveraging
-                        both technical expertise and business acumen to drive data-driven
-                        insights and create innovative solutions.
+                        Graduate from University of Minnesota with double major in
+                        Computer Science and Entrepreneurship. I am passionate about
+                        leveraging both technical expertise and business acumen to
+                        drive data-driven insights and create innovative solutions.
                     </p>
                 </div>
             </div>
@@ -29,8 +30,6 @@ import TechStack from "./TechStack.astro";
         <TechStack />
     </div>
 </div>
-
-
 
 <style lang="scss">
     @use "../styles/variables.scss";
@@ -42,7 +41,10 @@ import TechStack from "./TechStack.astro";
     }
     .container {
         margin: auto;
-        padding-top: 13rem; 
+        @media (min-width: breakpoints.$largedevice) {
+            padding-top: 13rem;
+        }
+        
     }
     .center {
         position: fixed;
