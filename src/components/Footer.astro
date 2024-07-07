@@ -27,20 +27,32 @@ import "../styles/global.css";
         </div>
         <div class="row-container">
             <div class="name-container">
-                <p class="by">Design by:</p>
+                <p class="by design">Design by:</p>
                 <p class="name">
                     <a href="https://www.kaylafpurney.com">Kayla Purney</a>
                 </p>
             </div>
             <div class="icon-container">
-                <div class="icon-hidden">
-                   
-                </div>
+                <div class="icon-hidden"></div>
                 <div class="icon">
                     <a
                         href="https://www.linkedin.com/in/kayla-purney-00027921b/"
                         ><Image src={linkedin} alt="linkedin icon" />
                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="row-container">
+            <div class="name-container">
+                <p class="by design"></p>
+                <p class="name">
+                    <a href="">Sumin Choi</a>
+                </p>
+            </div>
+            <div class="icon-container">
+                <div class="icon-hidden"></div>
+                <div class="icon">
+                    <a href=""><Image src={linkedin} alt="linkedin icon" /> </a>
                 </div>
             </div>
         </div>
@@ -59,13 +71,15 @@ import "../styles/global.css";
         }
     }
     .footer-container {
-        padding: 15px;
         display: grid;
         grid-template-columns: 1fr;
+        @media (max-width: calc(breakpoints.$tablets - 1px)) {
+            padding: variables.$container-padding 15px;
+        }
         @media (min-width: breakpoints.$tablets) {
             justify-content: center;
             max-width: fit-content;
-            padding: 20px;
+            padding: variables.$container-padding 20px;
         }
     }
     .row-container {
@@ -82,7 +96,7 @@ import "../styles/global.css";
         display: flex;
         gap: 3px;
         @media (min-width: breakpoints.$tablets) {
-            width: 280px;
+            width: 320px;
             height: fit-content;
         }
     }
@@ -101,28 +115,30 @@ import "../styles/global.css";
             transform: translateY(-0.3rem);
         }
     }
-
     .by {
         color: variables.$primary-color;
         font-size: 18px;
-        font-style: normal;
         font-weight: 500;
-        line-height: normal;
         @media (min-width: breakpoints.$tablets) {
             font-size: 20px;
+        }
+    }
+    .by.design {
+        min-width: 82px;
+        @media (min-width: breakpoints.$tablets) {
+            min-width: 91px;
         }
     }
     .name {
         color: variables.$primary-color;
         font-size: 18px;
         font-weight: 700;
-        &:hover {
-            font-size: 20px;
-        }
         @media (min-width: breakpoints.$tablets) {
             font-size: 20px;
+            cursor: pointer;
+            transition: all ease-in-out 0.3s;
             &:hover {
-                font-size: 22px;
+                transform: translateY(-0.3rem);
             }
         }
     }

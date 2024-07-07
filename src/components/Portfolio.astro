@@ -57,6 +57,7 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     #projects {
         margin: auto;
         height: calc(100dvh - 4.375rem);
+        padding: variables.$container-padding 0;
         @media (min-width: breakpoints.$tablets) {
             height: calc(100dvh - 4.375rem);
         }
@@ -66,7 +67,6 @@ import PortfolioCard from "../components/PortfolioCard.astro";
         grid-template-rows: auto auto;
         justify-items: center;
         height: 100%;
-        padding-top: 20px;
         @media (min-width: breakpoints.$tablets) {
         }
     }
@@ -84,7 +84,6 @@ import PortfolioCard from "../components/PortfolioCard.astro";
         height: 100%;
         align-self: center;
         @media (min-width: breakpoints.$tablets) {
-
         }
     }
     .sub-title p {

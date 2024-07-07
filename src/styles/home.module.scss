@@ -16,6 +16,7 @@
 .container {
     margin: auto auto;
     max-width: fit-content;
+    padding-bottom: variables.$container-padding;
     @media (min-width: breakpoints.$tablets) {
         min-height: calc(100dvh);
     }

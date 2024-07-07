@@ -35,6 +35,7 @@ import TechStack from "./TechStack.astro";
     @use "../styles/variables.scss";
     @use "../styles/breakpoints.scss";
     .page-container {
+        padding: variables.$container-padding 0;
         @media (min-width: breakpoints.$tablets) {
             min-height: calc(100dvh - variables.$margin-top);
         }
@@ -44,7 +45,6 @@ import TechStack from "./TechStack.astro";
         @media (min-width: breakpoints.$largedevice) {
             padding-top: 13rem;
         }
-        
     }
     .center {
         position: fixed;
@@ -58,23 +58,24 @@ import TechStack from "./TechStack.astro";
         @media (max-width: calc(breakpoints.$tablets - 1px)) {
             grid-template-columns: auto;
             justify-items: center;
-            grid-gap: 10px;
+            grid-gap: 2rem;
             text-align: center;
             padding-left: 26px;
             padding-right: 26px;
         }
         @media (min-width: breakpoints.$tablets) {
             grid-template-rows: auto auto;
-            grid-gap: 5%;
+            grid-gap: 2.5rem;
             justify-items: center;
             min-width: fit-content;
             min-height: 65%;
         }
         @media (min-width: breakpoints.$desktop) {
+            grid-gap: 3rem;
             grid-template-rows: 0.5fr auto;
         }
         @media (min-width: breakpoints.$largedevice) {
-            grid-gap: 10%;
+            grid-gap: 4rem;
         }
     }
     .about-title {
@@ -82,11 +83,9 @@ import TechStack from "./TechStack.astro";
         justify-content: center;
         height: fit-content;
         gap: 10px;
-        padding-top: 20px;
         @media (min-width: breakpoints.$tablets) {
             display: flex;
             gap: 10px;
-            padding-top: 30px;
         }
     }
     .about {

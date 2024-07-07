@@ -113,16 +113,12 @@ import "../styles/global.css";
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
+        transition: all ease-in-out 0.3s;
         @media (min-width: breakpoints.$tablets) {
             font-size: 20px;
         }
-    }
-    .navigation:hover {
-        font-size: 18px;
-        font-weight: bold;
-        @media (min-width: breakpoints.$tablets) {
-            font-size: 22px;
-            font-weight: bold;
+        &:hover {
+            transform: translateY(-0.3rem);
         }
     }
     #hambergerClosed {
