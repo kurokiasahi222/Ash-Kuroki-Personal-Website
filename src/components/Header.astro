@@ -66,7 +66,6 @@ import "../styles/global.css";
       // close the menu
       navigations.forEach((element) => {
         element.addEventListener("click", () => {
-          console.log("hello");
           menu.classList.remove("show");
           hamberger.classList.toggle("open");
         });
@@ -77,11 +76,13 @@ import "../styles/global.css";
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
+  // @use "../styles/animations.scss";
   header {
     background: variables.$header-color;
     /* DROP SHADOW */
     box-shadow: 0px 4px 4px 0px #b6ced0;
     height: variables.$margin-top;
+    max-width: 100%;
   }
   nav {
     height: 100%;
@@ -101,6 +102,7 @@ import "../styles/global.css";
     @media (min-width: breakpoints.$tablets) {
       display: none;
     }
+    // animation: fade-in-top 0.6s;
   }
   .navigation {
     color: variables.$secondary-color;
@@ -130,6 +132,7 @@ import "../styles/global.css";
       min-height: 40px;
     }
   }
+
   /* phone only */
   @media (max-width: calc(breakpoints.$tablets - 1px)) {
     /* reference for slide-in navigation */
@@ -238,6 +241,7 @@ import "../styles/global.css";
       justify-content: space-between;
       align-items: center;
       height: 100%;
+      animation: fade-in-top 0.5s;
     }
     .main-logo-desk {
       color: variables.$primary-color;
@@ -259,19 +263,6 @@ import "../styles/global.css";
     .icon-container {
       display: flex;
       gap: 0.5rem;
-    }
-    .menu {
-      animation: fade-in-top 0.5s;
-      @keyframes fade-in-top {
-        0% {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
     }
     .img {
       min-width: 40px;

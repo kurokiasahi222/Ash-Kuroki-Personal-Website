@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import "../styles/global.css";
 import TechStack from "./TechStack.astro";
 ---
@@ -8,12 +7,12 @@ import TechStack from "./TechStack.astro";
   <div class="container">
     <div class="center" aria-hidden="true"></div>
     <div class="content">
-      <div class="about-title">
+      <div class="about-title animation left">
         <h1 class="about">ABOUT</h1>
         <h1 class="title">ME</h1>
       </div>
       <div class="main">
-        <div class="image-container"></div>
+        <div class="image-container animation right"></div>
         <div class="text">
           <h1 class="subtitle">Software Developer from Japan</h1>
           <p>
@@ -30,10 +29,11 @@ import TechStack from "./TechStack.astro";
     <TechStack />
   </div>
 </div>
-
+<script defer="true" src="../components/animation.js"/>
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
+  @use "../styles/animations.scss";
   .page-container {
     padding: variables.$container-padding 0;
     @media (min-width: breakpoints.$tablets) {
