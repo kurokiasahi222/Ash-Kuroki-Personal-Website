@@ -1,6 +1,7 @@
 import React from "react";
 import Typed from "typed.js";
 import styles from "../styles/home.module.scss";
+import 'animate.css';
 
 export default function Home() {
   // Create reference to store the DOM element containing the animation
@@ -58,7 +59,7 @@ export default function Home() {
           </div>
           <div className={styles.imageContainer}>
             <img
-              className={styles.ashImg}
+              className={`${styles.ashImg} animate__flipInY`}
               src="../../images/asahi-headshot.webp"
               alt="asahi-headshot"
             />
