@@ -1,23 +1,33 @@
 // SCSS function to generate the keyframes
 @use "sass:string";
 
-.animation.left {
+.left.animation {
   opacity: 0;
   filter: blur(5px);
   transform: translateX(-100%);
   transition: all 0.8s;
+  &.intersect {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+    }
 }
-.right {
+.right.animation {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(100%);
     transition: all 0.8s;
+    &.intersect {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+      }
 }
-.animation.intersect {
-  opacity: 1; 
-  filter: blur(0); 
-  transform: translateX(0);
-}
+// .intersect {
+//   opacity: 1; 
+//   filter: blur(0); 
+//   transform: translateX(0);
+// }
 
 @media(prefers-reduced-motion) {
   .hidden-left {
