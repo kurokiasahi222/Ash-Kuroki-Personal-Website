@@ -1,6 +1,7 @@
 @use "./breakpoints.scss";
 @use "./variables.scss";
 @import "./global.css";
+@import '../../node_modules/animate.css';
 
 @keyframes fade-in-bottom {
   0% {
@@ -13,14 +14,42 @@
     transform: translateY(0);
   }
 }
+.animate__flipInY {
+  animation: animate__flipInY;
+}
 .container {
-  margin: auto auto;
-  max-width: fit-content;
   padding-bottom: variables.$container-padding;
   @media (min-width: breakpoints.$tablets) {
     min-height: calc(100dvh);
   }
 }
+.wave {
+  display: block;
+  position: relative;
+  width: 100dvw;
+  height: 22px;
+  background: url("/images/wave.png") repeat-x;
+  background-size: auto 22px;
+  z-index: 1;
+  bottom: -22px;
+  content: "";
+}
+// .container::after {
+//   // display: block;
+//   // position: absolute;
+//   z-index: 1;
+//   width: 100dvw;
+//   // background: url(https://kuroki-ent.com/images/top_info_wave.png) repeat-x;
+//   background: url("/images/wave.png") repeat-x;
+//   background-size: auto 22px;
+//   bottom: -3rem;
+//   height: 22px;
+//   content: "";
+//   @media (min-width: breakpoints.$tablets) {
+//     height: 44px;
+//     bottom: -82px;
+//   }
+// }
 .centerLine {
   position: fixed;
   height: 100%;
@@ -36,6 +65,8 @@
   padding-left: 30px;
   padding-right: 30px;
   min-height: fit-content;
+  width: fit-content;
+  margin: auto;
   @media (min-width: breakpoints.$tablets) {
     grid-template-columns: auto 1fr;
     grid-gap: 2rem;
@@ -75,10 +106,18 @@
   }
 }
 .title {
+  display: flex;
+  justify-content: center;
   color: variables.$primary-color;
   font-size: 32px;
   font-weight: 900;
+  min-height: 50px; 
+  max-height: 90px;
+  @media (max-width: 375px) {
+    min-height: 90px;
+  }
   @media (min-width: breakpoints.$tablets) {
+    justify-content: flex-start;
     font-size: 64px;
     min-height: 160px;
     max-width: 300px;
@@ -132,7 +171,7 @@ h1 {
   }
   @media (min-width: breakpoints.$tablets) {
     width: 300px;
-    height: 300px;
+    height: 300px; 
   }
   @media (min-width: breakpoints.$desktop) {
     min-width: 400px;
@@ -147,7 +186,8 @@ h1 {
   width: 200px;
   height: 200px;
   object-fit: contain;
-  animation: fade-in-bottom 0.5s;
+  // animation: flipInYzoomIn 0.8s;
+  animation: zoomIn 0.8s;
 
   @media (min-width: breakpoints.$tablets) {
     width: 300px;

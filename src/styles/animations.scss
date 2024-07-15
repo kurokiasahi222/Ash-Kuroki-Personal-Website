@@ -1,26 +1,48 @@
 // SCSS function to generate the keyframes
 @use "sass:string";
 
-@function fadeIn($n) {
-  // @keyframes fade-in {
-  //     0% {
-  //         opacity: 0;
-  //         transform: translateY(#{$n});
-  //     }
-  //     100% {
-  //         opacity: 1;
-  //         transform: translateY(0);
-  //     }
-  // }
-  @return string.unquote(
-    "@keyframes fade-in {0% {opacity: 0;transform: translateY(#{$n});}100% {opacity: 1; transform: translateY(0);}}"
-  );
+.left.animation {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 0.8s;
+  &.intersect {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+    }
+}
+.right.animation {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 0.8s;
+    &.intersect {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+      }
+}
+// .intersect {
+//   opacity: 1; 
+//   filter: blur(0); 
+//   transform: translateX(0);
+// }
+
+@media(prefers-reduced-motion) {
+  .hidden-left {
+    transition: 0;
+  }
 }
 
-// Mixin to include the keyframes and animation properties
-@mixin apply-fade-in($n, $duration: 0.5s) {
-  // Inject the keyframes into the CSS
-  // #{fadeIn($n)};
-  // Apply the animation
-  animation: fadeIn($n) $duration ease-in-out;
+@keyframes fade-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

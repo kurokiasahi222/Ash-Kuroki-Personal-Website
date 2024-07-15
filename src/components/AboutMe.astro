@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import "../styles/global.css";
 import TechStack from "./TechStack.astro";
 ---
@@ -8,12 +7,15 @@ import TechStack from "./TechStack.astro";
   <div class="container">
     <div class="center" aria-hidden="true"></div>
     <div class="content">
-      <div class="about-title">
+      <div class="about-title left animation">
         <h1 class="about">ABOUT</h1>
         <h1 class="title">ME</h1>
       </div>
       <div class="main">
-        <div class="image-container"></div>
+        <div class="image-container animation">
+          <div class="image left animation"></div>
+        </div>
+
         <div class="text">
           <h1 class="subtitle">Software Developer from Japan</h1>
           <p>
@@ -30,14 +32,30 @@ import TechStack from "./TechStack.astro";
     <TechStack />
   </div>
 </div>
-
+<script defer="true" src="../components/animation.js"></script>
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
+  @use "../styles/animations.scss";
   .page-container {
     padding: variables.$container-padding 0;
+
     @media (min-width: breakpoints.$tablets) {
       min-height: calc(100dvh - variables.$margin-top);
+    }
+    &::after {
+      display: block;
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 44px;
+      background: url("/images/wave2.png") repeat-x;
+      content: "";
+      @media (max-width: breakpoints.$tablets) {
+        bottom: -3.8rem;
+        height: 22px;
+        background-size: auto 22px;
+      }
     }
   }
   .container {
@@ -83,6 +101,7 @@ import TechStack from "./TechStack.astro";
     justify-content: center;
     height: fit-content;
     gap: 10px;
+    overflow: hidden; /* Hide overflowing content */
     @media (min-width: breakpoints.$tablets) {
       display: flex;
       gap: 10px;
@@ -106,6 +125,7 @@ import TechStack from "./TechStack.astro";
   }
   .main {
     display: grid;
+
     @media (max-width: calc(breakpoints.$tablets - 1px)) {
       grid-template-columns: auto;
       justify-items: center;
@@ -129,6 +149,12 @@ import TechStack from "./TechStack.astro";
     }
   }
   .image-container {
+    overflow: hidden; /* Hide overflowing content */
+    &.intersect {
+      overflow: visible;
+    }
+  }
+  .image {
     // border: 3px solid #5b6166;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     background-image: url("/images/asahi-crop_2.png");

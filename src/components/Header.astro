@@ -66,7 +66,6 @@ import "../styles/global.css";
       // close the menu
       navigations.forEach((element) => {
         element.addEventListener("click", () => {
-          console.log("hello");
           menu.classList.remove("show");
           hamberger.classList.toggle("open");
         });
@@ -77,6 +76,7 @@ import "../styles/global.css";
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
+  // @use "../styles/animations.scss";
   header {
     background: variables.$header-color;
     /* DROP SHADOW */
@@ -101,6 +101,7 @@ import "../styles/global.css";
     @media (min-width: breakpoints.$tablets) {
       display: none;
     }
+    // animation: fade-in-top 0.6s;
   }
   .navigation {
     color: variables.$secondary-color;
@@ -130,11 +131,13 @@ import "../styles/global.css";
       min-height: 40px;
     }
   }
+
   /* phone only */
   @media (max-width: calc(breakpoints.$tablets - 1px)) {
     /* reference for slide-in navigation */
     /* https://www.youtube.com/watch?v=OFKBep95lb4&t=469s&ab_channel=TylerPotts & ChatGPT*/
     .menu {
+      position: relative;
       opacity: 0;
       visibility: hidden;
       transition:
@@ -220,6 +223,9 @@ import "../styles/global.css";
       align-items: flex-start;
       gap: 20px;
       padding: 8rem 2rem;
+      @media (orientation: landscape) {
+        padding: 6rem 2rem;
+      }
     }
     .icon {
       min-width: 30px;
@@ -230,6 +236,9 @@ import "../styles/global.css";
       display: flex;
       flex-direction: row;
       gap: 0.5rem;
+      @media (orientation: landscape) {
+        padding-top: 0;
+      }
     }
   }
   @media (min-width: breakpoints.$tablets) {
@@ -238,6 +247,7 @@ import "../styles/global.css";
       justify-content: space-between;
       align-items: center;
       height: 100%;
+      animation: fade-in-top 0.5s;
     }
     .main-logo-desk {
       color: variables.$primary-color;
@@ -259,19 +269,6 @@ import "../styles/global.css";
     .icon-container {
       display: flex;
       gap: 0.5rem;
-    }
-    .menu {
-      animation: fade-in-top 0.5s;
-      @keyframes fade-in-top {
-        0% {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
     }
     .img {
       min-width: 40px;
