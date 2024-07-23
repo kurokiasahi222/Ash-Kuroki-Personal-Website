@@ -7,29 +7,29 @@
   transform: translateX(-100%);
   transition: all 0.8s;
   &.intersect {
-      opacity: 1;
-      filter: blur(0);
-      transform: translateX(0);
-    }
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
 }
 .right.animation {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(100%);
-    transition: all 0.8s;
-    &.intersect {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateX(0);
-      }
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(100%);
+  transition: all 0.8s;
+  &.intersect {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
 }
 // .intersect {
-//   opacity: 1; 
-//   filter: blur(0); 
+//   opacity: 1;
+//   filter: blur(0);
 //   transform: translateX(0);
 // }
 
-@media(prefers-reduced-motion) {
+@media (prefers-reduced-motion) {
   .hidden-left {
     transition: 0;
   }

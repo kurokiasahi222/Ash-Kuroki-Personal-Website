@@ -5,8 +5,8 @@ import github from "../../public/images/github.png";
 import "../styles/global.css";
 ---
 
-<div class="container">
-  <div id="contact" class="footer-container">
+<div class="page-container">
+  <div id="contact" class="container">
     <div class="row-container">
       <div class="name-container">
         <p class="by">Created by:</p>
@@ -15,12 +15,12 @@ import "../styles/global.css";
       <div class="icon-container">
         <div class="icon">
           <a href="https://github.com/kurokiasahi222"
-            ><Image src={github} alt="github icon" /></a
+            ><Image src={github} alt="github icon" loading="lazy" /></a
           >
         </div>
         <div class="icon">
           <a href="https://www.linkedin.com/in/asahi-kuroki/"
-            ><Image src={linkedin} alt="linkedin icon" /></a
+            ><Image src={linkedin} alt="linkedin icon" loading="lazy" /></a
           >
         </div>
       </div>
@@ -61,7 +61,7 @@ import "../styles/global.css";
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
-  .container {
+  .page-container {
     min-width: 100%;
     background: variables.$footer-color;
     @media (min-width: breakpoints.$tablets) {
@@ -69,7 +69,7 @@ import "../styles/global.css";
       justify-content: center;
     }
   }
-  .footer-container {
+  .container {
     display: grid;
     grid-template-columns: 1fr;
     @media (max-width: calc(breakpoints.$tablets - 1px)) {
@@ -79,6 +79,12 @@ import "../styles/global.css";
       justify-content: center;
       max-width: fit-content;
       padding: variables.$container-padding 20px;
+    }
+    @media (min-width: breakpoints.$desktop) {
+      padding-top: variables.$container-padding + 1rem;
+    }
+    @media (min-width: breakpoints.$largedevice) {
+      padding-top: variables.$container-padding + 2rem;
     }
   }
   .row-container {
