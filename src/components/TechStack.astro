@@ -152,8 +152,8 @@ import js from "../../public/images/js.png";
 </div>
 
 <style lang="scss">
-  @use "../styles/variables.scss";
-  @use "../styles/breakpoints.scss";
+  @use "../styles/variables.scss" as variables;
+  @use "../styles/breakpoints.scss" as breakpoints;
   .techStackContainer {
     margin-top: 2rem;
     @media (min-width: breakpoints.$tablets) {
@@ -167,15 +167,22 @@ import js from "../../public/images/js.png";
     }
   }
   .marqueeContainer {
-    --gap: 1rem;
+    --gapPhone: 2.5rem;
+    --gapTablets: 1rem;
     position: relative;
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: 2.5rem;
-    margin-top: var(--gap);
+    gap: var(--gapPhone);
+    margin-top: var(--gapPhone);
+    /* Pause on hover */
+    &:hover {
+      .icons {
+        animation-play-state: paused;
+      }
+    }
     @media (min-width: breakpoints.$tablets) {
-      gap: var(--gap);
+      gap: var(--gapTablets);
     }
   }
   .title {
@@ -192,11 +199,12 @@ import js from "../../public/images/js.png";
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 2.5rem;
+    gap: var(--gapPhone);
     min-width: 100%;
-    animation: scroll 10s linear infinite;
+    animation: scrollPhone 10s linear infinite;
     @media (min-width: breakpoints.$tablets) {
-      gap: var(--gap);
+      animation: scrollTablets 10s linear infinite;
+      gap: var(--gapTablets);
     }
     /* Pause animation when reduced-motion is set */
     @media (prefers-reduced-motion: reduce) {
@@ -205,12 +213,20 @@ import js from "../../public/images/js.png";
   }
   /* Marquee Animation citation */
   /* https://ryanmulligan.dev/blog/css-marquee/ */
-  @keyframes scroll {
+  @keyframes scrollPhone {
     from {
       transform: translateX(0);
     }
     to {
-      transform: translateX(calc(-100% - var(--gap)));
+      transform: translateX(calc(-100% - var(--gapPhone)));
+    }
+  }
+  @keyframes scrollTablets {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gapTablets)));
     }
   }
 </style>
