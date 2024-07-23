@@ -7,6 +7,7 @@ type project = {
   tags?: string[];
 };
 import "../styles/global.css";
+import { Links } from "../components/link";
 import PortfolioCard from "../components/PortfolioCard.astro";
 // const portfolio: project[] = [
 //     {
@@ -35,10 +36,8 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     <div class="sub-title">
       <p>Coming Soon ...</p>
       <p>
-        Please check out my <a
-          class="link"
-          href='https://github.com/kurokiasahi222'>Github</a
-        > for now
+        Please check out my <a class="link" href={Links.asahiGithub}>Github</a> for
+        now
       </p>
       <!-- <ul class="portfolio-container">
                 {
@@ -123,10 +122,8 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     &:hover {
       font-weight: 600;
       cursor: pointer;
+    }
   }
-  }
-
-  
 
   .wave {
     display: block;
