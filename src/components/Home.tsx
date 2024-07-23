@@ -1,15 +1,15 @@
 import React from "react";
 import Typed from "typed.js";
 import styles from "../styles/home.module.scss";
-import 'animate.css';
+import "animate.css";
 
 export default function Home() {
   // Create reference to store the DOM element containing the animation
   const el = React.useRef(null);
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      // strings: ['Full Stack Developer', 'AI Enginner', 'Software Developer'],
-      strings: ["Software Developer"],
+      strings: ['Full Stack Developer', 'AI Enginner', 'Software Developer'],
+      // strings: ["Software Developer"],
       typeSpeed: 80,
       backSpeed: 10,
       startDelay: 1000,
@@ -34,7 +34,11 @@ export default function Home() {
             </div>
             <span className={styles.title} ref={el} />
             <p className={styles.description}>
-              I'm a <b>Full Stack Developer </b>based in Minneapolis. <br />
+              I'm a <b>Full Stack Developer </b>based in Minneapolis. 
+              <br />
+              Currently a <b>Software Engineering Fellow at Headstarter AI.</b>
+              <br />
+              <br />
               I love working in all aspect of tech stack from frontend to
               backend to AI.
               <br />

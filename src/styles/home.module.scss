@@ -1,7 +1,7 @@
 @use "./breakpoints.scss";
 @use "./variables.scss";
 @import "./global.css";
-@import '../../node_modules/animate.css';
+@import "../../node_modules/animate.css";
 
 @keyframes fade-in-bottom {
   0% {
@@ -111,7 +111,7 @@
   color: variables.$primary-color;
   font-size: 32px;
   font-weight: 900;
-  min-height: 50px; 
+  min-height: 50px;
   max-height: 90px;
   @media (max-width: 375px) {
     min-height: 90px;
@@ -171,7 +171,7 @@ h1 {
   }
   @media (min-width: breakpoints.$tablets) {
     width: 300px;
-    height: 300px; 
+    height: 300px;
   }
   @media (min-width: breakpoints.$desktop) {
     min-width: 400px;

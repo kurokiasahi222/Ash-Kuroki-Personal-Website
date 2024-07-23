@@ -29,11 +29,17 @@ import PortfolioCard from "../components/PortfolioCard.astro";
 ---
 
 <div id="projects">
-  <div class="center" aria-hidden="true"></div>
-  <div class="projects-container">
+  <div class="container">
+    <!-- <div class="center" aria-hidden="true"></div> -->
     <h1 class="title">Projects</h1>
     <div class="sub-title">
       <p>Coming Soon ...</p>
+      <p>
+        Please check out my <a
+          class="link"
+          href='https://github.com/kurokiasahi222'>Github</a
+        > for now
+      </p>
       <!-- <ul class="portfolio-container">
                 {
                     portfolio.map((project, index) => (
@@ -43,6 +49,7 @@ import PortfolioCard from "../components/PortfolioCard.astro";
             </ul> -->
     </div>
   </div>
+  <div class="wave"></div>
 </div>
 
 <style lang="scss">
@@ -55,32 +62,43 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     right: 50%;
   }
   #projects {
-    margin: auto;
     height: calc(100dvh - 4.375rem);
     padding: variables.$container-padding 0;
     @media (min-width: breakpoints.$tablets) {
       height: calc(100dvh - 4.375rem);
     }
   }
-  .projects-container {
+  .container {
+    margin: auto;
     display: grid;
     grid-template-rows: auto auto;
     justify-items: center;
     height: 100%;
     @media (min-width: breakpoints.$tablets) {
+      width: 100%;
+    }
+    @media (min-width: breakpoints.$desktop) {
+      padding-top: 2rem;
+    }
+    @media (min-width: breakpoints.$largedevice) {
+      padding-top: 3rem;
     }
   }
   .title {
     color: variables.$primary-color;
     font-size: 32px;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 600;
     line-height: normal;
     @media (min-width: breakpoints.$tablets) {
       font-size: 48px;
     }
   }
   .sub-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     height: 100%;
     align-self: center;
     @media (min-width: breakpoints.$tablets) {
@@ -91,18 +109,34 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     /* H1 */
     font-family: Lato;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
     @media (min-width: breakpoints.$tablets) {
+      font-size: 25px;
+      font-weight: 500;
+    }
+    @media (min-width: breakpoints.$desktop) {
       color: variables.$primary-color;
-      font-size: 40px;
-      font-weight: 900;
+      font-size: 30px;
     }
   }
-  @media (min-width: breakpoints.$tablets) {
-    .portfolio-container {
-      width: 100%;
-    }
+  .link {
+    text-decoration: underline;
+    &:hover {
+      font-weight: 600;
+      cursor: pointer;
+  }
+  }
+
+  
+
+  .wave {
+    display: block;
+    position: relative;
+    width: 100dvw;
+    height: 22px;
+    background: url("/images/wave.png") repeat-x;
+    background-size: auto 22px;
+    z-index: 1;
+    bottom: -48px;
+    content: "";
   }
 </style>
