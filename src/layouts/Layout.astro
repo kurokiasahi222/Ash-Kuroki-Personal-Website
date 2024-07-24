@@ -71,16 +71,16 @@ const { title } = Astro.props;
     <div id="header">
       <Header />
     </div>
-    <div id="home">
+    <div id="home" class="section">
       <Home client:load />
     </div>
-    <div id="about">
+    <div id="about" class="section">
       <AboutMe />
     </div>
-    <div id="projects">
+    <div id="projects" class="section">
       <Portfolio />
     </div>
-    <div id="footer">
+    <div id="footer" class="section">
       <Footer />
     </div>
   </body>
@@ -98,6 +98,11 @@ const { title } = Astro.props;
     left: 0;
     width: 100%;
     z-index: 100;
+  }
+  /* Fix for preventing sticky headers problem:  */
+  /* https://gomakethings.com/how-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header-with-one-line-of-css/ */
+  .section {
+    scroll-margin-top: 4rem;
   }
   /* ["#f9f9f9", "#E6F3F4", "#f9f9f9", */
   #home {
