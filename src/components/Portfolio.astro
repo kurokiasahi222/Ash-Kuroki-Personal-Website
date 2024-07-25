@@ -32,7 +32,7 @@ import PortfolioCard from "../components/PortfolioCard.astro";
 <div id="projects">
   <div class="container">
     <!-- <div class="center" aria-hidden="true"></div> -->
-    <h1 class="title">Projects</h1>
+    <h1 class="title left animation">Projects</h1>
     <div class="sub-title">
       <p>Coming Soon ...</p>
       <p>
@@ -54,6 +54,7 @@ import PortfolioCard from "../components/PortfolioCard.astro";
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
+  @use "../styles/animations.scss";
   .center {
     position: fixed;
     height: 100%;
@@ -86,12 +87,15 @@ import PortfolioCard from "../components/PortfolioCard.astro";
   .title {
     color: variables.$primary-color;
     font-size: 32px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
+    height: fit-content;
+    overflow: hidden; /* Hide overflowing content */
+    &.intersect {
+        overflow: visible;
+    }
     @media (min-width: breakpoints.$tablets) {
       font-size: 48px;
-    }
+    } 
   }
   .sub-title {
     display: flex;

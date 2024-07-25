@@ -46,7 +46,7 @@ import "../styles/global.css";
       const menu: HTMLElement = document.getElementById("menu")!;
       const navContainer: HTMLElement =
         document.querySelector(".nav-container")!;
-      const fpNav: HTMLElement = document.getElementById("fp-nav")!;
+      // const fpNav: HTMLElement = document.getElementById("fp-nav")!;
       const navigations = document.querySelectorAll(".navigation")!;
 
       hamberger.addEventListener("click", () => {
@@ -54,11 +54,11 @@ import "../styles/global.css";
         if (!menu.classList.contains("show")) {
           // if close, open
           menu.classList.add("show");
-          fpNav.style.display = "none";
+          // fpNav.style.display = "none";
         } else {
           // if open, close the menu
           menu.classList.remove("show");
-          fpNav.style.display = "block";
+          // fpNav.style.display = "block";
         }
         navContainer.classList.toggle("active");
       });
