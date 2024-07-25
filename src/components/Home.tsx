@@ -65,7 +65,7 @@ export default function Home() {
             <img
               className={`${styles.ashImg} animate__flipInY`}
               src="../../images/asahi-headshot.webp"
-              alt="asahi-headshot"
+              alt="asahi kuroki headshot"
             />
           </div>
         </div>
