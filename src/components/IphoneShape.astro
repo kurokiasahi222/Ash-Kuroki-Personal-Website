@@ -1,0 +1,66 @@
+---
+import "../styles/global.css";
+import { Picture, Image } from "astro:assets";
+import Camera from "../../public/images/Camera.svg";
+import wifi from "../../public/images/wifi.svg";
+import Battery from "../../public/images/Battery.svg";
+---
+
+<div class="container">
+    <div class="center"></div>
+    <div class="icons-container">
+        <p class="time">09:41</p>
+        <Image class="camera" src={Camera} alt="camera" />
+        <div class="right-icons">
+            <Image src={wifi} alt="wifi" />
+            <Image src={Battery} alt="wifi" />
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    @use "../styles/variables.scss";
+    @use "../styles/breakpoints.scss";
+    .center {
+        position: fixed;
+        height: 100dvh;
+        left: 50%;
+        right: 50%;
+        }
+    @media (max-width: calc(breakpoints.$tablets - 1px)) {
+        .container {
+            background: variables.$header-color;
+        }
+        .icons-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+        .time {
+            color: #000;
+            text-align: center;
+            font-family: Inter;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17px; /* 100% */
+            letter-spacing: -0.5px;
+        }
+        .camera {
+            margin-left: 30px;
+            align-self: center;
+        }
+        .right-icons {
+            display: flex;
+            gap: 4px;
+        }
+        .iphone-shape {
+            position: relative;
+            width: 100px; /* Adjust width as needed */
+            height: 20px; /* Adjust height as needed */
+            background-color: black;
+            border-radius: 30px;
+        }
+    }
+</style>
