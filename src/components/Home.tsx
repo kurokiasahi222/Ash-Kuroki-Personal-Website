@@ -26,7 +26,6 @@ export default function Home() {
     <div>
       <div className={styles.container}>
         <div className={styles.aboutMe}>
-          <div className={styles.centerLine}></div>
           <div className={styles.content}>
             <div className={styles.intro}>
               <h1>Hi! I'm</h1>
