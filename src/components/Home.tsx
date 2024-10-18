@@ -34,10 +34,7 @@ export default function Home() {
             </div>
             <span className={styles.title} ref={el} />
             <p className={styles.description}>
-              I'm a <b>Full Stack Developer </b>based in Minneapolis. 
-              <br />
-              Currently a <b>Software Engineering Fellow at Headstarter AI.</b>
-              <br />
+              I'm a <b>Full Stack Developer </b>based in Fukuoka Japan. 
               <br />
               I love working in all aspect of tech stack from frontend to
               backend to AI.
@@ -49,7 +46,7 @@ export default function Home() {
                 Kayla Purney{" "}
               </a>
               &{" "}
-              <a className={styles.link} href="">
+              <a className={styles.link} href="https://www.linkedin.com/in/suminchoi9649/">
                 {" "}
                 Sumin Choi{" "}
               </a>
