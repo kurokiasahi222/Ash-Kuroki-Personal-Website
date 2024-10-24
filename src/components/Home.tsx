@@ -45,11 +45,6 @@ export default function Home() {
                 {" "}
                 Kayla Purney{" "}
               </a>
-              &{" "}
-              <a className={styles.link} href="https://www.linkedin.com/in/suminchoi9649/">
-                {" "}
-                Sumin Choi{" "}
-              </a>
               <br></br>Developed by <b>Ash Kuroki</b> using{" "}
               <i>
                 <a className={styles.link} href="https://astro.build/">
