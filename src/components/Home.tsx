@@ -12,7 +12,7 @@ export default function Home() {
       // strings: ["Software Developer"],
       typeSpeed: 80,
       backSpeed: 10,
-      startDelay: 1000,
+      startDelay: 5500,
       loop: false,
       showCursor: false,
     });
