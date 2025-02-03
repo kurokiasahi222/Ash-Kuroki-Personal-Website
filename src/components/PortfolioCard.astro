@@ -1,7 +1,6 @@
 ---
-import Checkitout from "../components/Checkitout.astro";
 import { Image } from "astro:assets";
-import drone from "../../public/images/drone.jpg";
+import sample from "../../public/images/project-sample.png";
 type project = {
   title: string;
   description: string;
@@ -14,35 +13,16 @@ const { index: index } = Astro.props;
 ---
 
 <div class="card-container">
-  <Checkitout />
-  <!-- if the index is even -->
-  {
-    index % 2 == 0 && (
-      <div class="card">
-        <div class="card-information">
-          <h1 class="title">{project.title}</h1>
-          <p class="description">{project.description}</p>
-        </div>
-        <div class="image-container">
-          <Image src={drone} alt="project image" height="285" />
-        </div>
-      </div>
-    )
-  }
-  <!-- if the index is odd -->
-  {
-    index % 2 == 1 && (
-      <div class="card">
-        <div class="image-container">
-          <Image src={drone} alt="project image" height="285" />
-        </div>
-        <div class="card-information">
-          <h1 class="title">{project.title}</h1>
-          <p class="description">{project.description}</p>
-        </div>
-      </div>
-    )
-  }
+  <div class="image-container">
+    <Image src={sample} alt="project image" height="285" />
+  </div>
+  <div class="card">
+    <div class="card-information">
+      <h1 class="title">{project.title}</h1>
+      <p class="description">{project.description}</p>
+    </div>
+    <div>tags</div>
+  </div>
 </div>
 
 <style>

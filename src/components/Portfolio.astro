@@ -7,49 +7,40 @@ type project = {
   tags?: string[];
 };
 import "../styles/global.css";
-import { Links } from "../components/link";
+// import { Links } from "../components/link";
 import PortfolioCard from "../components/PortfolioCard.astro";
-// const portfolio: project[] = [
-//     {
-//         title: "Drone Simulation System",
-//         description:
-//             "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
-//         image: "../../public/images/drone.jpg",
-//     },
-//     {
-//         title: "Crowdfunding platform for Events",
-//         description:
-//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. ",
-//     },
-//     {
-//         title: "Crowdfunding platform for Events",
-//         description:
-//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon",
-//     },
-// ];
+const portfolio: project[] = [
+  {
+    title: "Drone Simulation System",
+    description:
+      "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
+    image: "../../public/images/project-sample.png",
+  },
+  {
+    title: "Drone Simulation System",
+    description:
+      "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
+    image: "../../public/images/project-sample.png",
+  },
+  {
+    title: "Drone Simulation System",
+    description:
+      "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
+    image: "../../public/images/project-sample.png",
+  },
+];
 ---
 
 <div id="projects">
   <div class="container">
     <!-- <div class="center" aria-hidden="true"></div> -->
-    <h1 class="title left animation">Projects</h1>
-    <div class="sub-title">
-      <p>Coming Soon ...</p>
-      <p>
-        Please check out my <a class="link" href={Links.asahiGithub}>Github</a> for
-        now
-      </p>
-      <!-- <ul class="portfolio-container">
-                {
-                    portfolio.map((project, index) => (
-                        <PortfolioCard project={project} index={index}/>
-                    ))
-                }
-            </ul> -->
-    </div>
+    <h1 class="title left animation">Featured Projects</h1>
+    <ul class="portfolio-container">
+      {portfolio.map((project) => <PortfolioCard project={project} />)}
+    </ul>
   </div>
-  <div class="wave"></div>
 </div>
+<div class="wave"></div>
 
 <style lang="scss">
   @use "../styles/variables.scss";
@@ -62,10 +53,9 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     right: 50%;
   }
   #projects {
-    height: calc(100dvh - 4.375rem);
     padding: variables.$container-padding 0;
     @media (min-width: breakpoints.$tablets) {
-      height: calc(100dvh - 4.375rem);
+      
     }
   }
   .container {
@@ -84,6 +74,12 @@ import PortfolioCard from "../components/PortfolioCard.astro";
       padding-top: 3rem;
     }
   }
+  .portfolio-container {
+      display: grid;
+    @media (min-width: breakpoints.$tablets) {
+      grid-template-columns: auto auto;
+    }
+  }
   .title {
     color: variables.$primary-color;
     font-size: 32px;
@@ -91,11 +87,11 @@ import PortfolioCard from "../components/PortfolioCard.astro";
     height: fit-content;
     overflow: hidden; /* Hide overflowing content */
     &.intersect {
-        overflow: visible;
+      overflow: visible;
     }
     @media (min-width: breakpoints.$tablets) {
       font-size: 48px;
-    } 
+    }
   }
   .sub-title {
     display: flex;
