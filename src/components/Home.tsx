@@ -34,10 +34,7 @@ export default function Home() {
             </div>
             <span className={styles.title} ref={el} />
             <p className={styles.description}>
-              I'm a <b>Full Stack Developer </b>based in Minneapolis. 
-              <br />
-              Currently a <b>Software Engineering Fellow at Headstarter AI.</b>
-              <br />
+              I'm a <b>Full Stack Developer </b>based in Fukuoka Japan. 
               <br />
               I love working in all aspect of tech stack from frontend to
               backend to AI.
@@ -47,11 +44,6 @@ export default function Home() {
               <a className={styles.link} href="https://www.kaylafpurney.com">
                 {" "}
                 Kayla Purney{" "}
-              </a>
-              &{" "}
-              <a className={styles.link} href="">
-                {" "}
-                Sumin Choi{" "}
               </a>
               <br></br>Developed by <b>Ash Kuroki</b> using{" "}
               <i>
@@ -65,7 +57,7 @@ export default function Home() {
             <img
               className={`${styles.ashImg} animate__flipInY`}
               src="../../images/asahi-headshot.webp"
-              alt="asahi-headshot"
+              alt="asahi kuroki headshot"
             />
           </div>
         </div>

@@ -13,8 +13,12 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <title>{title}</title>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="Asahi Kuroki Personal Website"
+      content="Asahi Kuroki Personal Website"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
@@ -55,7 +59,6 @@ const { title } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-20VY92PLKM"
     ></script>
     <script is:inline>
@@ -86,7 +89,8 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<style>
+<style lang="scss">
+  @use "../styles/variables.scss";
   html,
   body {
     height: 100%;
@@ -99,23 +103,22 @@ const { title } = Astro.props;
     width: 100%;
     z-index: 100;
   }
-  /* Fix for preventing sticky headers problem:  */
+  /* Fix for preventing sticky headers problem:*/
   /* https://gomakethings.com/how-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header-with-one-line-of-css/ */
   .section {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: variables.$scroll-margin-top;
   }
-  /* ["#f9f9f9", "#E6F3F4", "#f9f9f9", */
   #home {
-    background-color: #f9f9f9;
+    background-color: variables.$background-color-odd;
   }
   #about {
-    background-color: #e6f3f4;
+    background-color: variables.$background-color-even;
   }
   #projects {
-    background-color: #f9f9f9;
+    background-color: variables.$background-color-odd;
   }
-  #footer {
-    background-color: #e6f3f4;
+  #footer { 
+    background-color: variables.$background-color-even;
     padding-top: 0 !important;
   }
 </style>
