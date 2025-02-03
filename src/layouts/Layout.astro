@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Portfolio from "../components/Portfolio.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Footer from "../components/Footer.astro";
+import Preloader from "../components/Preloader.astro";
 interface Props {
   title: string;
 }
@@ -71,20 +72,23 @@ const { title } = Astro.props;
     </script>
   </head>
   <body>
-    <div id="header">
-      <Header />
-    </div>
-    <div id="home" class="section">
-      <Home client:load />
-    </div>
-    <div id="about" class="section">
-      <AboutMe />
-    </div>
-    <div id="projects" class="section">
-      <Portfolio />
-    </div>
-    <div id="footer" class="section">
-      <Footer />
+    <Preloader />
+    <div id="content">
+      <div id="header">
+        <Header />
+      </div>
+      <div id="home" class="section">
+        <Home client:load />
+      </div>
+      <div id="about" class="section">
+        <AboutMe />
+      </div>
+      <div id="projects" class="section">
+        <Portfolio />
+      </div>
+      <div id="footer" class="section">
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
@@ -103,6 +107,20 @@ const { title } = Astro.props;
     width: 100%;
     z-index: 100;
   }
+  /* Hide the entire content until preloader is gone */
+  #content {
+    display: none;
+  }
+
+  /* Show the content after preloader disappears */
+  body.loaded #content {
+    display: block;
+  }
+
+  /* Show the header after preloader disappears */
+  body.loaded #header {
+    opacity: 1;
+  }
   /* Fix for preventing sticky headers problem:*/
   /* https://gomakethings.com/how-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header-with-one-line-of-css/ */
   .section {
@@ -117,7 +135,7 @@ const { title } = Astro.props;
   #projects {
     background-color: variables.$background-color-odd;
   }
-  #footer { 
+  #footer {
     background-color: variables.$background-color-even;
     padding-top: 0 !important;
   }
