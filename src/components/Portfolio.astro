@@ -1,143 +1,213 @@
 ---
-type project = {
-  title: string;
-  description: string;
-  image?: string;
-  link?: string;
-  tags?: string[];
-};
-import "../styles/global.css";
-import { Links } from "../components/link";
-import PortfolioCard from "../components/PortfolioCard.astro";
-// const portfolio: project[] = [
-//     {
-//         title: "Drone Simulation System",
-//         description:
-//             "A drone simulation system using C++, HTML, JavaScript. Docker is used for containerization, and software design patterns are used to design the system. The system is designed to be scalable and extensible.",
-//         image: "../../public/images/drone.jpg",
-//     },
-//     {
-//         title: "Crowdfunding platform for Events",
-//         description:
-//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during a tornado hackathon. ",
-//     },
-//     {
-//         title: "Crowdfunding platform for Events",
-//         description:
-//             "Created a crowdfunding platform for events using React, NextJS, Clerk, and Stripe during hackathon",
-//     },
-// ];
+import { Image } from "astro:assets";
+import drone from "../../public/images/drone.jpg";
+import { Links } from "./link";
+
+const projects = [
+  {
+    eyebrow: "Simulation · Team project",
+    title: "Drone Simulation System",
+    description:
+      "A scalable drone delivery simulation built with C++, JavaScript, and Docker. The system applies software design patterns to keep new entities and behaviors easy to extend.",
+    tags: ["C++", "JavaScript", "Docker", "Design patterns"],
+    image: drone,
+  },
+  {
+    eyebrow: "Hackathon · Full stack",
+    title: "Event Crowdfunding Platform",
+    description:
+      "A full-stack platform for launching and supporting event campaigns, built during a fast-paced hackathon with secure authentication and payment workflows.",
+    tags: ["React", "Next.js", "Clerk", "Stripe"],
+  },
+];
 ---
 
-<div id="projects">
+<section class="portfolio" aria-labelledby="projects-title">
   <div class="container">
-    <!-- <div class="center" aria-hidden="true"></div> -->
-    <h1 class="title left animation">Projects</h1>
-    <div class="sub-title">
-      <p>Coming Soon ...</p>
-      <p>
-        Please check out my <a class="link" href={Links.asahiGithub}>Github</a> for
-        now
+    <div class="heading left animation">
+      <p class="eyebrow">SELECTED WORK</p>
+      <h2 id="projects-title">Projects built with purpose.</h2>
+      <p class="intro">
+        A few things I’ve designed and developed across simulation, product, and
+        full-stack engineering.
       </p>
-      <!-- <ul class="portfolio-container">
-                {
-                    portfolio.map((project, index) => (
-                        <PortfolioCard project={project} index={index}/>
-                    ))
-                }
-            </ul> -->
     </div>
+    <div class="project-grid">
+      {
+        projects.map((project, index) => (
+          <article class:list={["card", { featured: index === 0 }]}>
+            {project.image ? (
+              <div class="image-wrap">
+                <Image
+                  src={project.image}
+                  alt="Drone simulation interface"
+                  widths={[520, 900]}
+                  sizes="(max-width: 767px) 100vw, 55vw"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="code-art" aria-hidden="true">
+                <span>01</span>
+                <span>CREATE</span>
+                <span>FUND</span>
+                <span>GO</span>
+              </div>
+            )}
+            <div class="card-content">
+              <p class="card-eyebrow">{project.eyebrow}</p>
+              <h3>{project.title}</h3>
+              <p class="description">{project.description}</p>
+              <ul aria-label={`${project.title} technologies`}>
+                {project.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <a class="github-link" href={Links.asahiGithub}
+      >See more on GitHub <span aria-hidden="true">↗</span></a
+    >
   </div>
   <div class="wave"></div>
-</div>
+</section>
 
 <style lang="scss">
   @use "../styles/variables.scss";
   @use "../styles/breakpoints.scss";
-  @use "../styles/animations.scss";
-  .center {
-    position: fixed;
-    height: 100%;
-    left: 50%;
-    right: 50%;
-  }
-  #projects {
-    height: calc(100dvh - 4.375rem);
-    padding: variables.$container-padding 0;
-    @media (min-width: breakpoints.$tablets) {
-      height: calc(100dvh - 4.375rem);
-    }
+  .portfolio {
+    padding: 5rem 1.25rem 0;
   }
   .container {
-    margin: auto;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+  }
+  .heading {
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow,
+  .card-eyebrow {
+    color: variables.$primary-color;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+  }
+  h2 {
+    color: variables.$secondary-color;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    line-height: 1.02;
+    margin: 0.55rem 0 1rem;
+    letter-spacing: -0.04em;
+  }
+  .intro {
+    color: variables.$secondary-color;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .project-grid {
     display: grid;
-    grid-template-rows: auto auto;
-    justify-items: center;
-    height: 100%;
-    @media (min-width: breakpoints.$tablets) {
-      width: 100%;
-    }
-    @media (min-width: breakpoints.$desktop) {
-      padding-top: 2rem;
-    }
-    @media (min-width: breakpoints.$largedevice) {
-      padding-top: 3rem;
-    }
+    gap: 1.25rem;
   }
-  .title {
-    color: variables.$primary-color;
-    font-size: 32px;
-    font-weight: 600;
-    height: fit-content;
-    overflow: hidden; /* Hide overflowing content */
-    &.intersect {
-        overflow: visible;
-    }
-    @media (min-width: breakpoints.$tablets) {
-      font-size: 48px;
-    } 
+  .card {
+    overflow: hidden;
+    border: 1px solid rgba(10, 146, 155, 0.16);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 16px 50px rgba(52, 74, 76, 0.08);
   }
-  .sub-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    align-self: center;
-    @media (min-width: breakpoints.$tablets) {
-    }
+  .image-wrap {
+    min-height: 250px;
+    background: #dcebed;
   }
-  .sub-title p {
-    color: variables.$primary-color;
-    /* H1 */
-    font-family: Lato;
-    font-size: 20px;
-    @media (min-width: breakpoints.$tablets) {
-      font-size: 25px;
-      font-weight: 500;
-    }
-    @media (min-width: breakpoints.$desktop) {
-      color: variables.$primary-color;
-      font-size: 30px;
-    }
-  }
-  .link {
-    text-decoration: underline;
-    &:hover {
-      font-weight: 600;
-      cursor: pointer;
-    }
-  }
-
-  .wave {
+  .image-wrap :global(img) {
     display: block;
-    position: relative;
-    width: 100dvw;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    object-fit: cover;
+  }
+  .code-art {
+    min-height: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    color: #fff;
+    background: linear-gradient(135deg, #087982, #0a929b 55%, #59bbc1);
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+  .code-art span:first-child {
+    opacity: 0.45;
+  }
+  .card-content {
+    padding: 1.75rem;
+  }
+  h3 {
+    color: variables.$secondary-color;
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    margin: 0.5rem 0 0.8rem;
+  }
+  .description {
+    color: variables.$secondary-color;
+    line-height: 1.65;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 1.35rem 0 0;
+    list-style: none;
+  }
+  li {
+    color: #087982;
+    background: #e6f3f4;
+    border-radius: 999px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .github-link {
+    display: block;
+    width: fit-content;
+    margin: 2.25rem auto 4rem;
+    color: variables.$primary-color;
+    font-size: 1.05rem;
+    font-weight: 800;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 0.2rem;
+  }
+  .wave {
+    width: 100vw;
     height: 22px;
+    margin-left: calc(50% - 50vw);
     background: url("/images/wave.png") repeat-x;
     background-size: auto 22px;
-    z-index: 1;
-    bottom: -48px;
-    content: "";
+  }
+  @media (min-width: breakpoints.$tablets) {
+    .portfolio {
+      padding-top: 7rem;
+    }
+    .project-grid {
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: stretch;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-content {
+      padding: 2rem;
+    }
+    .image-wrap,
+    .image-wrap :global(img),
+    .code-art {
+      min-height: 330px;
+    }
   }
 </style>

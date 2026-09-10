@@ -8,11 +8,11 @@ export default function Home() {
   const el = React.useRef(null);
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Full Stack Developer', 'AI Enginner', 'Software Developer'],
+      strings: ["Full-stack developer", "AI engineer", "Software developer"],
       // strings: ["Software Developer"],
       typeSpeed: 80,
       backSpeed: 10,
-      startDelay: 5500,
+      startDelay: 900,
       loop: false,
       showCursor: false,
     });
@@ -34,24 +34,21 @@ export default function Home() {
             </div>
             <span className={styles.title} ref={el} />
             <p className={styles.description}>
-              I'm a <b>Full Stack Developer </b>based in Fukuoka Japan. 
-              <br />
-              I love working in all aspect of tech stack from frontend to
+              I'm a <b>full-stack developer </b>based in Fukuoka, Japan.
+              <br />I love working in all aspect of tech stack from frontend to
               backend to AI.
-              <br />
-              <br />
-              Website designed by
-              <a className={styles.link} href="https://www.kaylafpurney.com">
-                {" "}
-                Kayla Purney{" "}
-              </a>
-              <br></br>Developed by <b>Ash Kuroki</b> using{" "}
-              <i>
-                <a className={styles.link} href="https://astro.build/">
-                  Astro.js{" "}
-                </a>
-              </i>
             </p>
+            <div className={styles.actions}>
+              <a className={styles.primaryAction} href="#projects">
+                Explore my work <span aria-hidden="true">→</span>
+              </a>
+              <a
+                className={styles.secondaryAction}
+                href="https://www.linkedin.com/in/asahi-kuroki/"
+              >
+                Let's connect
+              </a>
+            </div>
           </div>
           <div className={styles.imageContainer}>
             <img
