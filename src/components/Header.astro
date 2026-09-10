@@ -6,8 +6,10 @@ import "../styles/global.css";
   <nav>
     <div class="mobile">
       <h3 class="main-logo-phone">Ash.dev</h3>
-      <div
+      <button
+        type="button"
         id="hamberger"
+        aria-label="Open navigation menu"
         aria-controls="primary-navigation"
         aria-expanded="false"
       >
@@ -15,11 +17,11 @@ import "../styles/global.css";
         <b class="bar-2"></b>
         <b class="bar-3"></b>
         <b class="bar-4"></b>
-      </div>
+      </button>
     </div>
     <div id="menu" class="menu">
       <h3 class="main-logo-desk fade-in-animation">
-        <a href="#section1">ASH.dev</a>
+        <a href="#home">ASH.dev</a>
       </h3>
       <div id="over-lay"></div>
       <div class="nav-container" id="primary-navigation">
@@ -61,6 +63,12 @@ import "../styles/global.css";
           // fpNav.style.display = "block";
         }
         navContainer.classList.toggle("active");
+        const isOpen = menu.classList.contains("show");
+        hamberger.setAttribute("aria-expanded", String(isOpen));
+        hamberger.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu",
+        );
       });
       // when menu is open for mobile, if someone clicks at the link (home, about...)
       // close the menu
@@ -68,6 +76,7 @@ import "../styles/global.css";
         element.addEventListener("click", () => {
           menu.classList.remove("show");
           hamberger.classList.toggle("open");
+          hamberger.setAttribute("aria-expanded", "false");
         });
       });
     </script>
@@ -125,6 +134,11 @@ import "../styles/global.css";
     transition: all ease-in-out 0.3s;
     &:hover {
       transform: translateY(-0.3rem);
+    }
+    #hamberger {
+      border: 0;
+      padding: 0;
+      background: transparent;
     }
     @media (min-width: breakpoints.$tablets) {
       min-width: 40px;
