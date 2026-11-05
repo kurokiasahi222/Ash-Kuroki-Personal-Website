@@ -1,0 +1,32 @@
+/*
+ * Design tokens: overview § 6.8. `art/palette.json` implements the same table.
+ * Change both together, as a contract change.
+ */
+:root {
+  --night: #0d1322; /* sky, fog, UI background */
+  --dusk: #1b2540; /* distant buildings, UI surfaces */
+  --asphalt: #2b303b; /* road */
+  --concrete: #8c9099; /* sidewalks, walls */
+  --plaster: #c9c3b6; /* house walls */
+  --wood: #6b4630; /* temple wood */
+  --vermilion: #c23b22; /* gate and temple accents */
+  --roof: #3a3f4a; /* roof tiles */
+  --foliage: #2e4a3b; /* trees, hedges */
+  --tower: #ff4f00; /* Tokyo Tower (international orange) */
+  --tower-white: #f4f1ea; /* tower's white bands */
+  --lamp: #ffc27a; /* warm light; UI highlight and focus ring */
+  --vending: #d6eeff; /* cool white glow */
+  --mart: #0a929b; /* konbini brand teal */
+  --ink: #eceff5; /* UI text */
+  --ink-dim: #9ba4b8; /* secondary UI text */
+
+  /* UI type: "M PLUS Rounded 1c", weights 400 and 700, Latin and Japanese. */
+  --font-ui:
+    "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  --focus-ring: 3px solid var(--lamp);
+  --focus-offset: 2px;
+}

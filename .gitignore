@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# screenshots (npm run shots, art/preview.py)
+shots/
+
+# art pipeline caches and build output
+art/out/
+art/.cache/
+.venv-art/

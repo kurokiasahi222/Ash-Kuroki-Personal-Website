@@ -1,0 +1,14 @@
+---
+import { site } from "../../content/site";
+import type { Lang } from "../../content/types";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="classic-footer">
+  <p>{site.ui.footerCredit[lang]}</p>
+</footer>
