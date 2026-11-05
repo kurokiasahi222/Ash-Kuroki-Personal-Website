@@ -30,7 +30,7 @@ When this merges, every other code package can work in parallel inside its own f
 1. **Dependencies.**
    - Install the latest stable majors and pin exact versions: `astro`, `@astrojs/react`, `react`, `react-dom`, `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `@react-three/postprocessing`, `postprocessing`, `zustand`. Dev dependencies: `@types/react`, `@types/react-dom`, `@types/three`, `prettier`, `prettier-plugin-astro`, `@astrojs/check`, `typescript`.
    - Remove `tailwindcss`, `@astrojs/tailwind`, `sass`, `postcss-scss`, `stylelint*`, `typed.js`, `fullpage.js`, `velocity-animate`, `animate.css`, `dotenv`.
-   - Add `.nvmrc` with `22`.
+   - Pin Node 22 for both hosts: `.nvmrc` with `22` (read by Netlify) and `"engines": { "node": "22.x" }` in `package.json` (read by Vercel, which ignores `.nvmrc`).
    - Done when `npm ci` is clean and `npm ls` shows none of the removed packages.
 2. **Retire the old site.**
    - Delete `src/components/*`, `src/styles/*`, `src/layouts/script.js` and `tailwind.config.cjs`.
