@@ -1,0 +1,952 @@
+/*
+ * UI overlay (WP-07): frosted night glass over the world. Every color comes
+ * from src/styles/tokens.css. Layout: desktop by default, mobile at
+ * max-width 640px (the menu moves to a bottom bar, panels become bottom
+ * sheets).
+ */
+
+.ui-root {
+  --ui-radius: 16px;
+  --ui-radius-inner: 12px;
+  --ui-gap: 16px;
+  --ui-motion: 200ms;
+  --ui-ease: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out */
+  --ui-shadow:
+    0 12px 32px color-mix(in srgb, var(--night) 55%, transparent),
+    0 2px 8px color-mix(in srgb, var(--night) 40%, transparent);
+  --ui-edge: color-mix(in srgb, var(--ink) 12%, transparent);
+  --ui-hover: color-mix(in srgb, var(--ink) 10%, transparent);
+  /* The mobile bottom bar: 56 px plus the safe area. */
+  --ui-bar: 56px;
+  --ui-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ui-bar-total: calc(var(--ui-bar) + var(--ui-safe-bottom));
+
+  /* Above drei <Html> labels, whose default zIndexRange tops out at 16777271. */
+  position: fixed;
+  inset: 0;
+  z-index: 16777272;
+  pointer-events: none;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------------------------------------------------------------ glass */
+
+/* Without backdrop-filter support: dusk at 92%. */
+.ui-glass {
+  background: color-mix(in srgb, var(--dusk) 92%, transparent);
+  border: 1px solid var(--ui-edge);
+  border-radius: var(--ui-radius);
+  box-shadow:
+    var(--ui-shadow),
+    inset 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--ink);
+  pointer-events: auto;
+}
+
+/* With it: dusk at 70% over the blurred world. The backdrop is also dimmed
+   (brightness 0.4), so text keeps at least 4.5:1 even over the brightest
+   glow behind the glass (vending fronts, bloom). */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .ui-glass {
+    background: color-mix(in srgb, var(--dusk) 70%, transparent);
+    -webkit-backdrop-filter: blur(12px) brightness(0.4);
+    backdrop-filter: blur(12px) brightness(0.4);
+  }
+}
+
+/* ------------------------------------------------------------------ focus */
+
+.ui-root :focus-visible {
+  outline: 3px solid var(--lamp);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--lamp) 22%, transparent);
+}
+
+.ui-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.ui-icon {
+  flex: none;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--ui-motion) var(--ui-ease),
+    border-color var(--ui-motion) var(--ui-ease),
+    color var(--ui-motion) var(--ui-ease);
+}
+
+.ui-button--icon {
+  width: 40px;
+  padding: 0;
+}
+
+.ui-button--large {
+  min-height: 52px;
+  padding: 0 1.4rem;
+  font-size: 1rem;
+}
+
+.ui-button--small {
+  min-height: 36px;
+  padding: 0 0.85rem;
+  font-size: 0.875rem;
+}
+
+.ui-button--primary {
+  background: var(--lamp);
+  color: var(--night);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--lamp) 35%, transparent);
+}
+
+.ui-button--ghost {
+  border-color: color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+@media (hover: hover) {
+  .ui-button:hover {
+    background: var(--ui-hover);
+  }
+
+  .ui-button--primary:hover {
+    background: var(--tower-white);
+  }
+
+  .ui-button--ghost:hover {
+    border-color: var(--lamp);
+  }
+}
+
+/* -------------------------------------------------------------- skip link */
+
+.ui-skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 7;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--lamp);
+  color: var(--night);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  pointer-events: auto;
+  transform: translateY(calc(-100% - 24px));
+}
+
+.ui-skip:focus {
+  transform: none;
+}
+
+/* ------------------------------------------------------------- title card */
+
+.ui-title {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  padding: var(--ui-gap);
+  pointer-events: auto;
+}
+
+/* A soft vignette, so the establishing shot shows through at `title`. */
+.ui-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    color-mix(in srgb, var(--night) 25%, transparent) 0%,
+    color-mix(in srgb, var(--night) 88%, transparent) 75%
+  );
+  animation: ui-fade-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-title__card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: min(440px, 100%);
+  padding: 2rem 2rem 1.25rem;
+  text-align: center;
+  animation: ui-rise-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-tower-mark {
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(
+    0 0 10px color-mix(in srgb, var(--tower) 55%, transparent)
+  );
+}
+
+.ui-title__name {
+  font-size: clamp(2rem, 7vw, 2.6rem);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.ui-title__tagline {
+  margin-top: 0.35rem;
+  color: var(--ink-dim);
+  font-size: 1.0625rem;
+}
+
+.ui-title__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 116px;
+  margin-top: 1.5rem;
+}
+
+.ui-title__actions > .ui-button {
+  flex: 1 1 100%;
+  animation: ui-fade-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-title__classic {
+  margin-top: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  color: var(--ink-dim);
+  font-size: 0.875rem;
+  text-underline-offset: 0.25em;
+}
+
+@media (hover: hover) {
+  .ui-title__classic:hover {
+    color: var(--ink);
+  }
+}
+
+.ui-loading {
+  width: 100%;
+}
+
+.ui-loading__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  color: var(--ink-dim);
+  font-size: 0.9375rem;
+}
+
+.ui-loading__percent {
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-loading__track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--night) 75%, transparent);
+  box-shadow: inset 0 0 0 1px var(--ui-edge);
+}
+
+.ui-loading__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lamp);
+  box-shadow: 0 0 12px var(--lamp);
+  transform-origin: left center;
+  transition: transform var(--ui-motion) var(--ui-ease);
+}
+
+.ui-title.is-leaving::before {
+  animation: ui-fade-out var(--ui-motion) var(--ui-ease) forwards;
+}
+
+.ui-title.is-leaving .ui-title__card {
+  animation: ui-rise-out var(--ui-motion) var(--ui-ease) forwards;
+}
+
+/* ------------------------------------------------------------------- menu */
+
+.ui-menu {
+  position: fixed;
+  top: var(--ui-gap);
+  left: var(--ui-gap);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: calc(100vw - 2 * var(--ui-gap));
+  padding: 6px;
+  animation: ui-rise-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-menu ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-menu__item[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--lamp) 14%, transparent);
+  color: var(--lamp);
+}
+
+.ui-menu__divider {
+  width: 1px;
+  height: 24px;
+  margin: 0 0.25rem;
+  background: var(--ui-edge);
+}
+
+.ui-menu__control {
+  font-size: 0.875rem;
+}
+
+.ui-menu__control[aria-pressed="true"] {
+  color: var(--lamp);
+}
+
+.ui-menu__control[aria-pressed="false"] {
+  color: var(--ink-dim);
+}
+
+/* ----------------------------------------------------------------- panels */
+
+.ui-panel {
+  position: fixed;
+  top: var(--ui-gap);
+  right: var(--ui-gap);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, calc(100vw - 2 * var(--ui-gap)));
+  max-height: calc(100vh - 2 * var(--ui-gap));
+  max-height: calc(100dvh - 2 * var(--ui-gap));
+  animation: ui-slide-in-x var(--ui-motion) var(--ui-ease);
+}
+
+/* Programmatic focus lands on the dialog itself; show it on the edge. */
+.ui-panel:focus,
+.ui-panel:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-shadow);
+}
+
+.ui-panel:focus-visible {
+  border-color: color-mix(in srgb, var(--lamp) 45%, transparent);
+}
+
+.ui-panel.is-leaving {
+  animation: ui-slide-out-x var(--ui-motion) var(--ui-ease) forwards;
+}
+
+/* Below the menu when the bar reaches under the panel (Menu.tsx measures). */
+@media (min-width: 641px) {
+  .ui-root[data-menu-wide] .ui-panel {
+    top: calc(var(--ui-menu-bottom, 68px) + 12px);
+    max-height: calc(
+      100vh - var(--ui-menu-bottom, 68px) - 12px - var(--ui-gap)
+    );
+    max-height: calc(
+      100dvh - var(--ui-menu-bottom, 68px) - 12px - var(--ui-gap)
+    );
+  }
+}
+
+.ui-panel__header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0.75rem 0.75rem 1.5rem;
+}
+
+.ui-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.375rem;
+}
+
+.ui-panel__title::before {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--lamp);
+  box-shadow: 0 0 12px var(--lamp);
+}
+
+.ui-panel__close {
+  flex: none;
+}
+
+.ui-panel__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.25rem 1.5rem 1.5rem;
+  scrollbar-color: color-mix(in srgb, var(--ink) 25%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+.ui-lead {
+  margin-bottom: 1.25rem;
+  color: var(--ink-dim);
+}
+
+.ui-prose p + p {
+  margin-top: 0.75rem;
+}
+
+/* About */
+
+.ui-about__photo {
+  width: 128px;
+  height: 128px;
+  /* Room above for the glow: the scrolling body clips what's outside it. */
+  margin: 1rem 0 1.25rem;
+  border-radius: 50%;
+  background: var(--night);
+  object-fit: cover;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--lamp) 70%, transparent),
+    0 0 16px color-mix(in srgb, var(--lamp) 30%, transparent);
+}
+
+/* Builds */
+
+.ui-builds__list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-card {
+  padding: 0.75rem 0.75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  border-radius: var(--ui-radius-inner);
+  background: color-mix(in srgb, var(--night) 40%, transparent);
+}
+
+.ui-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  background: var(--night);
+  object-fit: cover;
+}
+
+/* Decorative stand-in when a build has no image: a glowing shelf product. */
+.ui-card__image--empty {
+  background:
+    radial-gradient(
+      circle at 50% 120%,
+      color-mix(in srgb, var(--lamp) 45%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--mart) 55%, var(--night)),
+      var(--night)
+    );
+}
+
+.ui-card__image--empty[data-build="website"] {
+  background:
+    radial-gradient(
+      circle at 50% 120%,
+      color-mix(in srgb, var(--tower) 50%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--dusk) 80%, var(--vending)),
+      var(--night)
+    );
+}
+
+.ui-card__title {
+  font-size: 1.0625rem;
+}
+
+.ui-card__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.25rem 0.25rem;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ui-card__chevron {
+  color: var(--ink-dim);
+  transition: transform var(--ui-motion) var(--ui-ease);
+}
+
+.ui-card.is-open .ui-card__chevron {
+  transform: rotate(180deg);
+}
+
+@media (hover: hover) {
+  .ui-card__toggle:hover,
+  .ui-card__toggle:hover .ui-card__chevron {
+    color: var(--lamp);
+  }
+}
+
+.ui-card__summary {
+  padding: 0 0.25rem;
+  color: var(--ink-dim);
+  font-size: 0.9375rem;
+}
+
+.ui-card__body {
+  margin-top: 0.75rem;
+  padding: 0 0.25rem;
+  font-size: 0.9375rem;
+}
+
+.ui-card__body:not([hidden]) {
+  animation: ui-fade-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-tags,
+.ui-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0;
+  padding: 0 0.25rem;
+  list-style: none;
+}
+
+.ui-tags li {
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--night) 70%, transparent);
+  color: var(--ink-dim);
+  font-size: 0.8125rem;
+}
+
+.ui-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.25rem;
+  border-radius: 6px;
+  color: var(--lamp);
+  font-size: 0.9375rem;
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .ui-card__link:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Say hi */
+
+.ui-sayhi__links {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-sayhi__link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 64px;
+  padding: 0.6rem 1rem 0.6rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--night) 40%, transparent);
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition:
+    border-color var(--ui-motion) var(--ui-ease),
+    background-color var(--ui-motion) var(--ui-ease);
+}
+
+.ui-sayhi__badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--lamp) 16%, transparent);
+  color: var(--lamp);
+}
+
+.ui-sayhi__label {
+  flex: 1;
+}
+
+.ui-sayhi__link > .ui-icon:last-child {
+  color: var(--ink-dim);
+}
+
+@media (hover: hover) {
+  .ui-sayhi__link:hover {
+    border-color: var(--lamp);
+    background: color-mix(in srgb, var(--lamp) 8%, transparent);
+  }
+}
+
+.ui-sayhi__ride {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+/* ------------------------------------------------- toasts and the hint */
+
+.ui-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 24px;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 var(--ui-gap);
+}
+
+.ui-toast-region {
+  display: contents;
+}
+
+.ui-toast {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  max-width: min(560px, 100%);
+  padding: 0.65rem 0.75rem 0.65rem 1rem;
+  animation: ui-rise-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-toast.is-leaving {
+  animation: ui-rise-out var(--ui-motion) var(--ui-ease) forwards;
+}
+
+.ui-toast__message {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ui-toast__icon {
+  display: grid;
+  flex: none;
+  color: var(--lamp);
+}
+
+.ui-toast[data-kind="drink"] .ui-toast__icon {
+  color: var(--vending);
+}
+
+.ui-toast__text {
+  font-weight: var(--weight-bold);
+}
+
+.ui-toast__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ui-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: min(640px, 100%);
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  /* Purely informational: taps go through to the world. */
+  pointer-events: none;
+  animation: ui-rise-in var(--ui-motion) var(--ui-ease);
+}
+
+.ui-hint .ui-icon {
+  color: var(--lamp);
+}
+
+.ui-hint.is-leaving {
+  animation: ui-fade-out var(--ui-motion) var(--ui-ease) forwards;
+}
+
+/* ----------------------------------------------------------------- mobile */
+
+@media (max-width: 640px) {
+  .ui-title__card {
+    padding: 1.75rem 1.25rem 1rem;
+  }
+
+  .ui-menu {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-wrap: nowrap;
+    gap: 2px;
+    max-width: none;
+    height: var(--ui-bar-total);
+    padding: 6px max(6px, env(safe-area-inset-right, 0px))
+      calc(6px + var(--ui-safe-bottom)) max(6px, env(safe-area-inset-left, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--ui-radius) var(--ui-radius) 0 0;
+    animation-name: ui-slide-in-y;
+  }
+
+  .ui-menu__sections {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .ui-menu__sections li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .ui-menu__item {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 0.3rem;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    line-height: 1.15;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* At most two lines inside the 56 px bar, however long the copy. */
+  .ui-menu__label {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow-wrap: break-word;
+  }
+
+  .ui-menu__divider {
+    flex: none;
+    height: 28px;
+    margin: 0 2px;
+  }
+
+  .ui-menu .ui-menu__controls {
+    flex: none;
+    gap: 2px;
+  }
+
+  .ui-menu__control {
+    min-height: 44px;
+    padding: 0 0.55rem;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+  }
+
+  .ui-menu__control.ui-button--icon {
+    width: 40px;
+    padding: 0;
+  }
+
+  /* The language toggle and the Classic view link become icons; their text
+     stays in the DOM as their accessible name. */
+  .ui-menu__control[data-control="lang"],
+  .ui-menu__classic {
+    width: 40px;
+    padding: 0;
+  }
+
+  .ui-menu__lang-label,
+  .ui-menu__classic-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .ui-panel {
+    top: auto;
+    right: 8px;
+    bottom: calc(var(--ui-bar-total) + 8px);
+    left: 8px;
+    width: auto;
+    max-height: min(75vh, calc(100vh - var(--ui-bar-total) - 24px));
+    max-height: min(75dvh, calc(100dvh - var(--ui-bar-total) - 24px));
+    animation-name: ui-slide-in-y;
+  }
+
+  .ui-panel.is-leaving {
+    animation-name: ui-slide-out-y;
+  }
+
+  .ui-panel__header {
+    padding: 0.75rem 0.5rem 0.5rem 1.25rem;
+  }
+
+  .ui-panel__title {
+    font-size: 1.25rem;
+  }
+
+  .ui-panel__body {
+    padding: 0.25rem 1.25rem 1.25rem;
+  }
+
+  .ui-about__photo {
+    width: 104px;
+    height: 104px;
+  }
+
+  .ui-bottom {
+    bottom: calc(var(--ui-bar-total) + 12px);
+    padding: 0 12px;
+  }
+
+  .ui-hint {
+    border-radius: var(--ui-radius);
+    font-size: 0.875rem;
+  }
+}
+
+/* The hint gives way to an open panel. */
+.ui-root:has(.ui-panel:not(.is-leaving)) .ui-hint {
+  visibility: hidden;
+}
+
+/* ----------------------------------------------------------------- motion */
+
+@keyframes ui-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ui-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ui-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes ui-rise-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes ui-slide-in-x {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@keyframes ui-slide-out-x {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@keyframes ui-slide-in-y {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes ui-slide-out-y {
+  to {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* No motion with reduced motion, nor while frozen for a shot. */
+@media (prefers-reduced-motion: reduce) {
+  .ui-root *,
+  .ui-root *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.ui-root.is-still *,
+.ui-root.is-still *::before {
+  animation: none !important;
+  transition: none !important;
+}
