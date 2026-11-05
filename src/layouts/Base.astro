@@ -1,0 +1,101 @@
+---
+// Every page: server-rendered Classic content, plus the boot that decides
+// between world and classic mode before first paint (overview § 5 and § 8).
+import BootCard from "../components/BootCard.astro";
+import ClassicView from "../components/classic/ClassicView.astro";
+import { LANGS, pagePath } from "../components/classic/lang";
+import { site } from "../content/site";
+import type { Lang } from "../content/types";
+import { headScript } from "../world/boot/inline";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/classic.css";
+import "../styles/world.css";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const absolute = (l: Lang) => new URL(pagePath(l), Astro.site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <!-- Boot: view mode and tier, synchronously, before first paint. -->
+    <script is:inline set:html={headScript} />
+    <title>{site.meta.title[lang]}</title>
+    <meta name="description" content={site.meta.description[lang]} />
+    {LANGS.map((l) => (
+      <link rel="alternate" hreflang={l} href={absolute(l)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={absolute("en")} />
+    <meta name="theme-color" content="#0D1322" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" href="/favicon/favicon.ico" sizes="48x48" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/favicon/safari-pinned-tab.svg"
+      color="#0D1322"
+    />
+    <meta name="msapplication-TileColor" content="#0D1322" />
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"
+    />
+
+    <!-- Google Analytics (G-20VY92PLKM) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-20VY92PLKM"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-20VY92PLKM");
+    </script>
+  </head>
+  <body>
+    <!-- World mode only: the canvas and the DOM UI (WP-07's skip link renders
+         first in here, so it leads the focus order). -->
+    <div id="world-root"></div>
+    <BootCard />
+    <ClassicView lang={lang} />
+    <script>
+      import "../world/boot/client";
+    </script>
+  </body>
+</html>

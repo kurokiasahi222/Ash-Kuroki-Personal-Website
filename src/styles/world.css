@@ -1,0 +1,100 @@
+/*
+ * World mode (html.world-mode, set by the inline boot script before first
+ * paint). Without the class, the page is the plain Classic view and none of
+ * the world elements show.
+ */
+
+#world-root,
+#boot-card {
+  display: none;
+}
+
+html.world-mode,
+html.world-mode body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* The canvas and the DOM UI (<Ui/>). It comes first in the DOM, so the skip
+   link WP-07 renders into it leads the focus order (overview § 9). */
+html.world-mode #world-root {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--night);
+}
+
+/* Classic content stays in the DOM for screen readers, visually hidden... */
+html.world-mode #classic-content:not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* ...and shows as a scrollable overlay while keyboard focus is inside it
+   (after the skip link, or by tabbing into it). */
+html.world-mode #classic-content:focus-within {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  max-width: none;
+  overflow-y: auto;
+  padding-inline: max(1.25rem, calc((100vw - 46rem) / 2));
+  background: var(--night);
+}
+
+/* "Enter the 3D world" is pointless while already in it. */
+html.world-mode .classic-view-choice {
+  display: none;
+}
+
+/* Boot card: static and CSS-only, until WP-07's title card removes it. */
+html.world-mode #boot-card {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: var(--night);
+  color: var(--ink);
+}
+
+.boot-card__inner {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+}
+
+.boot-card__spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--dusk);
+  border-top-color: var(--lamp);
+  border-radius: 50%;
+  animation: boot-spin 0.9s linear infinite;
+}
+
+.boot-card__title {
+  font-size: 1.125rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+}
+
+@keyframes boot-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-card__spinner {
+    animation-duration: 3s;
+  }
+}

@@ -1,0 +1,53 @@
+---
+import { site } from "../../content/site";
+import type { Lang } from "../../content/types";
+import { otherLang, pagePath } from "./lang";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const other = otherLang(lang);
+const sections = [
+  { id: "about", title: site.about.title[lang] },
+  { id: "builds", title: site.builds.title[lang] },
+  { id: "sayhi", title: site.sayhi.title[lang] },
+];
+---
+
+<header class="classic-header">
+  <h1 class="classic-name">{site.name[lang]}</h1>
+  <p class="classic-tagline">{site.tagline[lang]}</p>
+  <nav class="classic-nav">
+    <ul class="classic-nav__sections" role="list">
+      {sections.map((s) => (
+        <li>
+          <a href={`#${s.id}`}>{s.title}</a>
+        </li>
+      ))}
+    </ul>
+    <ul class="classic-nav__switches" role="list">
+      <li>
+        <a
+          class="classic-pill"
+          href={pagePath(other)}
+          hreflang={other}
+          lang={other}
+          data-lang-link
+        >
+          {site.ui.langToggle[lang]}
+        </a>
+      </li>
+      <li class="classic-view-choice">
+        <a
+          class="classic-pill classic-pill--lamp"
+          href="?view=world"
+          data-view-choice="world"
+        >
+          {site.ui.worldView[lang]}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

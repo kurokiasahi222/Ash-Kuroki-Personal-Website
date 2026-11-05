@@ -1,0 +1,27 @@
+---
+import { site } from "../../content/site";
+import type { Lang } from "../../content/types";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { title, intro, links } = site.sayhi;
+---
+
+<section id="sayhi" class="classic-section" aria-labelledby="sayhi-title">
+  <h2 id="sayhi-title" class="classic-section__title">
+    {title[lang]}
+  </h2>
+  <p class="classic-lead">{intro[lang]}</p>
+  <ul class="classic-sayhi" role="list">
+    {links.map((link) => (
+      <li>
+        <a class="classic-pill" href={link.href} data-link-id={link.id}>
+          {link.label[lang]}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
