@@ -27,3 +27,6 @@ shots/
 art/out/
 art/.cache/
 .venv-art/
+
+# Python bytecode (art/ scripts)
+__pycache__/
