@@ -1,0 +1,19 @@
+# build output and generated files
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# screenshots
+shots/
+
+# art pipeline output, caches and environment
+art/out/
+art/.cache/
+.venv-art/
+
+# exported models (binary, written by the art pipeline)
+public/models/
+
+# The old site's README. WP-16 rewrites it: remove this line then.
+README.md
