@@ -473,7 +473,7 @@ These checks apply to every package. Each package's own file adds its specific a
   - `python art/build.py <target>` builds an asset deterministically.
   - `python art/validate.py <glb>` checks it against § 6.2 and § 7.
   - `python art/preview.py <target> --shot <name>` renders a Cycles preview PNG into `shots/art/`.
-- **Review:** every PR gets a Vercel preview deployment, which Ash opens on a laptop and a phone.
+- **Review:** every PR gets a preview deployment, which Ash opens on a laptop and a phone. Netlify's deploy preview builds every commit. Vercel's preview may be blocked for commits not authored by Ash.
 
 ## 11. Workflow
 
@@ -519,4 +519,4 @@ Packages in the same wave can run in parallel. Within a wave, start any package 
 - **Proofreading** the Japanese copy in the WP-04 PR.
 - **Drone Simulation:** confirm that featuring this UMN CSCI 3081 team project is fine under that course's sharing rules.
 - **Footer credit:** keep or drop the default credit line "Previous version designed by Kayla Purney".
-- **Real-device checks** of frame rate (§ 7) on each Vercel preview that changes rendering.
+- **Real-device checks** of frame rate (§ 7) on each preview deployment that changes rendering.

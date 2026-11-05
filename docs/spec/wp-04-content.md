@@ -16,7 +16,7 @@ Everything here comes from Ash's GitHub profile and the old site. Don't add clai
 - **Builds:**
   - **`drone`: Drone Simulation.** A UMN CSCI 3081 team project: a C++ drone delivery simulation with A\*, Dijkstra and DFS route planning, design patterns, a JS/HTML front end and Docker. Take the live demo, video and screenshot links from the public repo `kurokiasahi222/Drone-Simulation-Project`'s README. Credit the team ("built with three teammates").
   - **`gpt2`: GPT-2 from scratch.** Stanford CS224N's default final project, implemented in PyTorch: multi-head attention, GPT-2 layers and model, AdamW, then fine-tuning for sentiment classification, paraphrase detection and sonnet generation, including LoRA. **Write-up only.** No code link, no link to the private repo, no code excerpts.
-  - **`website`: this website.** A rainy Tokyo night built with Astro, React Three Fiber and Blender driven by Python scripts. Link `https://github.com/kurokiasahi222/Ash-Kuroki-Personal-Website`.
+  - **`website`: this website.** A rainy Tokyo night built with Astro, React Three Fiber and Blender driven by Python scripts. No repo link: the repository is private.
 - **Links:** GitHub `https://github.com/kurokiasahi222`; LinkedIn `https://www.linkedin.com/in/asahi-kuroki/`. No email address.
 - **Photo:** `/images/asahi-headshot.webp`.
 
