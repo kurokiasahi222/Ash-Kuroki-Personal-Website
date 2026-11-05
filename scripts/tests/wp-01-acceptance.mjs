@@ -193,14 +193,19 @@ await check(
 );
 
 await check(
-  "/?view=world resolves to world, shows the boot card and mounts an aria-hidden canvas, no console errors",
+  "/?view=world resolves to world, shows the boot card (until WP-07's title card replaces it) and mounts an aria-hidden canvas, no console errors",
   async () => {
     const { context, page, errors, requests } = await open("/?view=world");
     const b = await boot(page);
     assert.equal(b.mode, "world");
     assert.equal(b.reason, "url");
     assert.equal(await hasWorldClass(page), true);
-    assert.equal(await page.isVisible("#boot-card"), true, "boot card hidden");
+    // The boot card shows until WP-07's title card renders and removes it.
+    const bootCard = await page.evaluate(() => {
+      const card = document.getElementById("boot-card");
+      return card ? getComputedStyle(card).display !== "none" : "removed";
+    });
+    assert.ok(bootCard === true || bootCard === "removed", "boot card hidden");
     await waitForCanvas(page);
     await page.waitForTimeout(1500); // let a few frames render
     const hidden = await page.evaluate(
@@ -713,14 +718,22 @@ await check(
         4,
     );
     assert.ok(order, "#world-root should come before #classic-content");
+    // WP-07's skip link is the first stop; following it moves focus into
+    // the Classic content, which then reveals itself.
     await page.keyboard.press("Tab");
+    const skip = await page.evaluate(() =>
+      document.activeElement?.getAttribute("href"),
+    );
+    assert.equal(
+      skip,
+      "#classic-content",
+      "first Tab should reach the skip link",
+    );
+    await page.keyboard.press("Enter");
     const focused = await page.evaluate(
       () => !!document.activeElement?.closest("#classic-content"),
     );
-    assert.ok(
-      focused,
-      "first Tab should land in Classic content while the UI is a stub",
-    );
+    assert.ok(focused, "the skip link should move focus into Classic content");
     const box = await page.locator("#classic-content").boundingBox();
     assert.ok(
       box && box.width > 300 && box.height > 300,
