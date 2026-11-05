@@ -536,6 +536,15 @@ await check(
   async () => {
     const { context, page } = await open("/?view=world&debug");
     await waitForCanvas(page);
+    // Expected titles come from the server-rendered pages, not hard-coded copy.
+    const titles = await page.evaluate(async () => {
+      const read = async (path) =>
+        new DOMParser().parseFromString(
+          await (await fetch(path)).text(),
+          "text/html",
+        ).title;
+      return { en: await read("/"), ja: await read("/ja/") };
+    });
     await call(page, "setLang", "ja");
     const ja = await page.evaluate(() => ({
       lang: document.documentElement.lang,
@@ -549,7 +558,7 @@ await check(
       lang: "ja",
       path: "/ja/",
       search: "?view=world&debug",
-      title: "Ash Kuroki・仮のタイトル",
+      title: titles.ja,
       classic: "en",
       store: "ja",
     });
@@ -559,7 +568,7 @@ await check(
       location.pathname,
       document.title,
     ]);
-    assert.deepEqual(en, ["en", "/", "Ash Kuroki · Placeholder title"]);
+    assert.deepEqual(en, ["en", "/", titles.en]);
     await context.close();
   },
 );
