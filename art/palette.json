@@ -1,0 +1,18 @@
+{
+  "night": "#0D1322",
+  "dusk": "#1B2540",
+  "asphalt": "#2B303B",
+  "concrete": "#8C9099",
+  "plaster": "#C9C3B6",
+  "wood": "#6B4630",
+  "vermilion": "#C23B22",
+  "roof": "#3A3F4A",
+  "foliage": "#2E4A3B",
+  "tower": "#FF4F00",
+  "towerWhite": "#F4F1EA",
+  "lamp": "#FFC27A",
+  "vending": "#D6EEFF",
+  "mart": "#0A929B",
+  "ink": "#ECEFF5",
+  "inkDim": "#9BA4B8"
+}

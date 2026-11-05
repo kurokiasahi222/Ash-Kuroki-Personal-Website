@@ -1,0 +1,4 @@
+# Art pipeline (overview § 11). Blender as a Python module needs Python 3.13.
+#   python3.13 -m venv .venv-art && .venv-art/bin/pip install -r art/requirements.txt
+bpy==5.2.3
+pygltflib==1.16.5

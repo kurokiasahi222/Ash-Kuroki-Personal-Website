@@ -227,7 +227,7 @@ interface WorldState {
   - `explore` ↔ `deck`: WP-10.
 - Movement input is accepted only in `explore`.
 
-**Gameplay camera:** its parameters live in `art/layout.json` → `camera`, so Blender shots and the web camera share one source. Initial values: yaw locked toward the tower (looking along three −Z), `pitchDeg` 12 (looking down), `fovDeg` 50 (vertical), `behind` 11 m, `height` 4.5 m. WP-06 tunes them by editing that file.
+**Gameplay camera:** its parameters live in `art/layout.json` → `camera`, so Blender shots and the web camera share one source. Initial values: yaw locked toward the tower (looking along three −Z), `pitchDeg` 8 (looking down; WP-02 lowered it from 12 so the `start` shot shows the tower's top deck above the gate), `fovDeg` 50 (vertical), `behind` 11 m, `height` 4.5 m. WP-06 tunes them by editing that file.
 
 ### 6.5 Runtime and events (WP-01)
 
