@@ -1,0 +1,26 @@
+---
+// The Classic view: the whole site as a static page (overview § 2 and § 9).
+// Readable without JavaScript. In world mode it stays in the DOM, visually
+// hidden but readable by screen readers, and shows itself as an overlay while
+// keyboard focus is inside it (src/styles/world.css).
+import type { Lang } from "../../content/types";
+import About from "./About.astro";
+import Builds from "./Builds.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import SayHi from "./SayHi.astro";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<main id="classic-content" class="classic" lang={lang} tabindex="-1">
+  <Header lang={lang} />
+  <About lang={lang} />
+  <Builds lang={lang} />
+  <SayHi lang={lang} />
+  <Footer lang={lang} />
+</main>

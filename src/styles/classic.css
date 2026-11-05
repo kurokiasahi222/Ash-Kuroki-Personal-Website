@@ -1,0 +1,194 @@
+/*
+ * Classic view: dark, plain and tidy. WP-16 polishes it later.
+ * Every color comes from tokens.css.
+ */
+
+.classic {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 1.25rem 3rem;
+  outline: none;
+}
+
+/* Header */
+
+.classic-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--dusk);
+}
+
+.classic-name {
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  letter-spacing: 0.01em;
+}
+
+.classic-tagline {
+  margin-top: 0.25rem;
+  color: var(--ink-dim);
+  font-size: 1.125rem;
+}
+
+.classic-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.classic-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.classic-nav__switches {
+  gap: 0.5rem !important;
+}
+
+.classic-pill {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--dusk);
+  border-radius: 999px;
+  background: var(--dusk);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: var(--weight-bold);
+}
+
+.classic-pill:hover {
+  border-color: var(--lamp);
+}
+
+.classic-pill--lamp {
+  border-color: var(--lamp);
+  background: var(--lamp);
+  color: var(--night);
+}
+
+.classic-pill--lamp:hover {
+  background: var(--tower-white);
+}
+
+/* Sections */
+
+.classic-section {
+  padding-top: 3rem;
+  scroll-margin-top: 1rem;
+}
+
+.classic-section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.classic-section__title::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--lamp);
+  box-shadow: 0 0 12px var(--lamp);
+}
+
+.classic-lead {
+  color: var(--ink-dim);
+  margin-bottom: 1.25rem;
+}
+
+.classic-section p + p {
+  margin-top: 0.75rem;
+}
+
+/* About */
+
+.classic-about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.classic-about__photo {
+  flex: none;
+  width: 9rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--dusk);
+}
+
+.classic-about__text {
+  flex: 1 1 18rem;
+}
+
+/* Things I've built */
+
+.classic-builds {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.classic-card {
+  padding: 1.25rem;
+  border-radius: 16px;
+  background: var(--dusk);
+}
+
+.classic-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: var(--night);
+}
+
+.classic-card__title {
+  font-size: 1.2rem;
+}
+
+.classic-card__summary {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--ink-dim);
+}
+
+.classic-tags,
+.classic-links,
+.classic-sayhi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.classic-tags li {
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--night);
+  color: var(--ink-dim);
+  font-size: 0.875rem;
+}
+
+/* Footer */
+
+.classic-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--dusk);
+  color: var(--ink-dim);
+  font-size: 0.875rem;
+}

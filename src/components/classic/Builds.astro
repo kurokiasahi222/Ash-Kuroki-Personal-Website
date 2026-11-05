@@ -1,0 +1,63 @@
+---
+import { site } from "../../content/site";
+import type { Lang } from "../../content/types";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { title, intro, items } = site.builds;
+---
+
+<section id="builds" class="classic-section" aria-labelledby="builds-title">
+  <h2 id="builds-title" class="classic-section__title">
+    {title[lang]}
+  </h2>
+  <p class="classic-lead">{intro[lang]}</p>
+  <ul class="classic-builds" role="list">
+    {items.map((build) => (
+      <li>
+        <article
+          class="classic-card"
+          id={`build-${build.id}`}
+          aria-labelledby={`build-${build.id}-title`}
+        >
+          {build.image && (
+            <img
+              class="classic-card__image"
+              src={build.image.src}
+              alt={build.image.alt[lang]}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+          <h3 id={`build-${build.id}-title`} class="classic-card__title">
+            {build.title[lang]}
+          </h3>
+          <p class="classic-card__summary">{build.summary[lang]}</p>
+          {build.body[lang].map((p) => (
+            <p>{p}</p>
+          ))}
+          {/* Tags aren't translated (string[]), so they're marked English. */}
+          {build.tags.length > 0 && (
+            <ul class="classic-tags" role="list" lang="en">
+              {build.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )}
+          {build.links.length > 0 && (
+            <ul class="classic-links" role="list">
+              {build.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label[lang]}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      </li>
+    ))}
+  </ul>
+</section>

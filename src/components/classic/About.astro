@@ -1,0 +1,31 @@
+---
+import { site } from "../../content/site";
+import type { Lang } from "../../content/types";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { title, paragraphs, photo } = site.about;
+---
+
+<section id="about" class="classic-section" aria-labelledby="about-title">
+  <h2 id="about-title" class="classic-section__title">
+    {title[lang]}
+  </h2>
+  <div class="classic-about">
+    <img
+      class="classic-about__photo"
+      src={photo.src}
+      alt={photo.alt[lang]}
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="classic-about__text">
+      {paragraphs[lang].map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </div>
+</section>
